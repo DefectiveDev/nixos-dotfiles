@@ -20,20 +20,21 @@
         xdg-desktop-portal-hyprland#capture wayland windows
         obs-studio
         wl-clipboard
-        wl-clip-persist #feter application closes this will keep the items saved
+        wl-clip-persist #when application closes this will keep the items saved
         grim #screenshots
-        dunst #notifcations
         hyprpaper
         waybar
         wofi
         htop-vim
         libnotify
+        nwg-look
+
+        #gtk & qt themes
+        dracula-qt5-theme
+
 
         #fonts
-        nerd-fonts.iosevka
-        nerd-fonts.iosevka-term
         nerd-fonts.iosevka-term-slab
-        nerd-fonts.jetbrains-mono
         nerd-fonts.symbols-only
         nerd-fonts.noto
         noto-fonts
@@ -45,6 +46,24 @@
         inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
     ]);
 
+    gtk = {
+        enable = true;
+        theme = {
+            name = "Dracula";
+            package = pkgs.dracula-theme;
+        };
+        iconTheme = {
+            name = "Dracula";
+            package = pkgs.dracula-icon-theme;
+        };
+        colorScheme = "dark";
+        font = {
+            name = "NotoSans Nerd Font Propo";
+            package = pkgs.nerd-fonts.noto;
+        };
+
+
+    };
 
     wayland.windowManager.hyprland.enable = true;
     home.file.".config/hypr".source = ../../.config/hypr;
