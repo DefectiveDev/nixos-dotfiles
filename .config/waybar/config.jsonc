@@ -22,19 +22,20 @@
     "modules-right": [
         // "mpd",
         // "idle_inhibitor",
-        "pulseaudio",
-        "network",
-        // "power-profiles-daemon",
         // "cpu",
-        // "memory",
+        // "power-profiles-daemon",
         // "temperature",
+        // "memory",
         // "backlight",
+        // "battery#bat2",
         // "keyboard-state",
         // "sway/language",
+        "tray",
         "battery",
-        // "battery#bat2",
-        "clock",
-        "tray"
+        "network",
+        "pulseaudio",
+        "custom/notification",
+        "clock"
         // "custom/power"
     ],
     "hyprland/workspaces": {
@@ -128,8 +129,9 @@
         // }
     },
     "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "timezone": "America/New_York",
+        // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip": false,
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
@@ -163,6 +165,8 @@
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% 󰚥",
         "format-alt": "{time} {icon}",
+        "tooltip": false,
+
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
@@ -184,18 +188,19 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-ethernet": "{cidr} ",
+        "tooltip": false
+        // "tooltip-format": "{ifname} via {gwaddr} ",
+        // "format-linked": "{ifname} (No IP) ",
+        // "format-disconnected": "Disconnected ⚠",
+        // "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": "󰝟 {icon} {format_source}",
-        "format-muted": "󰝟 {format_source}",
+        "format-bluetooth": "{volume}% {icon} ",
+        "format-bluetooth-muted": "{volume}% 󰝟 {icon} ",
+        "format-muted": " {volume}% 󰝟 ",
         // "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -207,7 +212,8 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "swaync-client -t -sw",
+        "tooltip" : false
     },
     "custom/media": {
         "format": "{icon} {text}",
@@ -236,5 +242,25 @@
     "custom/nixos": {
         "format": " ",
         "tooltip" : false
+    },
+    "custom/notification": {
+        "tooltip": true,
+        "format": "{icon} ",
+        "format-icons": {
+            "notification": "󱅫",
+            "none": "󰂜",
+            "dnd-notification": "󰂠",
+            "dnd-none": "󰪓",
+            "inhibited-notification": "󰂛",
+            "inhibited-none": "󰪑",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰪑"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     }
 }

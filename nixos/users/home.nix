@@ -20,12 +20,14 @@
         xdg-desktop-portal-hyprland#capture wayland windows
         obs-studio
         wl-clipboard
+        wl-clip-persist #feter application closes this will keep the items saved
         grim #screenshots
         dunst #notifcations
         hyprpaper
         waybar
         wofi
         htop-vim
+        libnotify
 
         #fonts
         nerd-fonts.iosevka
@@ -49,6 +51,9 @@
     home.sessionVariables.NIXOS_OZONE_WL = "1"; #tell electron apps to use wayland
 
     home.file.".config/waybar".source = ../../.config/waybar;
+
+    services.swaync.enable = true;
+    home.file.".config/swaync".source = ../../.config/swaync;
 
     home.file.".config/dunst".source = ../../.config/dunst;
 
