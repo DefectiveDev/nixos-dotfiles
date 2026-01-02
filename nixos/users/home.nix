@@ -42,6 +42,8 @@
         inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
     ]);
 
+    programs.bluetuith.enable = true;
+
     gtk = {
         enable = true;
         theme = {
