@@ -29,9 +29,6 @@
         libnotify
         nwg-look
 
-        #gtk & qt themes
-
-
         #fonts
         nerd-fonts.iosevka-term-slab
         nerd-fonts.symbols-only
