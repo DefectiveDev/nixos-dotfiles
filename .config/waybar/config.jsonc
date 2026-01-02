@@ -189,10 +189,10 @@
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ",
         "format-ethernet": "{cidr} ",
-        "tooltip": false
+        "tooltip": false,
         // "tooltip-format": "{ifname} via {gwaddr} ",
         // "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-disconnected": "Disconnected ⚠"
         // "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
