@@ -6,6 +6,7 @@
         ./programs/kitty.nix
         ./programs/zsh.nix
         ./programs/lsd.nix
+        # ./flatpak-theme-workaround.nix
     ];
 
     home.username = "framework";
@@ -71,11 +72,11 @@
 
     qt = {
         enable = true;
-        platformTheme.name= "qt5ct";
-        style = {
-            name = "Dracula";
-            package = pkgs.dracula-qt5-theme;
-        };
+        # platformTheme.name= "gtk2";
+        # style = {
+        #     name = "Dracula";
+        #     package = pkgs.dracula-qt5-theme;
+        # };
     };
 
     wayland.windowManager.hyprland.enable = true;

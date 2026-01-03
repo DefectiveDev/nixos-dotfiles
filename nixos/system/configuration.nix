@@ -89,6 +89,24 @@
 # Enable touchpad support (enabled default in most desktopManager).
 # services.libinput.enable = true;
 
+    services.flatpak.enable = true;
+
+    xdg = {
+        autostart.enable = true;
+        mime.enable = true;
+        menus.enable = true;
+        icons.enable = true;
+        sounds.enable = true;
+        portal = {
+            enable = true;
+            wlr.enable = true;
+            extraPortals = [
+                pkgs.xdg-desktop-portal-wlr
+                    pkgs.xdg-desktop-portal-gtk
+                    pkgs.xdg-desktop-portal-hyprland
+            ];
+        };
+    };
 
     programs.hyprland = {
         enable = true;
