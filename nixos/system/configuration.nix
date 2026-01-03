@@ -30,6 +30,8 @@
         loader.timeout = 0;
     };
 
+    hardware.keyboard.qmk.enable = true;
+
     hardware.bluetooth.enable = true;
 
     nixpkgs.config.allowUnfree = true;
@@ -104,17 +106,19 @@
 # You can use https://search.nixos.org/ to find more packages (and options).
     environment.systemPackages = with pkgs; [
         neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-            wget
-            git
-            comma
-            (pkgs.writeShellApplication {
-             name = "ns";
-             runtimeInputs = with pkgs; [
-             fzf
-             nix-search-tv
-             ];
-             text = ''exec "${pkgs.nix-search-tv.src}/nixpkgs.sh" "$@"'';
-             })
+        qmk
+        qmk-udev-rules
+        wget
+        git
+        comma
+        (pkgs.writeShellApplication {
+            name = "ns";
+            runtimeInputs = with pkgs; [
+            fzf
+            nix-search-tv
+            ];
+            text = ''exec "${pkgs.nix-search-tv.src}/nixpkgs.sh" "$@"'';
+        })
     ];
 
 
