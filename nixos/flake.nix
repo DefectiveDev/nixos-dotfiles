@@ -5,6 +5,8 @@
 
         unstable-nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+        nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
         zen-browser = {
             url = "github:0xc000022070/zen-browser-flake";
             inputs = {
@@ -26,7 +28,7 @@
         };
     };
 
-    outputs = {self, nixpkgs, home-manager, ...}@inputs: 
+    outputs = {self, nixpkgs, home-manager, nixos-hardware, ...}@inputs: 
         let 
         system = "x86_64-linux";
     unstable-pkgs = import inputs.unstable-nixpkgs {
@@ -46,6 +48,7 @@
             modules = [
                 ./system/configuration.nix
                 inputs.nur.modules.nixos.default
+                nixos-hardware.nixosModules.framework-16-7040-amd
                 home-manager.nixosModules.home-manager
                 {
                     home-manager = {
