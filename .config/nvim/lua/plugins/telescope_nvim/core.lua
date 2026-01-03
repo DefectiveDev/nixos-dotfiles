@@ -22,7 +22,7 @@ return {{
 		telescope.setup({
 			defaults = {
 				-- border = false,
-				preview = { 
+				preview = {
 				    treesitter = false,
 				},
 				path_display = { "truncat "},
@@ -34,6 +34,12 @@ return {{
 					},
 				},
 			},
+			pickers = {
+                find_files = {
+                    file_ignore_patterns = {'.git'},
+                    hidden = true,
+                },
+            },
 			extensions = {
 				["ui-select"] = {
 					require("telescope.themes").get_dropdown(),
