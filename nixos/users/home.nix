@@ -18,7 +18,6 @@
         godot-mono
         slurp#capture wayland region
         xdg-desktop-portal-hyprland#capture wayland windows
-        obs-studio
         wl-clipboard
         wl-clip-persist #when application closes this will keep the items saved
         grim #screenshots
@@ -41,6 +40,13 @@
         fastfetch
         inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
     ]);
+
+    programs.obs-studio = {
+        enable = true;
+        plugins = with pkgs.obs-studio-plugins; [
+            obs-vaapi # AMD hardware encoding
+        ];
+    };
 
     programs.bluetuith.enable = true;
 

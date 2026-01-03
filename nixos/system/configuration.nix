@@ -30,6 +30,11 @@
         loader.timeout = 0;
     };
 
+    hardware.graphics = {
+        enable = true;
+        enable32Bit = true;
+    };
+
     hardware.keyboard.qmk.enable = true;
 
     hardware.bluetooth.enable = true;
