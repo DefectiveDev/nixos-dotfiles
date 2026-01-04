@@ -33,6 +33,7 @@ in
         fd
         rustup
         gcc
+        tree-sitter
         # lua-language-server
         # fzf # set up in home.nix
     ];
