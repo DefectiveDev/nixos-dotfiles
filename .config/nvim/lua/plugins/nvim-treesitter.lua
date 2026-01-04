@@ -1,7 +1,7 @@
 return {{
     "nvim-treesitter/nvim-treesitter",
     -- version= false;
-    tag = "v0.10.0",
+    -- tag = "v0.10.0",
     event = { "BufReadPre", "BufNewFile" },
     build = ":TSUpdate",
 	opts = function()

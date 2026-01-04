@@ -1,6 +1,6 @@
 return {
     "HiPhish/rainbow-delimiters.nvim",
-    tag = "v0.10.0",
+    -- tag = "v0.10.0",
     dependencies = "nvim-treesitter/nvim-treesitter",
     event = "VeryLazy",
     main = "rainbow-delimiters.setup",
@@ -12,6 +12,9 @@ return {
         query = {
             [''] = 'rainbow-delimiters',
             -- latex = 'rainbow-blocks',
+        },
+        priority = {
+            -- c_sharp = 210,
         },
         highlight = {
             'RainbowDelimiterRed',
