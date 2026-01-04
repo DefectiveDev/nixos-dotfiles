@@ -11,15 +11,74 @@ return{{
 		"hrsh7th/cmp-nvim-lua",
 		"saadparwaiz1/cmp_luasnip", -- for autocompletion
 		{ "rafamadriz/friendly-snippets", config = function () require("luasnip.loaders.from_vscode").lazy_load() end}, -- some default snippets
-		"onsails/lspkind.nvim", -- vs-code like pictograms
+        -- { "onsails/lspkind.nvim", lazy = true,}, -- vs-code like pictograms
 	},
 	config = function()
 		-- Set up nvim-cmp.
 		local cmp = require('cmp')
 		local luasnip = require("luasnip")
-		local lspkind = require("lspkind")
+
+		-- lsp kind would automatically put in the pictograms twice due to loading with lazy and cmp.
+		-- opted to just have them detailed directly in cmp config
+        local cmp_kinds = {
+            Text = "󰉿",
+            Method = "󰆧",
+            Function = "󰊕",
+            Constructor = "",
+            Field = "󰜢",
+            Variable = "󰀫",
+            Class = "󰠱",
+            Interface = "",
+            Module = "",
+            Property = "󰜢",
+            Unit = "󰑭",
+            Value = "󰎠",
+            Enum = "",
+            Keyword = "󰌋",
+            Snippet = "",
+            Color = "󰏘",
+            File = "󰈙",
+            Reference = "󰈇",
+            Folder = "󰉋",
+            EnumMember = "",
+            Constant = "󰏿",
+            Struct = "󰙅",
+            Event = "",
+            Operator = "󰆕",
+            TypeParameter = '  ',
+        }
+
+        -- vscode style pictograms
+        -- local cmp_kinds = {
+        --     Text = '  ',
+        --     Method = '  ',
+        --     Function = '  ',
+        --     Constructor = '  ',
+        --     Field = '  ',
+        --     Variable = '  ',
+        --     Class = '  ',
+        --     Interface = '  ',
+        --     Module = '  ',
+        --     Property = '  ',
+        --     Unit = '  ',
+        --     Value = '  ',
+        --     Enum = '  ',
+        --     Keyword = '  ',
+        --     Snippet = '  ',
+        --     Color = '  ',
+        --     File = '  ',
+        --     Reference = '  ',
+        --     Folder = '  ',
+        --     EnumMember = '  ',
+        --     Constant = '  ',
+        --     Struct = '  ',
+        --     Event = '  ',
+        --     Operator = '  ',
+        --     TypeParameter = '  ',
+        -- }
 
 		-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
+
 
 		local cmp_mappings = {
 
@@ -87,12 +146,13 @@ return{{
 				-- { name = 'ultisnips' }, -- For ultisnips users.
 				-- { name = 'snippy' }, -- For snippy users.
 			}),
-			formatting = {
-				format = lspkind.cmp_format({
-					maxwidth = 80,
-					ellipsis_char = "...",
-				}),
-			},
+            formatting = {
+                fields = { "kind", "abbr" },
+                format = function(_, vim_item)
+                    vim_item.kind = cmp_kinds[vim_item.kind] or ""
+                    return vim_item
+                end,
+            },
 		})
 		-- Set configuration for specific filetype.
 		cmp.setup.filetype('gitcommit', {
