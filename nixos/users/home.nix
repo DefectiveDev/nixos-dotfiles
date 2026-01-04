@@ -79,7 +79,8 @@
         # };
     };
 
-    wayland.windowManager.hyprland.enable = true;
+    # disabled to avoid hyprland config warning on build
+    # wayland.windowManager.hyprland.enable = true;
     home.file.".config/hypr".source = ../../.config/hypr;
     home.sessionVariables.NIXOS_OZONE_WL = "1"; #tell electron apps to use wayland
 
