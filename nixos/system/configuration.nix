@@ -89,6 +89,11 @@
 # Enable touchpad support (enabled default in most desktopManager).
 # services.libinput.enable = true;
 
+    #automount usb devices
+    services.devmon.enable = true;
+    services.gvfs.enable = true; 
+    services.udisks2.enable = true;
+
     services.flatpak.enable = true;
 
     xdg = {
