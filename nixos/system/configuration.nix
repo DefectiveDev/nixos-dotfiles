@@ -37,7 +37,18 @@
 
     hardware.keyboard.qmk.enable = true;
 
-    hardware.bluetooth.enable = true;
+    hardware.bluetooth = {
+        enable = true;
+        powerOnBoot = true;
+        settings = {
+            General = {
+                FastConnectable = true;
+            };
+            Policy = {
+                AutoEnable = true;
+            };
+        };
+    };
 
     nixpkgs.config.allowUnfree = true;
     nixpkgs.config.allowUnfreePredicate = (_: true);
@@ -78,14 +89,25 @@
 # Enable sound.
 # services.pulseaudio.enable = true;
 # ORo
+    security.rtkit.enable = true;
     services.pipewire = {
         enable = true;
         wireplumber.enable = true;
         alsa.enable = true;
+        alsa.support32Bit = true;
         pulse.enable = true;
         jack.enable = true;
     };
-
+    services.pipewire.wireplumber.configPackages = [
+        (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/10-bluez.conf" ''
+             monitor.bluez.properties = {
+             bluez5.enable-sbc-xq = true
+             bluez5.enable-msbc = true
+             bluez5.enable-hw-volume = true
+             bluez5.roles = [hsp_hs hsp_ag hfp_hf hfp_ag]
+             }
+         '')
+    ];
 # Enable touchpad support (enabled default in most desktopManager).
 # services.libinput.enable = true;
 
@@ -107,8 +129,8 @@
             wlr.enable = true;
             extraPortals = [
                 pkgs.xdg-desktop-portal-wlr
-                    pkgs.xdg-desktop-portal-gtk
-                    pkgs.xdg-desktop-portal-hyprland
+                pkgs.xdg-desktop-portal-gtk
+                pkgs.xdg-desktop-portal-hyprland
             ];
         };
     };
@@ -140,6 +162,7 @@
         wget
         git
         comma
+        pulsemixer
         (pkgs.writeShellApplication {
             name = "ns";
             runtimeInputs = with pkgs; [
