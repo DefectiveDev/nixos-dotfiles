@@ -1,7 +1,7 @@
 return {{
     "nvim-treesitter/nvim-treesitter",
     -- version= false;
-    -- tag = "v0.10.0",
+    tag = "v0.10.0",
     event = { "BufReadPre", "BufNewFile" },
     build = ":TSUpdate",
 	opts = function()
@@ -10,7 +10,7 @@ return {{
             --enable syntax highlighting
             indent = {
                 enable = true,
-                disable = {"c_sharp"},
+                -- disable = {"c_sharp"},
             },
             auto_install = true,
             highlight = { enable = true },
