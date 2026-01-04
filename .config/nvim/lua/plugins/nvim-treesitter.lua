@@ -3,6 +3,7 @@ return {{
     -- version= false;
     -- tag = "v0.10.0",
     event = { "BufReadPre", "BufNewFile" },
+    -- lazy = false,
     build = ":TSUpdate",
 	opts = function()
         require 'nvim-treesitter.install'.prefer_git = false

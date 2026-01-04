@@ -2,7 +2,8 @@ return {
     "HiPhish/rainbow-delimiters.nvim",
     -- tag = "v0.10.0",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    lazy = false,
     main = "rainbow-delimiters.setup",
     opts = {
         strategy = {
