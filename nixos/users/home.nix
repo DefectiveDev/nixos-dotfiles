@@ -28,6 +28,7 @@
         htop-vim
         libnotify
         nwg-look
+        obs-cli
 
         #fonts
         nerd-fonts.iosevka-term-slab
@@ -46,6 +47,7 @@
         enable = true;
         plugins = with pkgs.obs-studio-plugins; [
             obs-vaapi # AMD hardware encoding
+            obs-websocket
         ];
     };
 
