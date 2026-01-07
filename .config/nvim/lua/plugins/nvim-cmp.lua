@@ -2,6 +2,7 @@
 return{{
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
+	enabled = false,
 	dependencies = {
 		"hrsh7th/cmp-omni",
 		"hrsh7th/cmp-buffer", --source for text in buffer

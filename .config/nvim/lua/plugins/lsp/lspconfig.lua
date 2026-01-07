@@ -3,7 +3,7 @@ return {{
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-        "hrsh7th/cmp-nvim-lsp",
+        -- "hrsh7th/cmp-nvim-lsp",
         { "williamboman/mason-lspconfig.nvim", enabled = function ()
             if vim.env.NIX_PATH then
                 return false
@@ -15,7 +15,7 @@ return {{
     config = function()
         local lspconfig = vim.lsp.config
 
-        local cmp_nvim_lsp = require("cmp_nvim_lsp")
+        -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
         local keymap = vim.keymap -- for concisenesss
         local opts = { noremap = true, silent = true }
         -- Under language features you can find the providers! https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#languageFeatures-side
@@ -54,9 +54,9 @@ return {{
                     opts.desc = "Show LSP definition"
                     keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 
-                    if client.name == "omnisharp" then
-                        keymap.set("n", "gd", "<cmd>lua require('omnisharp_extended').telescope_lsp_definitions()<CR>", opts)
-                    end
+                    -- if client.name == "omnisharp" then
+                    --     keymap.set("n", "gd", "<cmd>lua require('omnisharp_extended').telescope_lsp_definitions()<CR>", opts)
+                    -- end
                 end
 
                 if server_capabilities.typeDefinitionProvider then
@@ -91,20 +91,20 @@ return {{
                 end
 
                 --- toggle inlay hints
-                vim.g.inlay_hints_visible = false
-                local function toggle_inlay_hints()
-                    if vim.g.inlay_hints_visible then
-                        vim.g.inlay_hints_visible = false
-                        vim.lsp.inlay_hint(bufnr, false)
-                    else
-                        if client.server_capabilities.inlayHintProvider then
-                            vim.g.inlay_hints_visible = true
-                            vim.lsp.inlay_hint(bufnr, true)
-                        else
-                            print("no inlay hints available")
-                        end
-                    end
-                end
+                -- vim.g.inlay_hints_visible = false
+                -- local function toggle_inlay_hints()
+                --     if vim.g.inlay_hints_visible then
+                --         vim.g.inlay_hints_visible = false
+                --         vim.lsp.inlay_hint(bufnr, false)
+                --     else
+                --         if client.server_capabilities.inlayHintProvider then
+                --             vim.g.inlay_hints_visible = true
+                --             vim.lsp.inlay_hint(bufnr, true)
+                --         else
+                --             print("no inlay hints available")
+                --         end
+                --     end
+                -- end
 
                 opts.desc = "Show workspace diagnostics"
                 keymap.set("n", "gW", "<cmd>Telescope diagnostics<CR>", opts)
@@ -115,11 +115,11 @@ return {{
                 opts.desc = "Show line diagnostics"
                 keymap.set("n", "<leader>ld", vim.diagnostic.open_float, opts)
 
-                opts.desc = "Go to previous diagnostic"
-                keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-
-                opts.desc = "Go to next diagnostic"
-                keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+                -- opts.desc = "Go to previous diagnostic"
+                -- keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+                --
+                -- opts.desc = "Go to next diagnostic"
+                -- keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
 
                 opts.desc = "Restart LSP"
@@ -129,7 +129,7 @@ return {{
         })
 
         --- Used to enable auto complete
-        local capabilities = cmp_nvim_lsp.default_capabilities()
+        -- local capabilities = cmp_nvim_lsp.default_capabilities()
 
         --- Change the Diagnostic symbols in the sign column (gutter)
         vim.diagnostic.config({
@@ -146,7 +146,7 @@ return {{
         if vim.env.NIX_PATH then
 
             vim.lsp.config("roslyn_ls", {
-                capabilities =capabilities,
+                -- capabilities =capabilities,
                 -- on_attach = function()
                     -- print("This will run when the server attaches!")
                 -- end,
@@ -163,7 +163,7 @@ return {{
             vim.lsp.enable("roslyn_ls")
 
             vim.lsp.config("lua_ls", {
-                capabilities = capabilities,
+                -- capabilities = capabilities,
 
                 settings = {
                     Lua = {
@@ -183,7 +183,7 @@ return {{
             vim.lsp.enable("lua_ls")
 
             vim.lsp.config("nil_ls", {
-                capabilities = capabilities
+                -- capabilities = capabilities
             }) -- nix lsp
             vim.lsp.enable("nil_ls")
 
