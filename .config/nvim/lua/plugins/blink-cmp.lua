@@ -3,7 +3,7 @@ return {
     -- optional: provides snippets for the snippet source
     dependencies = { 'rafamadriz/friendly-snippets' },
 
-    event = "LspAttach",
+    event = {  "LspAttach", "InsertEnter", "CmdlineEnter" },
     -- use a release tag to download pre-built binaries
     version = '1.*',
     -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
@@ -85,6 +85,12 @@ return {
             menu = {
                 scrollbar = false,
                 scrolloff = 2,
+            },
+
+            accept = {
+                auto_brackets = {
+                    enabled = false
+                },
             },
 
             documentation = {
