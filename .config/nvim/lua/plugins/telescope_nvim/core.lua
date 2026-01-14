@@ -54,7 +54,7 @@ return {{
 					side_by_side = true,
 					layout_strategy = "vertical",
 					layout_config = {
-						preview_height = 0.8,
+						preview_height = 0.7,
 					},
 				},
 			},
