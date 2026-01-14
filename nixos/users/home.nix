@@ -105,6 +105,7 @@
     };
 
     programs = {
+        lazygit.enable = true;
         bash.enable = true;
         fd.enable = true;
         ripgrep.enable = true;
