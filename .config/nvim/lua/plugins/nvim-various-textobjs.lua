@@ -29,6 +29,13 @@ return {
             mode = {"o", "x"},
             desc = "outer-outer indentation textobj"
         },
+        { "I",
+            function ()
+                require("various-textobjs").restOfIndentation()
+            end,
+            mode = {"o", "x"},
+            desc = "rest of indentation textobj"
+        },
         { "isw",
             function ()
                 require("various-textobjs").subword("inner")
