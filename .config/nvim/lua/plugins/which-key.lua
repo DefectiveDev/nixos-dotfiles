@@ -5,5 +5,14 @@ return {
 		vim.o.timeout = true
 		vim.o.timeoutlen = 300
 	end,
-	opts = {},
+	opts = {
+	    triggers = {
+            { "<auto>", mode = "nixsotc" },
+            { "s", mode = {"n","x","o"} },
+            { "S", mode = {"n","x","o"} }
+        }
+    },
+	config = function (_, opts)
+	    require("which-key").setup(opts)
+	end
 }

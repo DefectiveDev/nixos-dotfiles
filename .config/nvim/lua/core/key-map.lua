@@ -1,4 +1,7 @@
 local keymap = vim.keymap
+keymap.set({"n", "x", "o"}, "s", "<Nop>", {nowait = true})
+keymap.set({"n", "x", "o"}, "S", "<Nop>", {nowait = true})
+
 keymap.set('i', "<C-L>", "<right>")
 keymap.set('i', "<C-H>", "<left>")
 keymap.set('i', "<C-J>", "<down>")
@@ -42,8 +45,6 @@ keymap.set('n', "<leader>q", ":cclose<CR>", {desc = "Close quick fix"})
 keymap.set('', ';', ':')
 keymap.set('', ':', ';')
 
-keymap.set('n', 's', '^i')
-
 keymap.set('n', "<leader><TAB>", ":bn<CR>", {silent = true})
 keymap.set('n', "<leader><S-TAB>", ":bp<CR>", { silent = true })
 
@@ -59,20 +60,20 @@ keymap.set('n', '<leader>lz', function ()
 end, {desc= "Toggle lazy redraw."})
 
 -- Allow me to tab over specified chars.
-keymap.set('i', "<TAB>",function ()
-    local chars_tab_over = {'"', "'", '{', '}', '(', ')', '[', ']' }
-
-    local cur_cursor_pos = vim.fn.col(".")
-    local current_char = vim.fn.getline("."):sub(cur_cursor_pos, cur_cursor_pos)
-
-    for _, char in pairs(chars_tab_over) do
-        if current_char == char then
-            return "<right>"
-        end
-    end
-
-    return "<TAB>"
-end, {expr = true, silent = true})
+-- keymap.set('i', "<TAB>",function ()
+--     local chars_tab_over = {'"', "'", '{', '}', '(', ')', '[', ']' }
+--
+--     local cur_cursor_pos = vim.fn.col(".")
+--     local current_char = vim.fn.getline("."):sub(cur_cursor_pos, cur_cursor_pos)
+--
+--     for _, char in pairs(chars_tab_over) do
+--         if current_char == char then
+--             return "<right>"
+--         end
+--     end
+--
+--     return "<TAB>"
+-- end, {expr = true, silent = true})
 
 keymap.set('c', "<CR>", function ()
     if vim.fn.pumvisible() == 1 then
