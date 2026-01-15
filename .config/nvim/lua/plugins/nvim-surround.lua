@@ -1,5 +1,7 @@
 return {{
-    "kylechui/nvim-surround",
+    -- "kylechui/nvim-surround",
+    -- Custom fork to handle highlight
+    "DefectiveDev/nvim-surround-highlights",
     keys = {
         { "sy", desc = "Add a surrounding pair around a motion (normal mode)" },
         { "sY", desc = "Add a surrounding pair around a motion, on new lines (normal mode)" },
@@ -11,7 +13,7 @@ return {{
         { "S", mode = "v", desc = "Add a surrounding pair around a visual selection" },
         { "gS", mode = "x", desc = "Add a surrounding pair around a visual selection, on new lines" },
     },
-    version ="^3.0.0",
+    -- version ="^3.0.0",
     opts = {
         keymaps = {
             insert = "<C-g>s",
@@ -31,5 +33,4 @@ return {{
     config = function (_, opts)
         require("nvim-surround").setup(opts)
     end
-},
-{ "XXiaoA/ns-textobject.nvim", enabled = false, keys = { "ys", "ds", "cs",}, dependencies = {"kylechui/nvim-surround"}, opts = {}}}
+}}
