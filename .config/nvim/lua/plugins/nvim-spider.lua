@@ -1,9 +1,9 @@
 return {
 	"chrisgrieser/nvim-spider",
 	keys = {
-		{ "w", "<cmd>lua require('spider').motion('w')<CR>", mode = { "n", "o", "x" } },
-		{ "e", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" } },
-		{ "b", "<cmd>lua require('spider').motion('b')<CR>", mode = { "n", "o", "x" } },
-		{ "ge", "<cmd>lua require('spider').motion('ge')<CR>", mode = { "n", "o", "x" } },
+		{ "sw", function() require('spider').motion('w') end, mode = { "n", "o", "x" }, desc = "Next subword" },
+		{ "se", function() require('spider').motion('e') end, mode = { "n", "o", "x" }, desc = "Next end of subword" },
+		{ "sb", function() require('spider').motion('b') end, mode = { "n", "o", "x" }, desc = "Previous subword"},
+		{ "sge", function() require('spider').motion('ge') end, mode = { "n", "o", "x" }, desc = "Prev end of subword" },
 	},
 }
