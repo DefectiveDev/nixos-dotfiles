@@ -59,7 +59,7 @@ return {
         },
         { "am",
             function ()
-                require("various-textobjs").er("outer")
+                require("various-textobjs").chainMember("outer")
             end,
             mode = {"o", "x"},
             desc = "outer chainMember textobj"
