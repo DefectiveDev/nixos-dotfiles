@@ -49,8 +49,21 @@ return {
             end,
             mode = {"o", "x"},
             desc = "outer subword textobj"
+        },
+        { "im",
+            function ()
+                require("various-textobjs").chainMember("inner")
+            end,
+            mode = {"o", "x"},
+            desc = "inner chainMember textobj"
+        },
+        { "am",
+            function ()
+                require("various-textobjs").er("outer")
+            end,
+            mode = {"o", "x"},
+            desc = "outer chainMember textobj"
         }
-
     },
 	opts = {
 		keymaps = {
