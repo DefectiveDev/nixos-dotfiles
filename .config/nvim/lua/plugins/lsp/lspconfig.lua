@@ -53,10 +53,6 @@ return {{
                 if server_capabilities.definitionProvider then
                     opts.desc = "Show LSP definition"
                     keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-
-                    -- if client.name == "omnisharp" then
-                    --     keymap.set("n", "gd", "<cmd>lua require('omnisharp_extended').telescope_lsp_definitions()<CR>", opts)
-                    -- end
                 end
 
                 if server_capabilities.typeDefinitionProvider then
@@ -87,7 +83,7 @@ return {{
                 if server_capabilities.signatureHelpProvider then
                     opts.desc = "Show signature help"
                     keymap.set('n', "gK", vim.lsp.buf.signature_help, opts)
-                    keymap.set('i', "<C-K>", vim.lsp.buf.signature_help, opts)
+                    keymap.set('i', "<C-s>", vim.lsp.buf.signature_help, opts)
                 end
 
                 --- toggle inlay hints
@@ -109,18 +105,14 @@ return {{
                 opts.desc = "Show workspace diagnostics"
                 keymap.set("n", "gW", "<cmd>Telescope diagnostics<CR>", opts)
 
+                opts.desc = "Show workspace diagnostics"
+                keymap.set("n", "<leader>lwd", "<cmd>Telescope diagnostics<CR>", opts)
+
                 opts.desc = "Show buffer diagnostics"
                 keymap.set("n", "<leader>lD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
                 opts.desc = "Show line diagnostics"
                 keymap.set("n", "<leader>ld", vim.diagnostic.open_float, opts)
-
-                -- opts.desc = "Go to previous diagnostic"
-                -- keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-                --
-                -- opts.desc = "Go to next diagnostic"
-                -- keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-
 
                 opts.desc = "Restart LSP"
                 keymap.set("n", "<leader>lrs", ":LspRestart<CR>", opts)
@@ -232,41 +224,6 @@ return {{
                             vim.bo.indentexpr = ""
                             vim.bo.cindent = true
                         end
-                    })
-                end,
-
-                ["clangd"] = function()
-                    lspconfig("clangd", {
-                        root_dir = function(fname)
-                            return lspconfig(util).root_pattern(
-                                "Makefile",
-                                "configure.ac",
-                                "configure.in",
-                                "config.h.in",
-                                "meson.build",
-                                "meson_options.txt",
-                                "build.ninja"
-                            )(fname) or lspconfig(util).root_pattern("compile_commands.json", "compile_flags.txt")(
-                                    fname
-                                ) or lspconfig(util).find_git_ancestor(fname)
-                        end,
-                        capabilities = {
-                            offsetEncoding = { "utf-16" },
-                        },
-                        cmd = {
-                            "clangd",
-                            "--background-index",
-                            "--clang-tidy",
-                            "--header-insertion=iwyu",
-                            "--completion-style=detailed",
-                            "--function-arg-placeholders",
-                            "--fallback-style=llvm",
-                        },
-                        init_options = {
-                            usePlaceholders = true,
-                            completeUnimported = true,
-                            clangdFileStatus = true,
-                        },
                     })
                 end,
 
