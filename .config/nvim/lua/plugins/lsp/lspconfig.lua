@@ -86,21 +86,16 @@ return {{
                     keymap.set('i', "<C-s>", vim.lsp.buf.signature_help, opts)
                 end
 
-                --- toggle inlay hints
-                -- vim.g.inlay_hints_visible = false
-                -- local function toggle_inlay_hints()
-                --     if vim.g.inlay_hints_visible then
-                --         vim.g.inlay_hints_visible = false
-                --         vim.lsp.inlay_hint(bufnr, false)
-                --     else
-                --         if client.server_capabilities.inlayHintProvider then
-                --             vim.g.inlay_hints_visible = true
-                --             vim.lsp.inlay_hint(bufnr, true)
-                --         else
-                --             print("no inlay hints available")
-                --         end
-                --     end
-                -- end
+                ---@diagnostic disable-next-line: need-check-nil
+                if client.server_capabilities.inlayHintProvider then
+                    vim.lsp.inlay_hint.enable(true, {bufnr = bufnr})
+                    opts.desc = "Toggle inlay hints"
+                    keymap.set("n", "<leader>li",
+                    function()
+                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({bufnr = bufnr}), { bufnr = bufnr})
+                    end,
+                    opts)
+                end
 
                 opts.desc = "Show workspace diagnostics"
                 keymap.set("n", "gW", "<cmd>Telescope diagnostics<CR>", opts)
@@ -115,7 +110,7 @@ return {{
                 keymap.set("n", "<leader>ld", vim.diagnostic.open_float, opts)
 
                 opts.desc = "Restart LSP"
-                keymap.set("n", "<leader>lrs", ":LspRestart<CR>", opts)
+                keymap.set("n", "<leader>lrs", "<cmd>LspRestart<CR>", opts)
 
             end
         })
