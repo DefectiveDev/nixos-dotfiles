@@ -11,20 +11,21 @@ if not vim.loop.fs_stat(lazypath) then
 end
 -- TODO: auto load lsp subdirectory for lsp specific plugins
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup({{import = "plugins"} , {import = "plugins.lsp"}, {import = "plugins.telescope_nvim.core"},
-    --{import = "plugins.nvim-cmp"},
-    --{import = "plugins.nvim-treesitter"},
-    --{import = "plugins.dracula"},
-}
-    ,{
-        install = {
-            colorscheme = { "dracula" },
-        },
-        checker = {
-            enabled = true,
-            notify = false,
-        },
-        change_detection = {
-            notify = false,
-        },
-    })
+require("lazy").setup({
+    {import = "plugins"},
+    {import = "plugins.telescope_nvim.core"},
+    {import = "plugins.lsp"},
+    {import = "plugins.lsp.lua"}
+},
+{
+    install = {
+        colorscheme = { "dracula" },
+    },
+    checker = {
+        enabled = true,
+        notify = false,
+    },
+    change_detection = {
+        notify = false,
+    },
+})
