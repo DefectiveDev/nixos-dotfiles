@@ -116,6 +116,7 @@ return {{
 {
     "DrKJeff16/project.nvim",
     specs = { "nvim-telescope/telescope.nvim" },
+    event = {"BufReadPre", "BufNewFile"},
     keys = {
         {"<leader>fp",function ()
             if not vim.g.projects_loaded then -- a short delay so hopefully the history file will be loaded
