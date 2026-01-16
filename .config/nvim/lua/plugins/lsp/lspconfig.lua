@@ -119,15 +119,29 @@ return {{
             }
         })
 
-        -- go through lsp folder and return all configs then enable them.
-        local lsp_configs = {}
+        local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
+        local lsp_servers = {}
 
-        for _, f in pairs(vim.api.nvim_get_runtime_file('lsp/*.lua', true)) do
-            local server_name = vim.fn.fnamemodify(f, ':t:r')
-            table.insert(lsp_configs, server_name)
+        if vim.fn.isdirectory(lsp_dir) == 1 then
+            for _, file in ipairs(vim.fn.readdir(lsp_dir)) do
+                if file:match("%.lua$") and file ~= "init.lua" then
+                    local server_name = file:gsub("%.lua$", "")
+                    table.insert(lsp_servers, server_name)
+                end
+            end
         end
 
-        vim.lsp.enable(lsp_configs)
+        vim.lsp.enable(lsp_servers)
+
+        -- this enables ALL possible configs
+        -- local lsp_configs = {}
+        --
+        -- for _, f in pairs(vim.api.nvim_get_runtime_file('lsp/*.lua', true)) do
+        --     local server_name = vim.fn.fnamemodify(f, ':t:r')
+        --     table.insert(lsp_configs, server_name)
+        -- end
+        --
+        -- vim.lsp.enable(lsp_configs)
 
     end,
 },  {
