@@ -2,10 +2,6 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
-        {"j-hui/fidget.nvim", config = function ()
-            require("fidget").setup( { notification ={window={winblend=0}} });
-        end}
-        -- { "linrongbin16/lsp-progress.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, config = true },
     },
     config = function()
         local lualine = require("lualine")
