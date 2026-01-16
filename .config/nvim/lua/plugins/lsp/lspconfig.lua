@@ -132,49 +132,16 @@ return {{
             }
         })
 
+        -- go through lsp folder and return all configs then enable them.
+        local lsp_configs = {}
 
-            vim.lsp.config("roslyn_ls", {
-                -- capabilities =capabilities,
-                -- on_attach = function()
-                    -- print("This will run when the server attaches!")
-                -- end,
-                settings = {
-                    ["csharp|inlay_hints"] = {
-                        csharp_enable_inlay_hints_for_implicit_object_creation = true,
-                        csharp_enable_inlay_hints_for_implicit_variable_types = true,
-                    },
-                    ["csharp|code_lens"] = {
-                        dotnet_enable_references_code_lens = true,
-                    },
-                },
-            })
-            vim.lsp.enable("roslyn_ls")
-
-            vim.lsp.config("lua_ls", {
-                -- capabilities = capabilities,
-
-                settings = {
-                    Lua = {
-                        hint = { enable = true },
-                        diagnostics = {
-                            global = { "vim" },
-                        },
-                        workspace = {
-                            library = {
-                                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                            },
-                            checkThirdParty = false
-                        },
-                    },
-                },
-            })
-            vim.lsp.enable("lua_ls")
-
-            vim.lsp.config("nil_ls", {
-                -- capabilities = capabilities
-            }) -- nix lsp
-            vim.lsp.enable("nil_ls")
+        for _, f in pairs(vim.api.nvim_get_runtime_file('lsp/*.lua', true)) do
+            local server_name = vim.fn.fnamemodify(f, ':t:r')
+            table.insert(lsp_configs, server_name)
         end
+
+        vim.lsp.enable(lsp_configs)
+
     end,
 },  {
         "folke/neodev.nvim",
