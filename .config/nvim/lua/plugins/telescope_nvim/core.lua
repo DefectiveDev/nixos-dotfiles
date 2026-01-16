@@ -115,7 +115,7 @@ return {{
 },
 {
     "DrKJeff16/project.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim" },
+    specs = { "nvim-telescope/telescope.nvim" },
     keys = {
         {"<leader>fp",function ()
             if not vim.g.projects_loaded then -- a short delay so hopefully the history file will be loaded
@@ -127,8 +127,11 @@ return {{
         {"<leader>fap", "<cmd>ProjectAddManually<cr>", desc = "Add current directory to (Projects-Telescope)"}
     },
     cmd = { "ProjectAddManually", "Telescope projects" },
-    config = function()
-        require("project").setup()
+    opts = {
+        patterns = { "flake.nix", ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
+    },
+    config = function(_, opts)
+        require("project").setup(opts)
         require("telescope").load_extension("projects")
         function _ADD_CURR_DIR_TO_PROJECTS()
             	local historyfile = require("project_nvim.utils.path").historyfile
