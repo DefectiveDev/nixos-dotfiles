@@ -14,7 +14,6 @@ return {
             },
             sections = {
                 lualine_x = {
-                    -- require('lsp-progress').progress(),
                     {
                         lazy_status.updates,
                         cond = lazy_status.has_updates,
@@ -29,12 +28,5 @@ return {
                 lualine_z = {'location'}
             },
         }
-        -- listen lsp-progress event and refresh lualine
-        -- vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
-        -- vim.api.nvim_create_autocmd("User", {
-        --     group = "lualine_augroup",
-        --     pattern = "LspProgressStatusUpdated",
-        --     callback = require("lualine").refresh,
-        -- })
     end
 }
