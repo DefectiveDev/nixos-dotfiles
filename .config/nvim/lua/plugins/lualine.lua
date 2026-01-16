@@ -19,6 +19,11 @@ return {
                         cond = lazy_status.has_updates,
                         color = { fg = "#FFCA80" }, --orange
                     },
+                    {
+                        function ()
+                            return require('direnv').statusline()
+                        end
+                    }
                 },
                 lualine_y = {
                     --{ "encoding" },
