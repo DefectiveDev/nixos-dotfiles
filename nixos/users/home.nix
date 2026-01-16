@@ -103,6 +103,7 @@
         source = ../../.config/tmux;
         recursive = true;
     };
+    home.file.".config/scripts".source = ../../scripts;
 
     programs = {
         lazygit.enable = true;

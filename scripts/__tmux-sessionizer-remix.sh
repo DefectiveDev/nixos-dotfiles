@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(fd . ~/ ~/.dotfiles/.config/ --exact-depth 1 --type d | fzf )
+    selected=$(fd . ~/ ~/godot/ ~/.nixos-dotfiles/.config/ ~/.nixos-dotfiles/ --exact-depth 1 --type d | fzf )
 fi
 
 if [[ -z $selected ]]; then
