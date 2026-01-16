@@ -1,10 +1,6 @@
----@diagnostic disable: undefined-field
 return {{
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-        -- "hrsh7th/cmp-nvim-lsp",
-    },
     config = function()
 
         local keymap = vim.keymap -- for concisenesss
@@ -15,12 +11,7 @@ return {{
             callback = function(env)
                 local bufnr = env.buf
 
-                local client = vim.lsp.get_client_by_id(env.data.client_id)
-
-                ---@diagnostic disable-next-line: need-check-nil
-                local server_capabilities = client.server_capabilities
                 opts.buffer = bufnr
-
 
                 vim.api.nvim_create_autocmd({'CursorHold', 'CursorHoldI'},{
                     buffer = bufnr,
@@ -31,6 +22,31 @@ return {{
                     buffer = bufnr,
                     callback = vim.lsp.buf.clear_references,
                 })
+
+                opts.desc = "Show workspace diagnostics"
+                keymap.set("n", "gW", "<cmd>Telescope diagnostics<CR>", opts)
+
+                opts.desc = "Show workspace diagnostics"
+                keymap.set("n", "<leader>lwd", "<cmd>Telescope diagnostics<CR>", opts)
+
+                opts.desc = "Show buffer diagnostics"
+                keymap.set("n", "<leader>lD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+
+                opts.desc = "Show line diagnostics"
+                keymap.set("n", "<leader>ld", vim.diagnostic.open_float, opts)
+
+                opts.desc = "Restart LSP"
+                keymap.set("n", "<leader>lrs", "<cmd>LspRestart<CR>", opts)
+
+                local client = vim.lsp.get_client_by_id(env.data.client_id)
+
+                -- lsp return if client not present
+                if not client then
+                    return
+                end
+
+                ---@diagnostic disable-next-line: undefined-field
+                local server_capabilities = client.server_capabilities
 
                 if server_capabilities.referencesProvider then
                     opts.desc = "Show LSP references"
@@ -87,21 +103,6 @@ return {{
                     end,
                     opts)
                 end
-
-                opts.desc = "Show workspace diagnostics"
-                keymap.set("n", "gW", "<cmd>Telescope diagnostics<CR>", opts)
-
-                opts.desc = "Show workspace diagnostics"
-                keymap.set("n", "<leader>lwd", "<cmd>Telescope diagnostics<CR>", opts)
-
-                opts.desc = "Show buffer diagnostics"
-                keymap.set("n", "<leader>lD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
-
-                opts.desc = "Show line diagnostics"
-                keymap.set("n", "<leader>ld", vim.diagnostic.open_float, opts)
-
-                opts.desc = "Restart LSP"
-                keymap.set("n", "<leader>lrs", "<cmd>LspRestart<CR>", opts)
 
             end
         })
