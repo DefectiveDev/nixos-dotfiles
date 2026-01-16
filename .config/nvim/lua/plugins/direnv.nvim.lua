@@ -1,5 +1,6 @@
 return {
     "NotAShelf/direnv.nvim",
+    event = {"BufReadPre", "BufNewFile"},
     opts = {
         -- Path to the direnv executable
         bin = "direnv",
@@ -17,10 +18,10 @@ return {
 
         -- Keyboard mappings
         keybindings = {
-            allow = "<Leader>da",
-            deny = "<Leader>dd",
-            reload = "<Leader>dr",
-            edit = "<Leader>de",
+            allow = false,
+            deny = false,
+            reload = false,
+            edit = false,
         },
 
         -- Notification settings
@@ -30,5 +31,15 @@ return {
             -- Don't show notifications during autoload
             silent_autoload = true,
         },
-    }
+    },
+    config = function (_, opts)
+        require("direnv").setup(opts)
+        vim.api.nvim_create_autocmd("User", {
+            pattern = "DirenvLoaded",
+            callback = function()
+                vim.cmd[[ wa! ]]
+                vim.cmd[[ e! ]]
+            end,
+        })
+    end
 }
