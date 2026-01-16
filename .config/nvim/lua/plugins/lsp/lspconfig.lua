@@ -123,13 +123,11 @@ return {{
             }
         })
 
+        -- This is the default lsp config. If any configuration has been defined this will be overrided
         vim.lsp.config('*', {
             root_markers = { 'flake.nix' }
         })
 
-        -- vim.lsp.config('lua_ls', {
-        --     root_markers = {'flake.nix'}
-        -- })
         -- this enables only LSPs in our config path
         local lsp_dir = vim.fn.stdpath("config") .. "/after/lsp"
         local lsp_servers = {}
