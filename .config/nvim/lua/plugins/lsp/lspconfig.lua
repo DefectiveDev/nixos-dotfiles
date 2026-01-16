@@ -40,13 +40,17 @@ return {{
 
                 local client = vim.lsp.get_client_by_id(env.data.client_id)
 
-                -- lsp return if client not present
+                -- -- lsp return if client not present
                 if not client then
                     return
                 end
 
                 ---@diagnostic disable-next-line: undefined-field
                 local server_capabilities = client.server_capabilities
+
+                if not server_capabilities then
+                    return
+                end
 
                 if server_capabilities.referencesProvider then
                     opts.desc = "Show LSP references"
@@ -119,8 +123,15 @@ return {{
             }
         })
 
+        vim.lsp.config('*', {
+            root_markers = { 'flake.nix' }
+        })
+
+        -- vim.lsp.config('lua_ls', {
+        --     root_markers = {'flake.nix'}
+        -- })
         -- this enables only LSPs in our config path
-        local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
+        local lsp_dir = vim.fn.stdpath("config") .. "/after/lsp"
         local lsp_servers = {}
 
         if vim.fn.isdirectory(lsp_dir) == 1 then
