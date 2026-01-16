@@ -4,18 +4,9 @@ return {{
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         -- "hrsh7th/cmp-nvim-lsp",
-        { "williamboman/mason-lspconfig.nvim", enabled = function ()
-            if vim.env.NIX_PATH then
-                return false
-            end
-            return true
-        end,
-        dependencies = "williamboman/mason.nvim", opts = {automatic_installation = true,}}
     },
     config = function()
-        local lspconfig = vim.lsp.config
 
-        -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
         local keymap = vim.keymap -- for concisenesss
         local opts = { noremap = true, silent = true }
         -- Under language features you can find the providers! https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#languageFeatures-side
@@ -25,6 +16,7 @@ return {{
                 local bufnr = env.buf
 
                 local client = vim.lsp.get_client_by_id(env.data.client_id)
+
                 ---@diagnostic disable-next-line: need-check-nil
                 local server_capabilities = client.server_capabilities
                 opts.buffer = bufnr
@@ -86,8 +78,7 @@ return {{
                     keymap.set('i', "<C-s>", vim.lsp.buf.signature_help, opts)
                 end
 
-                ---@diagnostic disable-next-line: need-check-nil
-                if client.server_capabilities.inlayHintProvider then
+                if server_capabilities.inlayHintProvider then
                     vim.lsp.inlay_hint.enable(true, {bufnr = bufnr})
                     opts.desc = "Toggle inlay hints"
                     keymap.set("n", "<leader>li",
@@ -116,7 +107,6 @@ return {{
         })
 
         --- Used to enable auto complete
-        -- local capabilities = cmp_nvim_lsp.default_capabilities()
         local capabilities = vim.lsp.protocol.make_client_capabilities()
 
         capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities({}, false))
@@ -142,7 +132,6 @@ return {{
             }
         })
 
-        if vim.env.NIX_PATH then
 
             vim.lsp.config("roslyn_ls", {
                 -- capabilities =capabilities,
@@ -185,96 +174,6 @@ return {{
                 -- capabilities = capabilities
             }) -- nix lsp
             vim.lsp.enable("nil_ls")
-
-        else
-
-            require("mason-lspconfig").setup_handlers({
-                function(server_name)
-                    lspconfig(server_name).setup({
-                        capabilities = capabilities,
-                    })
-                end,
-
-                ["omnisharp"] = function ()
-                    lspconfig("omnisharp", {
-                        handlers = {
-                            ["textDocument/definition"] = function(...)
-                                return require("omnisharp_extended").handler(...)
-                            end,
-                        },
-                        keys = {
-                            {
-                                "gd",
-                                function()
-                                    require("omnisharp_extended").telescope_lsp_definitions()
-                                end,
-                                desc = "Goto Definition",
-                            },
-                        },
-                        capabilities = capabilities,
-                        -- enable_roslyn_analyzers = true,
-                        -- organize_imports_on_format = true,
-                        enable_import_completion = true,
-                        on_attach = function ()
-                            vim.bo.indentexpr = ""
-                            vim.bo.cindent = true
-                        end
-                    })
-                end,
-
-                -- example of how to overide the default setup
-                ["rust_analyzer"] = function ()
-                    lspconfig("rust_analyzer", {
-                        settings = {
-                            ["rust-analyzer"] = {
-                                cargo = {
-                                    allFeatures = true,
-                                    loadOutDirsFromCheck = true,
-                                    runBuildScripts = true,
-                                },
-                                check = "clippy",
-                                -- Add clippy lints for Rust.
-                                checkOnSave = {
-                                    allFeatures = true,
-                                    command = "clippy",
-                                    extraArgs = { "--no-deps" },
-                                },
-                                procMacro = {
-                                    enable = true,
-                                    ignored = {
-                                        ["async-trait"] = { "async_trait" },
-                                        ["napi-derive"] = { "napi" },
-                                        ["async-recursion"] = { "async_recursion" },
-                                    },
-                                },
-                            }
-                        },
-                        capabilities = capabilities,
-                    })
-                end,
-
-                ["lua_ls"] = function()
-                    lspconfig("lua_ls", {
-                        capabilities = capabilities,
-
-                        settings = {
-                            Lua = {
-                                hint = { enable = true },
-                                diagnostics = {
-                                    global = { "vim" },
-                                },
-                                workspace = {
-                                    library = {
-                                        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                                    },
-                                    checkThirdParty = false
-                                },
-                            },
-                        },
-                    })
-                end
-
-            })
         end
     end,
 },  {
@@ -282,17 +181,6 @@ return {{
         dependencies = "neovim/nvim-lspconfig",
         ft = {"lua"},
         config = true
-    },{
-        "williamboman/mason.nvim",
-        cmd = "Mason",
-        config = true
-    },--{
-    --     "seblyng/roslyn.nvim",
-    --     ---@module 'roslyn.config'
-    --     ---@type RoslynNvimConfig
-    --     opts = {
-    --         -- your configuration comes here; leave empty for default settings
-    --     },
-    -- },
+    },
 }
 
