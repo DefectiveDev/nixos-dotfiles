@@ -106,20 +106,6 @@ return {{
             end
         })
 
-        --- Used to enable auto complete
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-        capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities({}, false))
-
-        -- capabilities = vim.tbl_deep_extend('force', capabilities, {
-        --     textDocument = {
-        --         foldingRange = {
-        --             dynamicRegistration = false,
-        --             lineFoldingOnly = true
-        --         }
-        --     }
-        -- })
-
         --- Change the Diagnostic symbols in the sign column (gutter)
         vim.diagnostic.config({
             signs = {
