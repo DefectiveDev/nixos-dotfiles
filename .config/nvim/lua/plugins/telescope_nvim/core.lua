@@ -118,6 +118,10 @@ return {{
     dependencies = { "nvim-telescope/telescope.nvim" },
     keys = {
         {"<leader>fp",function ()
+            if not vim.g.projects_loaded then -- a short delay so hopefully the history file will be loaded
+                vim.cmd("sleep 100ms")
+                vim.g.projects_loaded = true
+            end
             vim.cmd("Telescope projects")
         end, desc = "Open (Projects-Telescope)"},
         {"<leader>fap", "<cmd>ProjectAddManually<cr>", desc = "Add current directory to (Projects-Telescope)"}
