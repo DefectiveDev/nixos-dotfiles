@@ -47,7 +47,7 @@ opt.undofile = true
 opt.splitright = true
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-    command = ":silent! lua vim.highlight.on_yank({timeout=250})"
+    command = ":silent! lua vim.hl.on_yank({timeout=250})"
 })
 
 vim.api.nvim_create_user_command("CDC", "cd %:p:h", {})
