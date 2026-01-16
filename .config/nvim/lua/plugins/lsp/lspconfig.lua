@@ -119,6 +119,7 @@ return {{
             }
         })
 
+        -- this enables only LSPs in our config path
         local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
         local lsp_servers = {}
 
