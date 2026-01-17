@@ -1,5 +1,6 @@
 return {
     "NotAShelf/direnv.nvim",
+    lazy = false,
     opts = {
         -- Path to the direnv executable
         bin = "direnv",
