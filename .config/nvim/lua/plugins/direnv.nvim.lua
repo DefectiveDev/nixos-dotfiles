@@ -1,6 +1,5 @@
 return {
     "NotAShelf/direnv.nvim",
-    event = {"BufReadPre", "BufNewFile"},
     opts = {
         -- Path to the direnv executable
         bin = "direnv",
