@@ -39,6 +39,8 @@ opt.scrolloff = 8
 
 opt.signcolumn = "yes"
 
+opt.updatetime = 1000;
+
 opt.swapfile = false
 opt.backup = false
 ---@diagnostic disable-next-line: assign-type-mismatch
