@@ -1,6 +1,10 @@
 return {
     "NotAShelf/direnv.nvim",
-    lazy = false,
+    event = {"BufReadPre", "BufNewFile"},
+    specs = {
+        "neovim/nvim-lspconfig",
+        event = "User DirenvLoaded"
+    },
     opts = {
         -- Path to the direnv executable
         bin = "direnv",
@@ -34,12 +38,5 @@ return {
     },
     config = function (_, opts)
         require("direnv").setup(opts)
-        vim.api.nvim_create_autocmd("User", {
-            pattern = "DirenvLoaded",
-            callback = function()
-                vim.cmd[[ wa! ]]
-                vim.cmd[[ e! ]]
-            end,
-        })
     end
 }

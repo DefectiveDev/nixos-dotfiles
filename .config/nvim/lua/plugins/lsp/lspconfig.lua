@@ -1,6 +1,5 @@
 return {{
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
     config = function()
 
         local keymap = vim.keymap -- for concisenesss
@@ -142,7 +141,6 @@ return {{
         end
 
         vim.lsp.enable(lsp_servers)
-
         -- this enables ALL possible configs
         -- local lsp_configs = {}
         --
