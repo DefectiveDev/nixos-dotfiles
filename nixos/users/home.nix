@@ -105,6 +105,8 @@
     };
     home.file.".config/scripts".source = ../../scripts;
 
+    home.file.".config/fd".source = ../../.config/fd;
+
     programs = {
         lazygit.enable = true;
         bash.enable = true;
