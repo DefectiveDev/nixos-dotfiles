@@ -3,12 +3,13 @@ return {
         "folke/lazydev.nvim",
         ft = "lua", -- only load on lua files
         cmd = "LazyDev",
-        enabled = true,
         specs = {
             'saghen/blink.cmp',
             opts = {
                 sources = {
-                    default = { 'lazydev' },
+                    per_filetype = {
+                        lua = { inherit_defaults = true, "lazydev" }
+                    },
                     providers = {
                         lazydev = {
                             name = "LazyDev",
