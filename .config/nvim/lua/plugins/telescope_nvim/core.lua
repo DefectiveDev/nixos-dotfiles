@@ -21,6 +21,8 @@ return {{
 
         telescope.setup({
             defaults = {
+                prompt_prefix = " ",
+                selection_caret = " ",
                 -- border = false,
                 preview = {
                     treesitter = false,
