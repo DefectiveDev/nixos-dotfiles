@@ -24,13 +24,10 @@ return {{
                 })
 
                 opts.desc = "Show workspace diagnostics"
-                keymap.set("n", "gW", "<cmd>Telescope diagnostics<CR>", opts)
-
-                opts.desc = "Show workspace diagnostics"
-                keymap.set("n", "<leader>lwd", "<cmd>Telescope diagnostics<CR>", opts)
+                keymap.set("n", "<leader>lwd", require("telescope.builtin").diagnostics, opts)
 
                 opts.desc = "Show buffer diagnostics"
-                keymap.set("n", "<leader>lD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+                keymap.set("n", "<leader>lD", function() require("telescope.builtin").diagnostics({bufnr=0}) end, opts)
 
                 opts.desc = "Show line diagnostics"
                 keymap.set("n", "<leader>ld", vim.diagnostic.open_float, opts)
@@ -54,7 +51,7 @@ return {{
 
                 if server_capabilities.referencesProvider then
                     opts.desc = "Show LSP references"
-                    keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+                    keymap.set("n", "gR", require("telescope.builtin").lsp_references, opts)
                 end
 
                 if server_capabilities.declarationProvider then
@@ -64,17 +61,17 @@ return {{
 
                 if server_capabilities.definitionProvider then
                     opts.desc = "Show LSP definition"
-                    keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+                    keymap.set("n", "gd",require("telescope.builtin").lsp_definitions, opts)
                 end
 
                 if server_capabilities.typeDefinitionProvider then
                     opts.desc = "Show LSP type definitions"
-                    keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+                    keymap.set("n", "gt",require("telescope.builtin").lsp_type_definitions, opts)
                 end
 
                 if server_capabilities.implementationProvider then
                     opts.desc = "Show LSP implementations"
-                    keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+                    keymap.set("n", "gi",require("telescope.builtin").lsp_implementations, opts)
                 end
 
                 if server_capabilities.codeActionProvider then
