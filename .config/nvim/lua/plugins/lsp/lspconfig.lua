@@ -1,5 +1,6 @@
 return {{
     "neovim/nvim-lspconfig",
+    event = {"BufReadPre", "BufNewFile"},
     config = function()
 
         local keymap = vim.keymap -- for concisenesss
