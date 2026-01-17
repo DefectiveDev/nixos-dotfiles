@@ -8,12 +8,12 @@ return {{
     },
     cmd = "Telescope",
     keys = {
-        {"<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Fuzzy find files in cwd (Telescope)"},
-        {"<leader>fg", "<cmd>Telescope live_grep<CR>",  desc = "Find string in cwd (Telescope)"},
-        {"<leader>fb", "<cmd>Telescope buffers<CR>",  desc = "Find buffer (Telescope)"},
-        {"<leader>fh", "<cmd>Telescope help_tags<CR>",  desc = "Find help tags (Telescope)"},
-        {"<leader>fc", "<cmd>Telescope grep_string<cr>",  desc = "Find string under cursor in cwd (Telescope)"},
-        {"<leader>fr", "<cmd>Telescope oldfiles<cr>",  desc = "Fuzzy find recent files (Telescope)" }
+        {"<leader>ff",  require("telescope.builtin").find_files, desc = "Fuzzy find files in cwd (Telescope)"},
+        {"<leader>fg", require("telescope.builtin").live_grep,  desc = "Find string in cwd (Telescope)"},
+        {"<leader>fb",require("telescope.builtin").buffers,  desc = "Find buffer (Telescope)"},
+        {"<leader>fh",  require("telescope.builtin").help_tags,  desc = "Find help tags (Telescope)"},
+        {"<leader>fc", require("telescope.builtin").grep_string,  desc = "Find string under cursor in cwd (Telescope)"},
+        {"<leader>fr", require("telescope.builtin").oldfiles,  desc = "Fuzzy find recent files (Telescope)" }
     },
     config = function()
         local telescope = require("telescope")
@@ -36,7 +36,8 @@ return {{
             },
             pickers = {
                 find_files = {
-                    file_ignore_patterns = {'.git'},
+                    file_ignore_patterns = {'.git', '.direnv', '.uid', '.ttf'},
+                    file_command = {'fd', '--type', 'f'},
                     hidden = true,
                 },
             },
