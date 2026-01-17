@@ -47,19 +47,6 @@ return {
             }
         })
 
-        vim.api.nvim_create_autocmd({ 'RecordingEnter', 'RecordingLeave' }, {
-            group = vim.api.nvim_create_augroup('LualineRecordingSection', { clear = true }),
-            callback = function(e)
-                if e.event == 'RecordingLeave' then
-                    rec_msg = ''
-                    lualine.setup(filename_opts)
-                else
-                    rec_msg = 'recording @' .. vim.fn.reg_recording()
-                    lualine.setup(rec_opts)
-                end
-            end,
-        })
-
         local filename_opts = vim.tbl_deep_extend('keep', base_opts, {
             sections = {
                 lualine_c = {
@@ -86,6 +73,19 @@ return {
                     }
                 }
             }
+        })
+
+        vim.api.nvim_create_autocmd({ 'RecordingEnter', 'RecordingLeave' }, {
+            group = vim.api.nvim_create_augroup('LualineRecordingSection', { clear = true }),
+            callback = function(e)
+                if e.event == 'RecordingLeave' then
+                    rec_msg = ''
+                    lualine.setup(filename_opts)
+                else
+                    rec_msg = 'recording @' .. vim.fn.reg_recording()
+                    lualine.setup(rec_opts)
+                end
+            end,
         })
 
         lualine.setup(filename_opts)
