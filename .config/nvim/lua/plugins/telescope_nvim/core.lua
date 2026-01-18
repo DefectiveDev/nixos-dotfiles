@@ -21,6 +21,10 @@ return {{
 
         telescope.setup({
             defaults = {
+                layout_config = {
+                    height = 0.99,
+                    width = 0.99
+                },
                 prompt_prefix = " ",
                 selection_caret = " ",
                 -- border = false,
@@ -44,12 +48,9 @@ return {{
                 },
             },
             extensions = {
-                ["ui-select"] = {
-                    require("telescope.themes").get_dropdown(),
-                },
                 file_browser = {
                     hijack_netrw = true,
-                    theme = "ivy",
+                    layout_strategy = "vertical",
                     grouped = true,
                     auto_depth = true
                 },
@@ -59,6 +60,9 @@ return {{
                     layout_config = {
                         preview_height = 0.7,
                     },
+                },
+                ["ui-select"] = {
+                    require("telescope.themes").get_dropdown(),
                 },
             },
         })
