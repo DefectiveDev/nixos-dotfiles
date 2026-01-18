@@ -22,8 +22,13 @@ return {{
         telescope.setup({
             defaults = {
                 layout_config = {
-                    height = 0.99,
-                    width = 0.99
+                    -- This makes telescope take up entire screen
+                    height = {
+                        padding = 0,
+                    },
+                    width = {
+                        padding = 0
+                    }
                 },
                 prompt_prefix = " ",
                 selection_caret = " ",
