@@ -2,6 +2,21 @@ return {
     'goolord/alpha-nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function ()
-        require('alpha').setup(require('alpha.themes.dashboard').config)
+        local dashboard = require('alpha.themes.dashboard')
+
+        dashboard.section.buttons.val = {
+            dashboard.button( "e", "  New file" , ":ene <BAR> startinsert <CR>"),
+            dashboard.button( "f", "󰈞  Find file", ":Telescope find_files<CR>"),
+            dashboard.button( "r", "  Recent"   , ":Telescope oldfiles<CR>"),
+            dashboard.button( "g", "󰈬  Find Word"   , ":Telescope live_grep<CR>"),
+            dashboard.button( "p", "  Jump to project"   , ":Telescope projects<CR>"),
+            dashboard.button( "q", "  Quit NVIM", ":qa<CR>"),
+        }
+
+        require('alpha').setup(dashboard.config)
+        -- Disable folding on alpha buffer
+        vim.cmd([[
+        autocmd FileType alpha setlocal nofoldenable
+        ]])
     end
 };
