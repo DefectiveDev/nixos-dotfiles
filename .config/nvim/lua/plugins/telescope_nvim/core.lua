@@ -48,7 +48,7 @@ return {{
             pickers = {
                 find_files = {
                     -- If you want to ignore folder specific files use .ignore file using the same syntax as .gitignore
-                    file_ignore_patterns = {'.git', '.direnv', '.uid', '.ttf'},
+                    file_ignore_patterns = {'.git/', '.direnv/', '.uid', '.ttf'},
                     file_command = {'fd', '--type', 'f'},
                     hidden = true,
                 },
