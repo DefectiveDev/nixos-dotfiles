@@ -10,7 +10,7 @@ return {{
         { "sC", desc = "Change a surrounding pair, putting replacements on new lines"},
         { "<C-g>s", mode = "i", desc = "Add a surrounding pair around the cursor (insert mode)" },
         { "<C-g>S", mode = "i", desc = "Add a surrounding pair around the cursor, on new lines (insert mode)" },
-        { "S", mode = "v", desc = "Add a surrounding pair around a visual selection" },
+        { "S", mode = "x", desc = "Add a surrounding pair around a visual selection" },
         { "gS", mode = "x", desc = "Add a surrounding pair around a visual selection, on new lines" },
     },
     -- version ="^3.0.0",
