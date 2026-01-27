@@ -175,6 +175,4 @@ return{{
 		vim.cmd("highlight Pmenu guibg=NONE" ) -- transparent background for autocompletion
         
 	end
-},{ "pixldev/bevy-snippets", event = "InsertEnter *.rs", config = function ()
-		require("luasnip.loaders.from_vscode").lazy_load()
-end}}
+}}
