@@ -82,6 +82,11 @@ return {
 
         -- (Default) Only show the documentation popup when manually triggered
         completion = {
+            list = {
+                selection = {
+                    preselect = false
+                }
+            },
             menu = {
                 scrollbar = false,
                 scrolloff = 2,
