@@ -10,8 +10,8 @@
         zen-browser = {
             url = "github:0xc000022070/zen-browser-flake";
             inputs = {
-            # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
-            # to have it up-to-date or simply don't specify the nixpkgs input
+# IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
+# to have it up-to-date or simply don't specify the nixpkgs input
                 nixpkgs.follows = "unstable-nixpkgs";
                 home-manager.follows = "home-manager";
             };
@@ -38,7 +38,7 @@
     pkgs = import nixpkgs {
         inherit system;
         config = {allowUnfree=true;};
-        # overlays = [ inputs.nur.overlay ];
+# overlays = [ inputs.nur.overlay ];
     };
     in
     {
@@ -47,28 +47,28 @@
             specialArgs = {inherit inputs; inherit unstable-pkgs;};
             modules = [
                 ./system/configuration.nix
-                inputs.nur.modules.nixos.default
-                nixos-hardware.nixosModules.framework-16-7040-amd
-                home-manager.nixosModules.home-manager
-                {
-                    home-manager = {
-                        extraSpecialArgs = {inherit inputs; inherit unstable-pkgs;};
-                        useGlobalPkgs = true;
-                        useUserPackages = true;
-                        users.framework = import ./users/home.nix;
-                        backupFileExtension = "backup";
-                    };
-                }
+                    inputs.nur.modules.nixos.default
+                    nixos-hardware.nixosModules.framework-16-7040-amd
+                    home-manager.nixosModules.home-manager
+                    {
+                        home-manager = {
+                            extraSpecialArgs = {inherit inputs; inherit unstable-pkgs;};
+                            useGlobalPkgs = true;
+                            useUserPackages = true;
+                            users.framework = import ./users/home.nix;
+                            backupFileExtension = "backup";
+                        };
+                    }
             ];
         };
-        #    homeConfigurations."framework@Framework-NixOS" = inputs.home-manager.lib.homeManagerConfiguration {
-        #     inherit pkgs;
-        #    extraSpecialArgs = { inherit inputs; inherit unstable-pkgs; };
-        #   modules = [
-        #    ./users/home.nix
-        #   inputs.nur.hmModules.nur
-        # ];
-        # };
+#    homeConfigurations."framework@Framework-NixOS" = inputs.home-manager.lib.homeManagerConfiguration {
+#     inherit pkgs;
+#    extraSpecialArgs = { inherit inputs; inherit unstable-pkgs; };
+#   modules = [
+#    ./users/home.nix
+#   inputs.nur.hmModules.nur
+# ];
+# };
 
         devShell.${system} = pkgs.mkShell {
             name = "nix-dev";

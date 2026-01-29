@@ -29,6 +29,7 @@
         libnotify
         nwg-look
         obs-cli
+        socat #for socket connections used in hyprland
 
         #fonts
         nerd-fonts.iosevka-term-slab
@@ -41,7 +42,8 @@
     ] ++ (with unstable-pkgs; [
         fastfetch
         inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
-    ]);
+    ]) ++ [
+    ];
 
     programs.obs-studio = {
         enable = true;
