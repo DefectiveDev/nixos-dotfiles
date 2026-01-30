@@ -2,6 +2,8 @@ local keymap = vim.keymap
 keymap.set({"n", "x", "o"}, "s", "<Nop>", {nowait = true})
 keymap.set({"n", "x", "o"}, "S", "<Nop>", {nowait = true})
 
+keymap.set({"n", "x", "o"}, "<leader>`", "~")
+
 keymap.set('c', '<C-H>', '<left>')
 keymap.set('c', '<C-L>', '<right>')
 
