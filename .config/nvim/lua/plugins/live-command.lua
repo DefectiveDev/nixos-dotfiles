@@ -6,12 +6,12 @@ return {
         "Exe"
     },
     init = function ()
-        vim.cmd("cnoreabbrev norm Norm")
+        vim.cmd("cnoreabbrev norm norm!")
         vim.cmd("cnoreabbrev exe Exe")
     end,
     keys = {
         {"<leader>;",  ":Exe \"\"<left>", mode = "n", desc = "Shortcut for Exe"},
-        {"<leader>;",  ":<home>Exe \"<end>Norm \"<left>", mode = "x", desc = "Shortcut for Exe Norm with selection"}
+        {"<leader>;",  ":<home>Exe \"<end>norm! \"<left>", mode = "x", desc = "Shortcut for Exe norm! with selection"}
     },
     opts = {
         commands = {
