@@ -29,7 +29,7 @@ return {
             mode = {"o", "x"},
             desc = "outer-outer indentation textobj"
         },
-        { "I",
+        { "R",
             function ()
                 require("various-textobjs").restOfIndentation()
             end,
