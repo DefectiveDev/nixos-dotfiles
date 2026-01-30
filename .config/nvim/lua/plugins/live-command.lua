@@ -1,17 +1,22 @@
 return {
     "smjonas/live-command.nvim",
     main = "live-command",
-    opts = function ()
+    cmd = {
+        "Norm",
+        "Exe"
+    },
+    init = function ()
         vim.cmd("cnoreabbrev norm Norm")
         vim.cmd("cnoreabbrev exe Exe")
-        vim.keymap.set({"n"}, "<leader>;", ":Exe \"\"<left>")
-        vim.keymap.set({"x"}, "<leader>;", ":<home>Exe \"<end>\"<left>")
-        return {
-            commands = {
-                Norm = { cmd = "norm!" },
-                Exe = { cmd = "exe"},
-            },
-        }
-    end
-    ,
+    end,
+    keys = {
+        {"<leader>;",  ":Exe \"\"<left>", mode = "n", desc = "Shortcut for Exe"},
+        {"<leader>;",  ":<home>Exe \"<end>Norm\"<left>", mode = "x", desc = "Shortcut for Exe Norm with selection"}
+    },
+    opts = {
+        commands = {
+            Norm = { cmd = "norm!" },
+            Exe = { cmd = "exe"},
+        },
+    }
 }
