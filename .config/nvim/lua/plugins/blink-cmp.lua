@@ -1,7 +1,7 @@
 return {
     'saghen/blink.cmp',
     -- optional: provides snippets for the snippet source
-    dependencies = { 'rafamadriz/friendly-snippets', --[[ "folke/lazydev.nvim"  ]]},
+    dependencies = { 'rafamadriz/friendly-snippets', },
 
     event = {  "LspAttach", "InsertEnter", "CmdlineEnter" },
     -- use a release tag to download pre-built binaries
