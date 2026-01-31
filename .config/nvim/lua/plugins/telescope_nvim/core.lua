@@ -60,6 +60,12 @@ return {{
                     grouped = true,
                     auto_depth = true
                 },
+                oil = {
+                    hidden = true,
+                    debug = false,
+                    no_ignore = false,
+                    show_preview = true,
+                },
                 undo = {
                     side_by_side = true,
                     layout_strategy = "vertical",
@@ -204,6 +210,20 @@ return {{
                 }
             }
         }
+    end
+},
+{
+    "albenisolmos/telescope-oil.nvim",
+    dependencies = {
+        "nvim-telescope/telescope.nvim",
+        "stevearc/oil.nvim"
+    },
+    cmd = { "Telescope oil "},
+    keys = {{"<leader>fo", function ()
+        require("telescope").extensions.oil.oil()
+    end}},
+    config = function ()
+        require("telescope").load_extension("oil")
     end
 }
 
