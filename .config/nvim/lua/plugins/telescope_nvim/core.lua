@@ -60,12 +60,6 @@ return {{
                     grouped = true,
                     auto_depth = true
                 },
-                oil = {
-                    hidden = true,
-                    debug = false,
-                    no_ignore = false,
-                    show_preview = true,
-                },
                 undo = {
                     side_by_side = true,
                     layout_strategy = "vertical",
@@ -117,7 +111,7 @@ return {{
         require("telescope").load_extension("aerial")
     end
 },{
-    "nvim-telescope/telescope-file-browser.nvim",
+    "DefectiveDev/telescope-file-browser.nvim",
     keys = {{"<leader>fe", "<cmd>Telescope file_browser<cr>", desc = "Open (File-Browser-Telescope)"}},
     cmd = "Telescope file_browser",
     dependencies = { "nvim-telescope/telescope.nvim" },
@@ -208,12 +202,4 @@ return {{
         }
     end
 },
-{
-    "albenisolmos/telescope-oil.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim", "stevearc/oil.nvim" },
-    cmd = { "Telescope oil "},
-    keys = {{"<leader>fo", function () require("telescope").extensions.oil.oil() end, desc = "Search directories then do file operations (Telescope Oil)"}},
-    config = function () require("telescope").load_extension("oil") end
-}
-
 }
