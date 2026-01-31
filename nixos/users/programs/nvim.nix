@@ -29,17 +29,18 @@ p.yaml
 ]));
 in
 {
-    # home.sharedModules = [ 
-    #     {
-    #         stylix.targets.vim.enable = false;
-    #     }
-    # ];
+# home.sharedModules = [ 
+#     {
+#         stylix.targets.vim.enable = false;
+#     }
+# ];
 
     home.packages = with pkgs; [
         fd
             rustup
             gcc
             tree-sitter
+        sqlite
 # lua-language-server
 # fzf # set up in home.nix
     ];
@@ -48,9 +49,9 @@ in
         rm -rf $HOME/.config/nvim
 
         ln -sf $HOME/.nixos-dotfiles/.config/nvim $HOME/.config/nvim
-    '';
+        '';
 
-    # home.file.".config/nvim" = { source = ../../../.config/nvim; recursive = true; };
+# home.file.".config/nvim" = { source = ../../../.config/nvim; recursive = true; };
     programs.neovim = {
         enable = true;
         defaultEditor = true;

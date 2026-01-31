@@ -8,12 +8,12 @@ return {{
     },
     cmd = "Telescope",
     keys = {
-        {"<leader>ff",  require("telescope.builtin").find_files, desc = "Fuzzy find files in cwd (Telescope)"},
-        {"<leader>fg", require("telescope.builtin").live_grep,  desc = "Find string in cwd (Telescope)"},
-        {"<leader>fb",require("telescope.builtin").buffers,  desc = "Find buffer (Telescope)"},
-        {"<leader>fh",  require("telescope.builtin").help_tags,  desc = "Find help tags (Telescope)"},
-        {"<leader>fc", require("telescope.builtin").grep_string,  desc = "Find string under cursor in cwd (Telescope)"},
-        {"<leader>fr", require("telescope.builtin").oldfiles,  desc = "Fuzzy find recent files (Telescope)" }
+        {"<leader>ff", function() require("telescope.builtin").find_files() end, desc = "Fuzzy find files in cwd (Telescope)"},
+        {"<leader>fg", function() require("telescope.builtin").live_grep() end,  desc = "Find string in cwd (Telescope)"},
+        {"<leader>fb", function() require("telescope.builtin").buffers() end,  desc = "Find buffer (Telescope)"},
+        {"<leader>fh", function() require("telescope.builtin").help_tags() end,  desc = "Find help tags (Telescope)"},
+        {"<leader>fc", function() require("telescope.builtin").grep_string() end,  desc = "Find string under cursor in cwd (Telescope)"},
+        {"<leader>fr", function() require("telescope.builtin").oldfiles() end,  desc = "Fuzzy find recent files (Telescope)" }
     },
     config = function()
         local telescope = require("telescope")
@@ -100,10 +100,13 @@ return {{
 },{
 
     "stevearc/aerial.nvim",
-    keys = {{"<leader>fm", "<cmd>Telescope aerial<cr>", desc = "Find method (Aerial-Telescope)" }},
+    keys = {{"<leader>fd", "<cmd>Telescope aerial<cr>", desc = "Find document symbol in buffer (Aerial-Telescope)" }},
     dependencies = { "nvim-telescope/telescope.nvim" },
-    config = function ()
-        require("aerial").setup()
+    opts = {
+        backends = { "lsp","treesitter", "markdown", "asciidoc", "man" },
+    },
+    config = function (_, opts)
+        require("aerial").setup(opts)
         require("telescope").load_extension("aerial")
     end
 },{
@@ -148,10 +151,60 @@ return {{
         require("project").setup(opts)
         require("telescope").load_extension("projects")
         function _ADD_CURR_DIR_TO_PROJECTS()
-            	local historyfile = require("project_nvim.utils.path").historyfile
-            	local curr_directory = vim.fn.expand( "%:p:h" )
-            	vim.cmd("!echo " .. curr_directory .. " >> " .. historyfile)
-            end
-            vim.cmd("command! ProjectAddManually lua _ADD_CURR_DIR_TO_PROJECTS()")
+            local historyfile = require("project_nvim.utils.path").historyfile
+            local curr_directory = vim.fn.expand( "%:p:h" )
+            vim.cmd("!echo " .. curr_directory .. " >> " .. historyfile)
         end
-}}
+        vim.cmd("command! ProjectAddManually lua _ADD_CURR_DIR_TO_PROJECTS()")
+    end
+},
+{
+    'prochri/telescope-all-recent.nvim',
+    dependencies = {
+        "nvim-telescope/telescope.nvim",
+        "kkharji/sqlite.lua",
+    },
+    opts = function ()
+        vim.api.nvim_set_var("sqlite_clib_path", os.getenv("SQLITE_PATH"))
+        return {
+            database = {
+                folder = vim.fn.stdpath("data"),
+                file = "telescope-all-recent.sqlite3",
+                max_timestamps = 10,
+            },
+            debug = false,
+            scoring = {
+                recency_modifier = { -- also see telescope-frecency for these settings
+                    [1] = { age = 240, value = 100 }, -- past 4 hours
+                    [2] = { age = 1440, value = 80 }, -- past day
+                    [3] = { age = 4320, value = 60 }, -- past 3 days
+                    [4] = { age = 10080, value = 40 }, -- past week
+                    [5] = { age = 43200, value = 20 }, -- past month
+                    [6] = { age = 129600, value = 10 } -- past 90 days
+                },
+                -- how much the score of a recent item will be improved.
+                boost_factor = 0.0001
+            },
+            default = {
+                disable = true, -- disable any unkown pickers (recommended)
+                use_cwd = true, -- differentiate scoring for each picker based on cwd
+                sorting = 'recent' -- sorting: options: 'recent' and 'frecency'
+            },
+            pickers = { -- allows you to overwrite the default settings for each picker
+                man_pages = { -- enable man_pages picker. Disable cwd and use frecency sorting.
+                    disable = false,
+                    use_cwd = false,
+                    sorting = 'frecency',
+                },
+
+                -- change settings for a telescope extension.
+                -- To find out about extensions, you can use `print(vim.inspect(require'telescope'.extensions))`
+                ['extension_name#extension_method'] = {
+                    -- [...]
+                }
+            }
+        }
+    end
+}
+
+}

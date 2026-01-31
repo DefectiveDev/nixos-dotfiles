@@ -50,7 +50,7 @@ return {{
                 end
 
                 if server_capabilities.referencesProvider then
-                    opts.desc = "Show LSP references"
+                    opts.desc = "Show LSP references (Telescope)"
                     keymap.set("n", "gR", require("telescope.builtin").lsp_references, opts)
                 end
 
@@ -60,17 +60,17 @@ return {{
                 end
 
                 if server_capabilities.definitionProvider then
-                    opts.desc = "Show LSP definition"
+                    opts.desc = "Show LSP definition (Telescope)"
                     keymap.set("n", "gd",require("telescope.builtin").lsp_definitions, opts)
                 end
 
                 if server_capabilities.typeDefinitionProvider then
-                    opts.desc = "Show LSP type definitions"
+                    opts.desc = "Show LSP type definitions (Telescope)"
                     keymap.set("n", "gt",require("telescope.builtin").lsp_type_definitions, opts)
                 end
 
                 if server_capabilities.implementationProvider then
-                    opts.desc = "Show LSP implementations"
+                    opts.desc = "Show LSP implementations (Telescope)"
                     keymap.set("n", "gi",require("telescope.builtin").lsp_implementations, opts)
                 end
 
@@ -105,6 +105,10 @@ return {{
                     opts)
                 end
 
+                if server_capabilities.workspaceSymbolProvider then
+                    opts.desc = "Show workspace document symbols (Telescope)"
+                    keymap.set("n", "<leader>fwd", require("telescope.builtin").lsp_workspace_symbols, opts)
+                end
             end
         })
 
