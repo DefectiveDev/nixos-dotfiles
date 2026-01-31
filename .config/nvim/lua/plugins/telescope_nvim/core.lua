@@ -150,9 +150,7 @@ return {{
         {"<leader>fap", "<cmd>ProjectAddManually<cr>", desc = "Add current directory to (Projects-Telescope)"}
     },
     cmd = { "ProjectAddManually", "Telescope projects" },
-    opts = {
-        patterns = { "flake.nix", ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
-    },
+    opts = { patterns = { "flake.nix", ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" } },
     config = function(_, opts)
         require("project").setup(opts)
         require("telescope").load_extension("projects")
@@ -166,10 +164,7 @@ return {{
 },
 {
     'prochri/telescope-all-recent.nvim',
-    dependencies = {
-        "nvim-telescope/telescope.nvim",
-        "kkharji/sqlite.lua",
-    },
+    dependencies = { "nvim-telescope/telescope.nvim", "kkharji/sqlite.lua" },
     opts = function ()
         vim.api.nvim_set_var("sqlite_clib_path", os.getenv("SQLITE_PATH"))
         return {
@@ -214,17 +209,10 @@ return {{
 },
 {
     "albenisolmos/telescope-oil.nvim",
-    dependencies = {
-        "nvim-telescope/telescope.nvim",
-        "stevearc/oil.nvim"
-    },
+    dependencies = { "nvim-telescope/telescope.nvim", "stevearc/oil.nvim" },
     cmd = { "Telescope oil "},
-    keys = {{"<leader>fo", function ()
-        require("telescope").extensions.oil.oil()
-    end}},
-    config = function ()
-        require("telescope").load_extension("oil")
-    end
+    keys = {{"<leader>fo", function () require("telescope").extensions.oil.oil() end, desc = "Search directories then do file operations (Telescope Oil)"}},
+    config = function () require("telescope").load_extension("oil") end
 }
 
 }
