@@ -4,9 +4,7 @@ return {
     ---@module 'oil'
     ---@type oil.SetupOpts
     cmd = {"Oil"},
-    keys = {{
-        "-", "<CMD>Oil<CR>", desc= "Open parent directory (Oil)"
-    }},
+    keys = { { "-", "<CMD>Oil<CR>", desc= "Open parent directory (Oil)" } },
     opts = {
         view_options = {
             is_hidden_file = function(name, bufnr)
