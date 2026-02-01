@@ -24,7 +24,7 @@ return {{
                 })
 
                 opts.desc = "Show workspace diagnostics"
-                keymap.set("n", "<leader>lwd", require("telescope.builtin").diagnostics, opts)
+                keymap.set("n", "<leader>lwd", function() require("telescope.builtin").diagnostics() end, opts)
 
                 opts.desc = "Show buffer diagnostics"
                 keymap.set("n", "<leader>lD", function() require("telescope.builtin").diagnostics({bufnr=0}) end, opts)
@@ -51,7 +51,7 @@ return {{
 
                 if server_capabilities.referencesProvider then
                     opts.desc = "Show LSP references (Telescope)"
-                    keymap.set("n", "gR", require("telescope.builtin").lsp_references, opts)
+                    keymap.set("n", "gR", function() require("telescope.builtin").lsp_references() end, opts)
                 end
 
                 if server_capabilities.declarationProvider then
@@ -61,17 +61,17 @@ return {{
 
                 if server_capabilities.definitionProvider then
                     opts.desc = "Show LSP definition (Telescope)"
-                    keymap.set("n", "gd",require("telescope.builtin").lsp_definitions, opts)
+                    keymap.set("n", "gd", function() require("telescope.builtin").lsp_definitions() end, opts)
                 end
 
                 if server_capabilities.typeDefinitionProvider then
                     opts.desc = "Show LSP type definitions (Telescope)"
-                    keymap.set("n", "gt",require("telescope.builtin").lsp_type_definitions, opts)
+                    keymap.set("n", "gt", function() require("telescope.builtin").lsp_type_definitions() end, opts)
                 end
 
                 if server_capabilities.implementationProvider then
                     opts.desc = "Show LSP implementations (Telescope)"
-                    keymap.set("n", "gi",require("telescope.builtin").lsp_implementations, opts)
+                    keymap.set("n", "gi", function() require("telescope.builtin").lsp_implementations() end, opts)
                 end
 
                 if server_capabilities.codeActionProvider then
@@ -107,7 +107,7 @@ return {{
 
                 if server_capabilities.workspaceSymbolProvider then
                     opts.desc = "Show workspace document symbols (Telescope)"
-                    keymap.set("n", "<leader>fwd", require("telescope.builtin").lsp_workspace_symbols, opts)
+                    keymap.set("n", "<leader>fwd", function() require("telescope.builtin").lsp_workspace_symbols() end, opts)
                 end
             end
         })
