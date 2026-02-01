@@ -3,11 +3,12 @@ return {
     dependencies = {
         "folke/noice.nvim",
         "nvim-tree/nvim-web-devicons",
+        "NotAShelf/direnv.nvim",
     },
     opts = {
         options = {
             theme = "dracula",
-            component_separators = { left = '|', right = '|'},
+            component_separators = { left = '', right = ''},
             section_separators = { left = '', right = ''},
         },
 
@@ -30,17 +31,36 @@ return {
         sections = {
             lualine_x = {
                 {
-                    require("lazy.status").updates,
-                    cond = require("lazy.status").has_updates,
-                    color = { fg = "#FFCA80" }, --orange
+                    "grapple",
+                    cond = function()
+                        return package.loaded["grapple"] and require("grapple").exists()
+                    end
                 },
                 {
                     function ()
                         return require('direnv').statusline()
+                    end,
+                    cond = function()
+                        return not (package.loaded["grapple"] and require("grapple").exists())
                     end
-                }
+                },
+                {
+                    require("lazy.status").updates,
+                    cond = require("lazy.status").has_updates,
+                    color = { fg = "#FFCA80" }, --orange
+                },
             },
-            lualine_y = { { "filetype" }, },
+            lualine_y = {
+                {
+                    function ()
+                        return require('direnv').statusline()
+                    end,
+                    cond = function()
+                        return package.loaded["grapple"] and require("grapple").exists()
+                    end
+                },
+                { "filetype" },
+            },
             lualine_z = {'location'}
         },
     },
