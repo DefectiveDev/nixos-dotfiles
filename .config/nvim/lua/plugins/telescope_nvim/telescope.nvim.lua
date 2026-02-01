@@ -12,7 +12,7 @@ return {
         {"<leader>fs", function() require("telescope.builtin").live_grep() end,  desc = "[f]ind [s]tring in cwd (Telescope)"},
         {"<leader>fb", function() require("telescope.builtin").buffers() end,  desc = "[f]ind [b]uffer (Telescope)"},
         {"<leader>fh", function() require("telescope.builtin").builtin() end,  desc = "[f]ind telescope [h]elper builtin pickers (Telescope)"},
-        {"<leader>fc", function() require("telescope.builtin").grep_string() end,  desc = "[f]ind string under [c]ursor in cwd (Telescope)"},
+        {"<leader>fc", function() require("telescope.builtin").grep_string() end,  mode= "x",desc = "[f]ind string under [c]ursor in cwd (Telescope)"},
     },
     opts = {
         defaults = {
