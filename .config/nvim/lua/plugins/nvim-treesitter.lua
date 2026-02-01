@@ -1,11 +1,11 @@
-return {{
+return {
     "nvim-treesitter/nvim-treesitter",
     -- version= false;
     -- tag = "v0.10.0",
     event = { "BufReadPre", "BufNewFile" },
     -- lazy = false,
     build = ":TSUpdate",
-	opts = function()
+    opts = function()
         require 'nvim-treesitter.install'.prefer_git = false
         return {
             --enable syntax highlighting
@@ -19,8 +19,4 @@ return {{
             endwise = { enable = true }
         }
     end
-},{
-		"RRethy/nvim-treesitter-endwise",
-		event = "InsertEnter *.lua",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-}}
+}
