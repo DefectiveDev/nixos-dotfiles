@@ -1,3 +1,16 @@
+local open_current_directory = function(prompt_bufnr)
+    local fb_utils = require("telescope._extensions.file_browser.utils")
+    local action_state = require("telescope.actions.state")
+    local current_picker = action_state.get_current_picker(prompt_bufnr)
+    local finder = current_picker.finder
+    finder.path = vim.fn.expand("#:p:h")
+
+    fb_utils.redraw_border_title(current_picker)
+    current_picker:refresh(
+        finder,
+        { new_prefix = fb_utils.relative_path_prefix(finder), reset_prompt = true, multi = current_picker._multi }
+    )
+end
 return {
     "nvim-telescope/telescope-file-browser.nvim",
     keys = {{"<leader>fe", "<cmd>Telescope file_browser<cr>", desc = "[f]ile [e]xplorer (File-Browser-Telescope)"}},
@@ -12,8 +25,16 @@ return {
                     layout_strategy = "vertical",
                     grouped = true,
                     auto_depth = true,
-                    -- cwd = "%:p:h",
-                    -- cwd_to_path = true,
+                    mappings = {
+                        ["i"] = {
+                            ["<C-g>"] = open_current_directory,
+                            ["<C-p>"]= require "telescope._extensions.file_browser.actions".goto_parent_dir
+                        },
+                        ["n"] = {
+                            ["g"] =  open_current_directory,
+                            ["p"]= require "telescope._extensions.file_browser.actions".goto_parent_dir
+                        },
+                    }
                 },
             }
         }
