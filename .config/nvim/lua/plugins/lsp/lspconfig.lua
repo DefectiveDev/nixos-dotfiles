@@ -3,12 +3,12 @@ return {{
     event = {"BufReadPre", "BufNewFile"},
     config = function()
 
-        local keymap = vim.keymap -- for concisenesss
-        local opts = { noremap = true, silent = true }
         -- Under language features you can find the providers! https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#languageFeatures-side
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("UserLspConfig", {}),
             callback = function(env)
+                local keymap = vim.keymap -- for concisenesss
+                local opts = { noremap = true, silent = true }
                 local bufnr = env.buf
 
                 opts.buffer = bufnr
@@ -22,6 +22,9 @@ return {{
                     buffer = bufnr,
                     callback = vim.lsp.buf.clear_references,
                 })
+
+
+                -- TODO: move telescope dependent keymaps to telescope lua file
 
                 opts.desc = "Show workspace diagnostics"
                 keymap.set("n", "<leader>lwd", function() require("telescope.builtin").diagnostics() end, opts)
