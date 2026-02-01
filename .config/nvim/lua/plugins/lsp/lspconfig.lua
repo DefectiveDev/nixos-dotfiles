@@ -1,4 +1,4 @@
-return {{
+return {
     "neovim/nvim-lspconfig",
     event = {"BufReadPre", "BufNewFile"},
     config = function()
@@ -157,5 +157,5 @@ return {{
         -- vim.lsp.enable(lsp_configs)
 
     end,
-}}
+}
 
