@@ -1,9 +1,9 @@
 return {
 	"chrisgrieser/nvim-spider",
 	keys = {
-		{ "sw", function() require('spider').motion('w') end, mode = { "n", "o", "x" }, desc = "Next subword" },
-		{ "se", function() require('spider').motion('e') end, mode = { "n", "o", "x" }, desc = "Next end of subword" },
-		{ "sb", function() require('spider').motion('b') end, mode = { "n", "o", "x" }, desc = "Previous subword"},
-		{ "sge", function() require('spider').motion('ge') end, mode = { "n", "o", "x" }, desc = "Prev end of subword" },
+		{ "sw", function() require('spider').motion('w') end, mode = { "n", "o", "x" }, desc = "Next [s]ub[w]ord (Spider)" },
+		{ "se", function() require('spider').motion('e') end, mode = { "n", "o", "x" }, desc = "Next [s]ubword [e]nd (Spider)" },
+		{ "sb", function() require('spider').motion('b') end, mode = { "n", "o", "x" }, desc = "[s]ubword [b]ack to previous (Spider)"},
+		{ "sge", function() require('spider').motion('ge') end, mode = { "n", "o", "x" }, desc = "Previous [s]ubword [g]o to [e]nd (Spider)" },
 	},
 }

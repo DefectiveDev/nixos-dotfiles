@@ -3,7 +3,7 @@ return {
 	"kevinhwang91/nvim-ufo",
 	lazy = false,
 	dependencies = { "kevinhwang91/promise-async", "nvim-treesitter/nvim-treesitter", },
-	keys = { { "zK", function () require("ufo.preview"):peekFoldedLinesUnderCursor() end, desc = "Preview folded lines under cursor", } },
+	keys = { { "zK", function () require("ufo.preview"):peekFoldedLinesUnderCursor() end, desc = "Preview[z] fold under [K]ursor (UFO)", } },
 	cmd = { "UfoEnable", "UfoDisable", "UfoInspect", "UfoAttach", "UfoDetach", "UfoEnableFold", "UfoDisableFold" },
 	opts = {
 		fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)

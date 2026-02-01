@@ -1,6 +1,6 @@
 return {
     "DefectiveDev/telescope-file-browser.nvim",
-    keys = {{"<leader>fe", "<cmd>Telescope file_browser<cr>", desc = "Open (File-Browser-Telescope)"}},
+    keys = {{"<leader>fe", "<cmd>Telescope file_browser<cr>", desc = "[f]ile [e]xplorer (File-Browser-Telescope)"}},
     cmd = "Telescope file_browser",
     dependencies = { "nvim-telescope/telescope.nvim" },
     specs = {

@@ -12,9 +12,7 @@ return {
 	},
 	specs = {
         "nvim-telescope/telescope.nvim",
-        keys = {
-            {"<leader>fn", ":Telescope noice<cr>",  desc = "Find previous notifications (Noice Telescope)"},
-        }
+        keys = { { "<leader>fn", ":Telescope noice<cr>", desc = "[f]ind [n]otifications (Noice + Telescope)" } }
     },
 	opts = {
 		lsp = {

@@ -26,8 +26,8 @@ return {
 		local todo = require("todo-comments")
 		todo.setup(opts)
 		local keymap = vim.keymap
-		keymap.set('n', "]t", function() todo.jump_next() end, {desc = "Next (ToDo-Comments)"})
-		keymap.set('n', "[t", function() todo.jump_prev() end, {desc = "Previous (ToDo-Comments)"})
-		keymap.set('n', "<leader>ft", ":TodoTelescope<cr>", {desc = "Find (ToDo-Comments-Telescope)", silent = true})
+		keymap.set('n', "]t", function() todo.jump_next() end, {desc = "Next [t]odo (ToDo-Comments)"})
+		keymap.set('n', "[t", function() todo.jump_prev() end, {desc = "Previous [t]odo (ToDo-Comments)"})
+		keymap.set('n', "<leader>ft", ":TodoTelescope<cr>", {desc = "[f]ind [t]odo (ToDo-Comments + Telescope)", silent = true})
 	end
 }

@@ -38,34 +38,35 @@ return {
                 end
 
                 if server_capabilities.declarationProvider then
-                    opts.desc = "Got to declaration"
+                    opts.desc = "[g]o to [d]eclaration (nvim)"
                     keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
                 end
 
                 if server_capabilities.codeActionProvider then
-                    opts.desc = "See available code actions"
+                    opts.desc = "[l]SP available [c]ode actions (nvim)"
                     keymap.set({ "n", "v" }, "<leader>lc", vim.lsp.buf.code_action, opts)
                 end
 
                 if server_capabilities.renameProvider then
-                    opts.desc = "Smart rename"
+                    opts.desc = "[l]SP [r]e[n]ame (nvim)"
                     keymap.set("n", "<leader>lrn", vim.lsp.buf.rename, opts)
                 end
 
                 if server_capabilities.hoverProvider then
-                    opts.desc = "Show documentation for what is under cursor"
+                    opts.desc = "Show documentation for what is under [K]ursor (nvim)"
                     keymap.set("n", "K", vim.lsp.buf.hover, opts)
                 end
 
                 if server_capabilities.signatureHelpProvider then
-                    opts.desc = "Show signature help"
+                    opts.desc = "[g]et signature [K]nowledge (nvim)"
                     keymap.set('n', "gK", vim.lsp.buf.signature_help, opts)
+                    opts.desc = "Get signature knowledge (nvim)"
                     keymap.set('i', "<C-s>", vim.lsp.buf.signature_help, opts)
                 end
 
                 if server_capabilities.inlayHintProvider then
                     vim.lsp.inlay_hint.enable(true, {bufnr = bufnr})
-                    opts.desc = "Toggle inlay hints"
+                    opts.desc = "Toggle [l]SP [i]nlay hints"
                     keymap.set("n", "<leader>li",
                     function()
                         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({bufnr = bufnr}), { bufnr = bufnr})

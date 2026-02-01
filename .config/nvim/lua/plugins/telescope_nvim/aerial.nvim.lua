@@ -1,6 +1,6 @@
 return {
     "stevearc/aerial.nvim",
-    keys = {{"<leader>fd", "<cmd>Telescope aerial<cr>", desc = "Find document symbol in buffer (Aerial-Telescope)" }},
+    keys = {{"<leader>gs", "<cmd>Telescope aerial<cr>", desc = "[g]o to document [s]ymbol in buffer (Aerial + Telescope)" }},
     dependencies = { "nvim-telescope/telescope.nvim" },
     opts = {
         filter_kind = false,

@@ -4,54 +4,51 @@ return {
         "folke/noice.nvim",
         "nvim-tree/nvim-web-devicons",
     },
-    config = function()
+    opts = {
+        options = {
+            theme = "dracula",
+            component_separators = { left = '|', right = '|'},
+            section_separators = { left = '', right = ''},
+        },
+
+
+        inactive_sections = {
+            lualine_c = {
+                {
+                    'filename',
+
+                    symbols = {
+                        modified = ' ',      -- Text to show when the file is modified.
+                        readonly = ' ',      -- Text to show when the file is non-modifiable or readonly.
+                        unnamed = '[No Name]', -- Text to show for unnamed buffers.
+                        newfile = '[New]',     -- Text to show for newly created file before first write
+                    }
+                }
+            },
+        },
+
+        sections = {
+            lualine_x = {
+                {
+                    require("lazy.status").updates,
+                    cond = require("lazy.status").has_updates,
+                    color = { fg = "#FFCA80" }, --orange
+                },
+                {
+                    function ()
+                        return require('direnv').statusline()
+                    end
+                }
+            },
+            lualine_y = { { "filetype" }, },
+            lualine_z = {'location'}
+        },
+    },
+    config = function(_, opts)
         local lualine = require("lualine")
-        local lazy_status = require("lazy.status")
-
-        local base_opts = {
-            options = {
-                theme = "dracula",
-                component_separators = { left = '|', right = '|'},
-                section_separators = { left = '', right = ''},
-            },
-
-
-            inactive_sections = {
-                lualine_c = {
-                    {
-                        'filename',
-
-                        symbols = {
-                            modified = ' ',      -- Text to show when the file is modified.
-                            readonly = ' ',      -- Text to show when the file is non-modifiable or readonly.
-                            unnamed = '[No Name]', -- Text to show for unnamed buffers.
-                            newfile = '[New]',     -- Text to show for newly created file before first write
-                        }
-                    }
-                },
-            },
-
-            sections = {
-                lualine_x = {
-                    {
-                        lazy_status.updates,
-                        cond = lazy_status.has_updates,
-                        color = { fg = "#FFCA80" }, --orange
-                    },
-                    {
-                        function ()
-                            return require('direnv').statusline()
-                        end
-                    }
-                },
-                lualine_y = { { "filetype" }, },
-                lualine_z = {'location'}
-            },
-        }
-
 
         local rec_msg = ''
-        local rec_opts = vim.tbl_deep_extend('keep', base_opts, {
+        local rec_opts = vim.tbl_deep_extend('keep', opts, {
             sections = {
                 lualine_c = {
                     {
@@ -64,7 +61,7 @@ return {
             }
         })
 
-        local filename_opts = vim.tbl_deep_extend('keep', base_opts, {
+        local filename_opts = vim.tbl_deep_extend('keep', opts, {
             sections = {
                 lualine_c = {
                     {

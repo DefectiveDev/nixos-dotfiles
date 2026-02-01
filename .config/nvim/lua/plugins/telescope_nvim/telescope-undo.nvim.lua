@@ -1,6 +1,6 @@
 return {
     "debugloop/telescope-undo.nvim",
-    keys = {{"<leader>fu", "<cmd>Telescope undo<cr>", desc = "Undo (Undo-Telescope)" }},
+    keys = {{"<leader>fu", "<cmd>Telescope undo<cr>", desc = "[f]ind [u]ndo (Undo-Telescope)" }},
     dependencies = { "nvim-telescope/telescope.nvim" },
     specs = {
         "nvim-telescope/telescope.nvim",

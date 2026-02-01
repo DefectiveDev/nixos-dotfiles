@@ -9,8 +9,8 @@ return {
                 vim.g.projects_loaded = true
             end
             vim.cmd("Telescope projects")
-        end, desc = "Open (Projects-Telescope)"},
-        {"<leader>fap", "<cmd>ProjectAddManually<cr>", desc = "Add current directory to (Projects-Telescope)"}
+        end, desc = "[f]ind [p]rojects (Projects-Telescope)"},
+        {"<leader>fap", "<cmd>ProjectAddManually<cr>", desc = "[f]inder [a]dd current directory to [p]rojects (Projects-Telescope)"}
     },
     cmd = { "ProjectAddManually", "Telescope projects" },
     opts = { patterns = { "flake.nix", ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" } },
