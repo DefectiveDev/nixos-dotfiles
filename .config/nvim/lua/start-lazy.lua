@@ -13,7 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     {import = "plugins"},
-    {import = "plugins.telescope_nvim.core"},
+    {import = "plugins.telescope_nvim"},
     {import = "plugins.lsp"},
     {import = "plugins.lsp.lua"}
 },
