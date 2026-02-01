@@ -1,5 +1,5 @@
 return {
-    "DefectiveDev/telescope-file-browser.nvim",
+    "nvim-telescope/telescope-file-browser.nvim",
     keys = {{"<leader>fe", "<cmd>Telescope file_browser<cr>", desc = "[f]ile [e]xplorer (File-Browser-Telescope)"}},
     cmd = "Telescope file_browser",
     dependencies = { "nvim-telescope/telescope.nvim" },
@@ -11,7 +11,9 @@ return {
                     hijack_netrw = true,
                     layout_strategy = "vertical",
                     grouped = true,
-                    auto_depth = true
+                    auto_depth = true,
+                    -- cwd = "%:p:h",
+                    -- cwd_to_path = true,
                 },
             }
         }
