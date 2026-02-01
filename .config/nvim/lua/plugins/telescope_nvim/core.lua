@@ -11,9 +11,8 @@ return {{
         {"<leader>ff", function() require("telescope.builtin").find_files() end, desc = "Fuzzy find files in cwd (Telescope)"},
         {"<leader>fg", function() require("telescope.builtin").live_grep() end,  desc = "Find string in cwd (Telescope)"},
         {"<leader>fb", function() require("telescope.builtin").buffers() end,  desc = "Find buffer (Telescope)"},
-        {"<leader>fh", function() require("telescope.builtin").help_tags() end,  desc = "Find help tags (Telescope)"},
+        {"<leader>fh", function() require("telescope.builtin").builtin() end,  desc = "Find telescope builtin pickers (Telescope)"},
         {"<leader>fc", function() require("telescope.builtin").grep_string() end,  desc = "Find string under cursor in cwd (Telescope)"},
-        {"<leader>fr", function() require("telescope.builtin").oldfiles() end,  desc = "Fuzzy find recent files (Telescope)" }
     },
     config = function()
         local telescope = require("telescope")
