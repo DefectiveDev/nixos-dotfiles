@@ -14,45 +14,41 @@ return {
         {"<leader>fh", function() require("telescope.builtin").builtin() end,  desc = "Find telescope builtin pickers (Telescope)"},
         {"<leader>fc", function() require("telescope.builtin").grep_string() end,  desc = "Find string under cursor in cwd (Telescope)"},
     },
-    opts = function ()
-        local actions = require("telescope.actions")
-
-        return {
-            defaults = {
-                layout_config = {
-                    -- This makes telescope take up entire screen
-                    height = {
-                        padding = 0,
-                    },
-                    width = {
-                        padding = 0
-                    }
+    opts = {
+        defaults = {
+            layout_config = {
+                -- This makes telescope take up entire screen
+                height = {
+                    padding = 0,
                 },
-                prompt_prefix = " ",
-                selection_caret = " ",
-                -- border = false,
-                preview = {
-                    treesitter = false,
-                },
-                path_display = { "truncat "},
-                mappings = {
-                    i = {
-                        ["<C-k>"] = actions.move_selection_previous, -- move to prev result
-                        ["<C-j>"] = actions.move_selection_next, -- move to next result
-                        ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-                    },
+                width = {
+                    padding = 0
+                }
+            },
+            prompt_prefix = " ",
+            selection_caret = " ",
+            -- border = false,
+            preview = {
+                treesitter = false,
+            },
+            path_display = { "truncat "},
+            mappings = {
+                i = {
+                    ["<C-k>"] = require("telescope.actions").move_selection_previous, -- move to prev result
+                    ["<C-j>"] = require("telescope.actions").move_selection_next, -- move to next result
+                    ["<C-q>"] = require("telescope.actions").smart_send_to_qflist + require("telescope.actions").open_qflist,
                 },
             },
-            pickers = {
-                find_files = {
-                    -- If you want to ignore folder specific files use .ignore file using the same syntax as .gitignore
-                    file_ignore_patterns = {'.git/', '.direnv/', 'flake.lock', '.uid', '.ttf'},
-                    file_command = {'fd', '--type', 'f'},
-                    hidden = true,
-                },
+        },
+        pickers = {
+            find_files = {
+                -- If you want to ignore folder specific files use .ignore file using the same syntax as .gitignore
+                file_ignore_patterns = {'.git/', '.direnv/', 'flake.lock', '.uid', '.ttf'},
+                file_command = {'fd', '--type', 'f'},
+                hidden = true,
             },
-        }
-    end,
+        },
+    },
     config = function(_, opts)
         require("telescope").setup(opts)
         local highlights = {}
