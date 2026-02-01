@@ -9,6 +9,12 @@ return {
 		--   If not available, we use `mini` as the fallback
 		{ "rcarriga/nvim-notify", opts = {background_colour = "#22212C"}}
 	},
+	specs = {
+        "nvim-telescope/telescope.nvim",
+        keys = {
+            {"<leader>fn", ":Telescope noice<cr>",  desc = "Find previous notifications (Noice Telescope)"},
+        }
+    },
 	opts = {
 		lsp = {
 			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -26,5 +32,11 @@ return {
 			inc_rename = false, -- enables an input dialog for inc-rename.nvim
 			lsp_doc_border = false, -- add a border to hover docs and signature help
 		},
+
+		commands = {
+		    history = {
+		        filter = false
+            }
+        }
 	}
 }
