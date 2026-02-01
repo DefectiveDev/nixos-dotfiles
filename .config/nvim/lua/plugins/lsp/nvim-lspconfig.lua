@@ -25,6 +25,12 @@ return {
 
                 local client = vim.lsp.get_client_by_id(env.data.client_id)
 
+                opts.desc = "Show [l]ine [d]iagnostics (nvim)"
+                keymap.set("n", "<leader>ld", vim.diagnostic.open_float, opts)
+
+                opts.desc = "[l]SP [r]e[s]tart (nvim)"
+                keymap.set("n", "<leader>lrs", "<cmd>LspRestart<CR>", opts)
+
                 -- -- lsp return if client not present
                 if not client then
                     return
