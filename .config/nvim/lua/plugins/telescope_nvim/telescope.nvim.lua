@@ -49,6 +49,63 @@ return {
             },
         },
     },
+    init = function ()
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup("UserLspConfigTelescope", {}),
+            callback = function(env)
+                local keymap = vim.keymap -- for concisenesss
+                local opts = { noremap = true, silent = true }
+                local bufnr = env.buf
+
+                opts.buffer = bufnr
+
+                opts.desc = "Show [l]SP [w]orkspace [d]iagnostics (Telescope)"
+                keymap.set("n", "<leader>lwd", function() require("telescope.builtin").diagnostics() end, opts)
+
+                opts.desc = "Show [l]SP buffer [D]iagnostics (Telescope)"
+                keymap.set("n", "<leader>lD", function() require("telescope.builtin").diagnostics({bufnr=0}) end, opts)
+
+                local client = vim.lsp.get_client_by_id(env.data.client_id)
+
+                -- -- lsp return if client not present
+                if not client then
+                    return
+                end
+
+                ---@diagnostic disable-next-line: undefined-field
+                local server_capabilities = client.server_capabilities
+
+                if not server_capabilities then
+                    return
+                end
+
+                if server_capabilities.referencesProvider then
+                    opts.desc = "[g]o to LSP [R]eferences (Telescope)"
+                    keymap.set("n", "gR", function() require("telescope.builtin").lsp_references() end, opts)
+                end
+
+                if server_capabilities.definitionProvider then
+                    opts.desc = "[g]o LSP [d]efinition (Telescope)"
+                    keymap.set("n", "gd", function() require("telescope.builtin").lsp_definitions() end, opts)
+                end
+
+                if server_capabilities.typeDefinitionProvider then
+                    opts.desc = "[g]o LSP [t]ype definitions (Telescope)"
+                    keymap.set("n", "gt", function() require("telescope.builtin").lsp_type_definitions() end, opts)
+                end
+
+                if server_capabilities.implementationProvider then
+                    opts.desc = "[g]o LSP [i]mplementations (Telescope)"
+                    keymap.set("n", "gi", function() require("telescope.builtin").lsp_implementations() end, opts)
+                end
+
+                if server_capabilities.workspaceSymbolProvider then
+                    opts.desc = "[g] [w]orkspace document [s]ymbols (Telescope)"
+                    keymap.set("n", "<leader>gws", function() require("telescope.builtin").lsp_workspace_symbols() end, opts)
+                end
+            end
+        })
+    end,
     config = function(_, opts)
         require("telescope").setup(opts)
         local highlights = {}
