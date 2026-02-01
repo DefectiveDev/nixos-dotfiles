@@ -8,7 +8,7 @@ return {
     },
     cmd = "Telescope",
     keys = {
-        {"<leader>ff", function() require("telescope.builtin").find_files() end, desc = "Fuzzy [f]ind [f]iles in cwd (Telescope)"},
+        {"<leader>ff", function() require("telescope.builtin").find_files() end, desc = "[f]ind [f]iles in cwd (Telescope)"},
         {"<leader>fs", function() require("telescope.builtin").live_grep() end,  desc = "[f]ind [s]tring in cwd (Telescope)"},
         {"<leader>fb", function() require("telescope.builtin").buffers() end,  desc = "[f]ind [b]uffer (Telescope)"},
         {"<leader>fh", function() require("telescope.builtin").builtin() end,  desc = "[f]ind telescope [h]elper builtin pickers (Telescope)"},
