@@ -12,7 +12,4 @@ return {
             { "S", mode = {"n","x","o"} }
         }
     },
-	config = function (_, opts)
-	    require("which-key").setup(opts)
-	end
 }
