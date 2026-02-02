@@ -37,9 +37,10 @@ in
 
     home.packages = with pkgs; [
         fd
-            rustup
-            gcc
-            tree-sitter
+        rustup
+        gcc
+        tree-sitter
+        ast-grep
         sqlite
 # lua-language-server
 # fzf # set up in home.nix
