@@ -1,17 +1,17 @@
 return {
-	"folke/noice.nvim",
+	"https://github.com/folke/noice.nvim.git",
 	event = "VeryLazy",
 	dependencies = {
 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-		"MunifTanjim/nui.nvim",
+		"https://github.com/MunifTanjim/nui.nvim.git",
 		-- OPTIONAL:
 		--   `nvim-notify` is only needed, if you want to use the notification view.
 		--   If not available, we use `mini` as the fallback
 		-- { "rcarriga/nvim-notify", opts = {background_colour = "#22212C"}}
-        { "folke/snacks.nvim", opts = { notifier = { enabled = true } } }
+        { "https://github.com/folke/snacks.nvim.git", opts = { notifier = { enabled = true } } }
 	},
 	specs = {
-        "nvim-telescope/telescope.nvim",
+        "https://github.com/nvim-telescope/telescope.nvim.git",
         keys = { { "<leader>fn", ":Telescope noice<cr>", desc = "[f]ind [n]otifications (Noice + Telescope)" } }
     },
 	opts = {

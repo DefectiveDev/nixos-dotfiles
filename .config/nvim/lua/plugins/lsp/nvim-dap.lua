@@ -1,14 +1,14 @@
 ---@diagnostic disable: undefined-doc-name, unused-local, undefined-field
 return {
-	"mfussenegger/nvim-dap",
+	"https://github.com/mfussenegger/nvim-dap.git",
 	dependencies = {
-		{ "jay-babu/mason-nvim-dap.nvim", opts = {
+		{ "https://github.com/jay-babu/mason-nvim-dap.nvim.git", opts = {
 			automatic_installation = true,
 			handlers = { function (config) require("mason-nvim-dap").default_setup(config) end, }
 		} },
-		"williamboman/mason.nvim",
-		"nvim-treesitter/nvim-treesitter",
-		{ "theHamsta/nvim-dap-virtual-text", opts ={
+		"https://github.com/williamboman/mason.nvim.git",
+		"https://github.com/nvim-treesitter/nvim-treesitter.git",
+		{ "https://github.com/theHamsta/nvim-dap-virtual-text.git", opts ={
 			enabled = true,                        -- enable this plugin (the default)
 			enabled_commands = true,               -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
 			highlight_changed_variables = true,    -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
@@ -41,7 +41,7 @@ return {
 			virt_text_win_col = nil                -- position the virtual text at a fixed window column (starting from the first text column) ,
 			-- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
 		}},
-		{ "rcarriga/nvim-dap-ui", config = function ()
+		{ "https://github.com/rcarriga/nvim-dap-ui.git", config = function ()
 			local dap, dapui = require("dap"), require("dapui")
 			dapui.setup()
 			dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end

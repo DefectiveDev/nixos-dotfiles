@@ -1,17 +1,17 @@
 ---@diagnostic disable: missing-fields
 return{{
-	"hrsh7th/nvim-cmp",
+	"https://github.com/hrsh7th/nvim-cmp.git",
 	event = "InsertEnter",
 	enabled = false,
 	dependencies = {
-		"hrsh7th/cmp-omni",
-		"hrsh7th/cmp-buffer", --source for text in buffer
-		"FelipeLema/cmp-async-path", -- source for file system
-		"hrsh7th/cmp-cmdline", -- source for cmdline
-		"L3MON4D3/LuaSnip", -- snippet engine
-		"hrsh7th/cmp-nvim-lua",
-		"saadparwaiz1/cmp_luasnip", -- for autocompletion
-		{ "rafamadriz/friendly-snippets", config = function () require("luasnip.loaders.from_vscode").lazy_load() end}, -- some default snippets
+		"https://github.com/hrsh7th/cmp-omni.git",
+		"https://github.com/hrsh7th/cmp-buffer.git", --source for text in buffer
+		"https://github.com/FelipeLema/cmp-async-path.git", -- source for file system
+		"https://github.com/hrsh7th/cmp-cmdline.git", -- source for cmdline
+		"https://github.com/L3MON4D3/LuaSnip.git", -- snippet engine
+		"https://github.com/hrsh7th/cmp-nvim-lua.git",
+		"https://github.com/saadparwaiz1/cmp_luasnip.git", -- for autocompletion
+		{ "https://github.com/rafamadriz/friendly-snippets.git", config = function () require("luasnip.loaders.from_vscode").lazy_load() end}, -- some default snippets
         -- { "onsails/lspkind.nvim", lazy = true,}, -- vs-code like pictograms
 	},
 	config = function()

@@ -1,8 +1,8 @@
 return {
-	"lukas-reineke/indent-blankline.nvim",
+	"https://github.com/lukas-reineke/indent-blankline.nvim.git",
 	event = { "BufReadPre", "BufNewFile" },
 	main = "ibl",
-	dependencies = { "nvim-treesitter/nvim-treesitter" },
+	dependencies = { "https://github.com/nvim-treesitter/nvim-treesitter.git" },
 	opts = {
 		indent = {
 			tab_char = '▎',

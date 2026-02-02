@@ -1,5 +1,5 @@
 return {
-	"chrisgrieser/nvim-various-textobjs",
+	"https://github.com/chrisgrieser/nvim-various-textobjs.git",
     keys = {
         { "ii",
             function ()

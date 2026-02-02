@@ -1,7 +1,7 @@
 return {
-    "saghen/blink.cmp",
+    "https://github.com/saghen/blink.cmp.git",
     -- optional: provides snippets for the snippet source
-    dependencies = { "rafamadriz/friendly-snippets", },
+    dependencies = { "https://github.com/rafamadriz/friendly-snippets.git", },
 
     event = {  "LspAttach", "InsertEnter", "CmdlineEnter" },
     -- use a release tag to download pre-built binaries

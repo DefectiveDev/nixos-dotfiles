@@ -1,8 +1,8 @@
 return {
-    "folke/lazydev.nvim",
+    "https://github.com/folke/lazydev.nvim.git",
     ft = "lua", -- only load on lua files
     specs = {
-        'saghen/blink.cmp',
+        'https://github.com/saghen/blink.cmp.git',
         opts = {
             sources = {
                 per_filetype = {

@@ -1,5 +1,5 @@
 return{
-	'Mofiqul/dracula.nvim',
+	"https://github.com/Mofiqul/dracula.nvim.git",
 	priority = 1000,
 	config = function()
 		local dracula = require("dracula")

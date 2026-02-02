@@ -39,8 +39,8 @@ local open_in_oil = function (prompt_bufnr)
     end
 end
 return {
-    "stevearc/oil.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", },
+    "https://github.com/stevearc/oil.nvim.git",
+    dependencies = { "https://github.com/nvim-tree/nvim-web-devicons.git", },
     ---@module 'oil'
     ---@type oil.SetupOpts
     cmd = {"Oil"},
@@ -71,9 +71,9 @@ return {
         }
     },
     specs = {
-        "nvim-telescope/telescope-file-browser.nvim",
+        "https://github.com/nvim-telescope/telescope-file-browser.nvim.git",
         specs = {
-            "nvim-telescope/telescope.nvim",
+            "https://github.com/nvim-telescope/telescope.nvim.git",
             opts = {
                 extensions = {
                     file_browser = {

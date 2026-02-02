@@ -1,9 +1,9 @@
 return {
-    "nvim-lualine/lualine.nvim",
+    "https://github.com/nvim-lualine/lualine.nvim.git",
     dependencies = {
-        "folke/noice.nvim",
-        "nvim-tree/nvim-web-devicons",
-        "NotAShelf/direnv.nvim",
+        "https://github.com/folke/noice.nvim.git",
+        "https://github.com/nvim-tree/nvim-web-devicons.git",
+        "https://github.com/NotAShelf/direnv.nvim.git",
     },
     opts = {
         options = {

@@ -1,5 +1,5 @@
 return {
-    "smjonas/live-command.nvim",
+    "https://github.com/smjonas/live-command.nvim.git",
     main = "live-command",
     cmd = {
         "Norm",

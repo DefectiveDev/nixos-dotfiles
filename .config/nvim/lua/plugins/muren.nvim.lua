@@ -1,5 +1,5 @@
 return {
-	"AckslD/muren.nvim",
+	"https://github.com/AckslD/muren.nvim.git",
 	enabled = false,
 	cmd = {
 		"MurenToggle",

@@ -1,5 +1,5 @@
 return {
-	"michaelb/sniprun",
+	"https://github.com/michaelb/sniprun.git",
 	enabled = function ()
         if vim.env.NIX_PATH == nil then
             return true

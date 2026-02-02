@@ -1,5 +1,5 @@
 return {
-    "folke/snacks.nvim",
+    "https://github.com/folke/snacks.nvim.git",
     ---@type snacks.Config
     keys = { {"<leader>lg", function () Snacks.lazygit.open() end, desc = "Open [L]azy[G]it (Snacks)"} },
     opts = {

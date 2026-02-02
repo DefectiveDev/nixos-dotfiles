@@ -13,7 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({{
-  "folke/flash.nvim",
+  "https://github.com/folke/flash.nvim.git",
   event = "VeryLazy",
   ---@type Flash.Config
   opts = {},
@@ -27,7 +27,7 @@ require("lazy").setup({{
   }
 
 },{
-    "kylechui/nvim-surround",
+    "https://github.com/kylechui/nvim-surround.git",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
@@ -36,11 +36,11 @@ require("lazy").setup({{
         })
     end
 },{
-	"nvim-treesitter/nvim-treesitter-textobjects",
+	"https://github.com/nvim-treesitter/nvim-treesitter.git-textobjects",
 	version = false,
 	build = ":TSUpdate",
 	event = "VeryLazy",
-	dependencies = { "nvim-treesitter/nvim-treesitter" },
+	dependencies = { "https://github.com/nvim-treesitter/nvim-treesitter.git" },
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			textobjects = {
@@ -90,15 +90,15 @@ require("lazy").setup({{
 	end,
 },
 {
-    "nvim-treesitter/nvim-treesitter",
+    "https://github.com/nvim-treesitter/nvim-treesitter.git",
     event = { "BufReadPre", "BufNewFile" },
     build = ":TSUpdate",
     opts = { auto_install = true }
 }, {
-    'Wansmer/treesj',
+    'https://github.com/Wansmer/treesj.git',
     keys = { { "<leader>m", function() require("treesj").toggle() end, desc = "Toggle TSJ block" } },
     cmd = {"TSJToggle", "TSJSplit", "TSJJoin"},
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    dependencies = { 'https://github.com/nvim-treesitter/nvim-treesitter.git' },
     opts = { use_default_keymaps = false }
 } })
 

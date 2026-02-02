@@ -1,9 +1,9 @@
 return {
-    "nvim-telescope/telescope-ui-select.nvim",
+    "https://github.com/nvim-telescope/telescope-ui-select.nvim.git",
     lazy = true,
-    dependencies = { "nvim-telescope/telescope.nvim" },
+    dependencies = { "https://github.com/nvim-telescope/telescope.nvim.git" },
     specs = {
-        "nvim-telescope/telescope.nvim",
+        "https://github.com/nvim-telescope/telescope.nvim.git",
         opts = {
             extensions = {
                 ["ui-select"] = {

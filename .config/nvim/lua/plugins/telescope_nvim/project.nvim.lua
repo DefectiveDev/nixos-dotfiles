@@ -1,6 +1,6 @@
 return {
-    "DrKJeff16/project.nvim",
-    specs = { "nvim-telescope/telescope.nvim" },
+    "https://github.com/DrKJeff16/project.nvim.git",
+    specs = { "https://github.com/nvim-telescope/telescope.nvim.git" },
     event = {"BufReadPre", "BufNewFile"},
     keys = {
         {"<leader>fp",function ()

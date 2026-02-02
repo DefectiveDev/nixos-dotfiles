@@ -1,5 +1,5 @@
 return {
-    "RRethy/nvim-treesitter-endwise",
+    "https://github.com/RRethy/nvim-treesitter-endwise.git",
     event = "InsertEnter *.lua",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    dependencies = { "https://github.com/nvim-treesitter/nvim-treesitter.git" },
 }

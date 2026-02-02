@@ -1,5 +1,5 @@
 return {
-    "nvim-treesitter/nvim-treesitter",
+    "https://github.com/nvim-treesitter/nvim-treesitter.git",
     -- version= false;
     -- tag = "v0.10.0",
     event = { "BufReadPre", "BufNewFile" },

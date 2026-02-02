@@ -1,9 +1,9 @@
 return  {
-    "willothy/nvim-cokeline",
+    "https://github.com/willothy/nvim-cokeline.git",
     dependencies = {
-        "nvim-lua/plenary.nvim",        -- Required for v0.4.0+
-        "nvim-tree/nvim-web-devicons", -- If you want devicons
-        "stevearc/resession.nvim"       -- Optional, for persistent history
+        "https://github.com/nvim-lua/plenary.nvim.git",        -- Required for v0.4.0+
+        "https://github.com/nvim-tree/nvim-web-devicons.git", -- If you want devicons
+        "https://github.com/stevearc/resession.nvim.git"       -- Optional, for persistent history
     },
     opts = {
 

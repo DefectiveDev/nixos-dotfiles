@@ -1,7 +1,7 @@
 return {
-    "HiPhish/rainbow-delimiters.nvim",
+    "https://github.com/HiPhish/rainbow-delimiters.nvim.git",
     -- tag = "v0.10.0",
-    dependencies = "nvim-treesitter/nvim-treesitter",
+    dependencies = "https://github.com/nvim-treesitter/nvim-treesitter.git",
     -- event = "VeryLazy",
     lazy = false,
     main = "rainbow-delimiters.setup",

@@ -1,10 +1,10 @@
 return {
-    "nvim-telescope/telescope.nvim",
+    "https://github.com/nvim-telescope/telescope.nvim.git",
     tag = "v0.2.1",
     dependencies = {
-        "nvim-lua/plenary.nvim",
+        "https://github.com/nvim-lua/plenary.nvim.git",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make"},
-        "nvim-tree/nvim-web-devicons",
+        "https://github.com/nvim-tree/nvim-web-devicons.git",
     },
     cmd = "Telescope",
     keys = {

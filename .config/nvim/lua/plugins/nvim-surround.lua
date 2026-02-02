@@ -1,7 +1,7 @@
-return {{
-    -- "kylechui/nvim-surround",
+return {
+    -- "https://github.com/kylechui/nvim-surround.git",
     -- Custom fork to handle highlight
-    "DefectiveDev/nvim-surround-highlights",
+    "https://github.com/DefectiveDev/nvim-surround-highlights.git",
     keys = {
         { "sy", desc = "Add a surrounding pair around a motion (normal mode)" },
         { "sY", desc = "Add a surrounding pair around a motion, on new lines (normal mode)" },
@@ -33,4 +33,4 @@ return {{
     config = function (_, opts)
         require("nvim-surround").setup(opts)
     end
-}}
+}

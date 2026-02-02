@@ -1,5 +1,5 @@
 return {
-	"andweeb/presence.nvim",
+	"https://github.com/andweeb/presence.nvim.git",
 	event = "VeryLazy",
 	enabled = false,
 	opts = function()

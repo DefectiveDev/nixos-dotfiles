@@ -6,9 +6,9 @@ return {
     -- PERF:hello world
     -- WARN:hello world
     -- NOTE:hello world
-	"folke/todo-comments.nvim",
+	"https://github.com/folke/todo-comments.nvim.git",
 	event = { "BufReadPre", "BufNewFile" },
-	dependencies = { "nvim-lua/plenary.nvim" },
+	dependencies = { "https://github.com/nvim-lua/plenary.nvim.git" },
 	opts = {
 		keywords = {
 			TEST = {

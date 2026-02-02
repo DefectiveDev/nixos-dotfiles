@@ -1,5 +1,5 @@
 return {
-	"nvim-tree/nvim-web-devicons",
+	"https://github.com/nvim-tree/nvim-web-devicons.git",
 	lazy = true,
 	opts = {},
 }
