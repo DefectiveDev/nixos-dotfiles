@@ -20,7 +20,7 @@
                     exec tmux new -s main
                 fi
             fi
-            fastfetch
+            # fastfetch
             autoload -Uz compinit && compinit
             zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
             # used for Neovim telescope-all-recents
