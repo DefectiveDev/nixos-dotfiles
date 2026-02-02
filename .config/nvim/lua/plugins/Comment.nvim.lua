@@ -1,8 +1,8 @@
 return {
     "numToStr/Comment.nvim",
-    event = { "BufReadPre", "BufNewFile" },
     keys = {
-        { "gc", "gc", mode = { 'v', 'n' } },
-        { "gb", "gb", mode = { 'v', 'n' } },
+        { "gc", mode = { 'x', 'n' }, desc = "+Comment toggle linewise"},
+        { "gb", mode = { 'x', 'n' }, desc = "+Comment toggle blockwise" },
     },
+    config = true,
 }
