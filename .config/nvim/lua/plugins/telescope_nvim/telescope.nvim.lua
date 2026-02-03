@@ -107,7 +107,6 @@ return {
         })
     end,
     config = function(_, opts)
-        require("telescope").setup(opts)
         local highlights = {}
         highlights.setup = function()
             local drac_colors = require("dracula").colors()
@@ -192,7 +191,8 @@ return {
             })
 
         end
-        highlights.setup()
+        -- highlights.setup()
+        require("telescope").setup(opts)
     end
 }
 
