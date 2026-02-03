@@ -1,3 +1,4 @@
 nixos/.direnv/flake-inputs
 nixos/.direnv
 .config/nvim/.direnv/flake-inputs
+.config/nvim/.direnv
