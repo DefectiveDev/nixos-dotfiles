@@ -96,7 +96,7 @@ return {
 
         -- This is the default lsp config. If any configuration has been defined this will be overrided
         vim.lsp.config('*', {
-            root_markers = { 'flake.nix' }
+            root_markers = { '.envrc' }
         })
 
         -- this enables only LSPs in our config path

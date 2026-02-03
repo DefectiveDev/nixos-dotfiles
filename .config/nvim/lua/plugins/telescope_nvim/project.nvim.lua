@@ -13,7 +13,7 @@ return {
         {"<leader>fap", "<cmd>ProjectAddManually<cr>", desc = "[f]inder [a]dd current directory to [p]rojects (Projects-Telescope)"}
     },
     cmd = { "ProjectAddManually", "Telescope projects" },
-    opts = { patterns = { "flake.nix", ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" } },
+    opts = { patterns = { ".envrc", ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" } },
     config = function(_, opts)
         require("project").setup(opts)
         require("telescope").load_extension("projects")
