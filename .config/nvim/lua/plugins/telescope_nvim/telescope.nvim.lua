@@ -52,16 +52,13 @@ return {
     init = function ()
         -- HACK: Some keymaps were overriding telescope keymaps. Enables timeout temporarily.
 
-        -- enable timeout when using telescope
-        local prevTimeOutLen = vim.o.timeoutlen
-        local prevTimeout = vim.o.timeout
         vim.api.nvim_create_autocmd("FileType", {
-            group = vim.api.nvim_create_augroup("TelescopePromptTimeout", {clear =true}),
+            group = vim.api.nvim_create_augroup("EnterTelescopePromptTimeout", {}),
             desc = "Enable timeout in telescope. Helps priotize the telescope commands. This does not allow multi modal keymaps at the moment.",
             pattern = "TelescopePrompt",
             callback = function()
-                prevTimeout = vim.o.timeout
-                prevTimeOutLen = vim.o.timeoutlen
+                vim.b.prevTimeout = vim.o.timeout
+                vim.b.prevTimeOutLen = vim.o.timeoutlen
                 vim.o.timeout = true
                 -- set to 1 because I don't use any multimodal keymaps for telescope
                 vim.o.timeoutlen = 1
@@ -69,13 +66,13 @@ return {
         })
 
         vim.api.nvim_create_autocmd("BufLeave", {
-            group = vim.api.nvim_create_augroup("TelescopePromptTimeout", {clear =true}),
+            group = vim.api.nvim_create_augroup("ExitTelescopePromptTimeout", {}),
             desc = "Disable timeout in telescope. Helps priotize the telescope commands. This does not allow multi modal keymaps at the moment.",
             pattern = "*",
             callback = function ()
                 if vim.bo.filetype == "TelescopePrompt" then
-                    vim.o.timeout = prevTimeout
-                    vim.o.timeoutlen = prevTimeOutLen
+                    vim.o.timeout = vim.b.prevTimeout
+                    vim.o.timeoutlen = vim.b.prevTimeOutLen
                 end
             end
         })
