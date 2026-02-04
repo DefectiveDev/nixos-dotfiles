@@ -50,8 +50,39 @@ return {
         },
     },
     init = function ()
+        -- HACK: Some keymaps were overriding telescope keymaps. Enables timeout temporarily.
+
+        -- enable timeout when using telescope
+        local prevTimeOutLen = vim.o.timeoutlen
+        local prevTimeout = vim.o.timeout
+        vim.api.nvim_create_autocmd("FileType", {
+            group = vim.api.nvim_create_augroup("TelescopePromptTimeout", {clear =true}),
+            desc = "Enable timeout in telescope. Helps priotize the telescope commands. This does not allow multi modal keymaps at the moment.",
+            pattern = "TelescopePrompt",
+            callback = function()
+                prevTimeout = vim.o.timeout
+                prevTimeOutLen = vim.o.timeoutlen
+                vim.o.timeout = true
+                -- set to 1 because I don't use any multimodal keymaps for telescope
+                vim.o.timeoutlen = 1
+            end,
+        })
+
+        vim.api.nvim_create_autocmd("BufLeave", {
+            group = vim.api.nvim_create_augroup("TelescopePromptTimeout", {clear =true}),
+            desc = "Disable timeout in telescope. Helps priotize the telescope commands. This does not allow multi modal keymaps at the moment.",
+            pattern = "*",
+            callback = function ()
+                if vim.bo.filetype == "TelescopePrompt" then
+                    vim.o.timeout = prevTimeout
+                    vim.o.timeoutlen = prevTimeOutLen
+                end
+            end
+        })
+
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("UserLspConfigTelescope", {}),
+            desc = "Enable keymaps for lsp using telescope if telescope is enabled.",
             callback = function(env)
                 local keymap = vim.keymap -- for concisenesss
                 local opts = { noremap = true, silent = true }
@@ -107,6 +138,7 @@ return {
         })
     end,
     config = function(_, opts)
+        -- HACK: disabled highlights due to borders showing despite overriding it.
         local highlights = {}
         highlights.setup = function()
             local drac_colors = require("dracula").colors()
