@@ -1,7 +1,7 @@
 return {
     "https://github.com/goolord/alpha-nvim.git",
     dependencies = { "https://github.com/nvim-tree/nvim-web-devicons.git" },
-    config = function ()
+    opts = function ()
         local dashboard = require('alpha.themes.dashboard')
 
         dashboard.section.buttons.val = {
@@ -12,7 +12,9 @@ return {
             dashboard.button( "p", "  Jump to project"   , ":Telescope projects<CR>"),
             dashboard.button( "q", "  Quit NVIM", ":qa<CR>"),
         }
-
+        return dashboard
+    end,
+    config = function (_, dashboard)
         require('alpha').setup(dashboard.config)
         -- Disable folding on alpha buffer
         vim.cmd([[ autocmd FileType alpha setlocal nofoldenable ]])
