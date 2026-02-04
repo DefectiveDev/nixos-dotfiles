@@ -34,14 +34,4 @@ return {
             silent_autoload = true,
         },
     },
-    config = function (_, opts)
-        require("direnv").setup(opts)
-        vim.api.nvim_create_autocmd("User", {
-            pattern = "DirenvLoaded",
-            callback = function()
-                vim.cmd[[ wa! ]]
-                vim.cmd[[ e! ]]
-            end,
-        })
-    end
 }
