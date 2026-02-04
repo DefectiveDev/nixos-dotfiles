@@ -1,5 +1,6 @@
 return {
     "https://github.com/saghen/blink.cmp.git",
+    pin = false,
     -- optional: provides snippets for the snippet source
     dependencies = { "https://github.com/rafamadriz/friendly-snippets.git", },
 

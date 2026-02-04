@@ -1,9 +1,7 @@
 return {
     "https://github.com/nvim-treesitter/nvim-treesitter.git",
-    -- version= false;
-    -- tag = "v0.10.0",
+    pin = false,
     event = { "BufReadPre", "BufNewFile" },
-    -- lazy = false,
     build = ":TSUpdate",
     opts = function()
         require 'nvim-treesitter.install'.prefer_git = false

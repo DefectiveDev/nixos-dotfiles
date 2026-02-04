@@ -1,5 +1,6 @@
 return {
     "https://github.com/neovim/nvim-lspconfig.git",
+    pin = false,
     event = {"BufReadPre", "BufNewFile"},
     config = function()
 
