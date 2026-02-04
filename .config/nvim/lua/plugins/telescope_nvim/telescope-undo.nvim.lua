@@ -1,5 +1,6 @@
 return {
     "https://github.com/debugloop/telescope-undo.nvim.git",
+    pin = true,
     keys = {{"<leader>fu", "<cmd>Telescope undo<cr>", desc = "[f]ind [u]ndo (Undo-Telescope)" }},
     dependencies = { "https://github.com/nvim-telescope/telescope.nvim.git" },
     specs = {

@@ -1,8 +1,6 @@
 return {
 	"https://github.com/folke/flash.nvim.git",
-	-- event = "VeryLazy",
-	opts = {},
-	-- stylua: ignore
+	pin = true,
 	keys = {
 		{'f','f', mode = {"n","o", "x"}, desc = "[f]orward including character (Flash)"},
 		{'F','F', mode = {"n","o", "x"}, desc = "[F]orward including previous character (Flash)"},
@@ -14,4 +12,5 @@ return {
 		{ "<leader>R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "[R]emote treesitter Search (Flash)" },
 		-- { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle (Flash) Search" },
 	},
+	opts = {},
 }

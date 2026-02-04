@@ -1,5 +1,6 @@
 return {
     "https://github.com/nvim-lualine/lualine.nvim.git",
+	pin = true,
     dependencies = {
         "https://github.com/folke/noice.nvim.git",
         "https://github.com/nvim-tree/nvim-web-devicons.git",

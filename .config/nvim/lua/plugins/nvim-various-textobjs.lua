@@ -1,5 +1,6 @@
 return {
 	"https://github.com/chrisgrieser/nvim-various-textobjs.git",
+    pin = true,
     keys = {
         { "ii",
             function ()

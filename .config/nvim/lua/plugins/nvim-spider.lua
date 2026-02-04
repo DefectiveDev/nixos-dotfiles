@@ -1,5 +1,6 @@
 return {
 	"https://github.com/chrisgrieser/nvim-spider.git",
+    pin = true,
 	keys = {
 		{ "sw", function() require('spider').motion('w') end, mode = { "n", "o", "x" }, desc = "Next [s]ub[w]ord (Spider)" },
 		{ "se", function() require('spider').motion('e') end, mode = { "n", "o", "x" }, desc = "Next [s]ubword [e]nd (Spider)" },

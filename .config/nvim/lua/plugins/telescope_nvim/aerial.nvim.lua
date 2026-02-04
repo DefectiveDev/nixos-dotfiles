@@ -1,5 +1,6 @@
 return {
     "https://github.com/stevearc/aerial.nvim.git",
+    pin = true,
     keys = {{"<leader>gs", "<cmd>Telescope aerial<cr>", desc = "[g]o to document [s]ymbol in buffer (Aerial + Telescope)" }},
     dependencies = { "https://github.com/nvim-telescope/telescope.nvim.git" },
     opts = {

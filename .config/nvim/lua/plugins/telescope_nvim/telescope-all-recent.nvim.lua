@@ -1,5 +1,6 @@
 return {
     "https://github.com/prochri/telescope-all-recent.nvim.git",
+    pin = true,
     dependencies = { "https://github.com/nvim-telescope/telescope.nvim.git", "https://github.com/kkharji/sqlite.lua.git" },
     opts = function ()
         vim.api.nvim_set_var("sqlite_clib_path", os.getenv("SQLITE_PATH"))

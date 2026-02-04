@@ -7,6 +7,7 @@ return {
     -- WARN:hello world
     -- NOTE:hello world
 	"https://github.com/folke/todo-comments.nvim.git",
+	pin = false,
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = { "https://github.com/nvim-lua/plenary.nvim.git" },
 	opts = {

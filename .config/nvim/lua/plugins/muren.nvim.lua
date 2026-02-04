@@ -1,5 +1,6 @@
 return {
 	"https://github.com/AckslD/muren.nvim.git",
+	pin = true,
 	enabled = false,
 	cmd = {
 		"MurenToggle",

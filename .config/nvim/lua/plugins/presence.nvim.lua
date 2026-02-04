@@ -1,5 +1,6 @@
 return {
 	"https://github.com/andweeb/presence.nvim.git",
+    pin = true,
 	event = "VeryLazy",
 	enabled = false,
 	opts = function()

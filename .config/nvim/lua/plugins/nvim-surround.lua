@@ -2,6 +2,7 @@ return {
     -- "https://github.com/kylechui/nvim-surround.git",
     -- Custom fork to handle highlight
     "https://github.com/DefectiveDev/nvim-surround-highlights.git",
+    pin = true,
     keys = {
         { "sy", desc = "Add a surrounding pair around a motion (normal mode)" },
         { "sY", desc = "Add a surrounding pair around a motion, on new lines (normal mode)" },
@@ -13,7 +14,6 @@ return {
         { "S", mode = "x", desc = "Add a surrounding pair around a visual selection" },
         { "gS", mode = "x", desc = "Add a surrounding pair around a visual selection, on new lines" },
     },
-    -- version ="^3.0.0",
     opts = {
         keymaps = {
             insert = "<C-g>s",
@@ -30,7 +30,4 @@ return {
         },
         highlight = {duration = 0}
     },
-    config = function (_, opts)
-        require("nvim-surround").setup(opts)
-    end
 }

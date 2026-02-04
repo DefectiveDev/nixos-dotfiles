@@ -1,8 +1,7 @@
 return {
     "https://github.com/NotAShelf/direnv.nvim.git",
     event = {"BufReadPre", "BufNewFile"},
-    -- enabled=false,
-    -- commit = "ecd3bd4898f79689a3f5bf956877ea42c7b3072e",
+    pin = true,
     opts = {
         -- Path to the direnv executable
         bin = "direnv",

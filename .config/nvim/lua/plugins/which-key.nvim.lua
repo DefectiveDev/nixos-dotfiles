@@ -1,6 +1,7 @@
 return {
 	"https://github.com/folke/which-key.nvim.git",
 	event = "VeryLazy",
+    pin = true,
 	init = function()
 		vim.o.timeout = false
 		vim.o.timeoutlen = 300

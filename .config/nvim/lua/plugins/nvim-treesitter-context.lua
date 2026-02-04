@@ -1,5 +1,6 @@
 return {
     "https://github.com/nvim-treesitter/nvim-treesitter-context.git",
+    pin = true,
 	dependencies = "https://github.com/nvim-treesitter/nvim-treesitter.git",
 	event = "UIEnter",
 	config = function()

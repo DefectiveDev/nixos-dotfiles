@@ -40,6 +40,7 @@ local open_in_oil = function (prompt_bufnr)
 end
 return {
     "https://github.com/stevearc/oil.nvim.git",
+    pin = true,
     dependencies = { "https://github.com/nvim-tree/nvim-web-devicons.git", },
     ---@module 'oil'
     ---@type oil.SetupOpts

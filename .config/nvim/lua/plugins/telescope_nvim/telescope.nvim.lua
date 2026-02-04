@@ -1,6 +1,7 @@
 return {
     "https://github.com/nvim-telescope/telescope.nvim.git",
     tag = "v0.2.1",
+    pin = true,
     dependencies = {
         "https://github.com/nvim-lua/plenary.nvim.git",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make"},

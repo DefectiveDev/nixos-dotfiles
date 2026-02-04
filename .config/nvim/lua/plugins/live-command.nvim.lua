@@ -1,5 +1,6 @@
 return {
     "https://github.com/smjonas/live-command.nvim.git",
+	pin = true,
     main = "live-command",
     cmd = {
         "Norm",

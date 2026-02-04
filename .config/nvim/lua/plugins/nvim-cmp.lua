@@ -1,26 +1,27 @@
 ---@diagnostic disable: missing-fields
-return{{
-	"https://github.com/hrsh7th/nvim-cmp.git",
-	event = "InsertEnter",
-	enabled = false,
-	dependencies = {
-		"https://github.com/hrsh7th/cmp-omni.git",
-		"https://github.com/hrsh7th/cmp-buffer.git", --source for text in buffer
-		"https://github.com/FelipeLema/cmp-async-path.git", -- source for file system
-		"https://github.com/hrsh7th/cmp-cmdline.git", -- source for cmdline
-		"https://github.com/L3MON4D3/LuaSnip.git", -- snippet engine
-		"https://github.com/hrsh7th/cmp-nvim-lua.git",
-		"https://github.com/saadparwaiz1/cmp_luasnip.git", -- for autocompletion
-		{ "https://github.com/rafamadriz/friendly-snippets.git", config = function () require("luasnip.loaders.from_vscode").lazy_load() end}, -- some default snippets
+return{
+    "https://github.com/hrsh7th/nvim-cmp.git",
+    pin = true,
+    event = "InsertEnter",
+    enabled = false,
+    dependencies = {
+        "https://github.com/hrsh7th/cmp-omni.git",
+        "https://github.com/hrsh7th/cmp-buffer.git", --source for text in buffer
+        "https://github.com/FelipeLema/cmp-async-path.git", -- source for file system
+        "https://github.com/hrsh7th/cmp-cmdline.git", -- source for cmdline
+        "https://github.com/L3MON4D3/LuaSnip.git", -- snippet engine
+        "https://github.com/hrsh7th/cmp-nvim-lua.git",
+        "https://github.com/saadparwaiz1/cmp_luasnip.git", -- for autocompletion
+        { "https://github.com/rafamadriz/friendly-snippets.git", config = function () require("luasnip.loaders.from_vscode").lazy_load() end}, -- some default snippets
         -- { "onsails/lspkind.nvim", lazy = true,}, -- vs-code like pictograms
-	},
-	config = function()
-		-- Set up nvim-cmp.
-		local cmp = require('cmp')
-		local luasnip = require("luasnip")
+    },
+    config = function()
+        -- Set up nvim-cmp.
+        local cmp = require('cmp')
+        local luasnip = require("luasnip")
 
-		-- lsp kind would automatically put in the pictograms twice due to loading with lazy and cmp.
-		-- opted to just have them detailed directly in cmp config
+        -- lsp kind would automatically put in the pictograms twice due to loading with lazy and cmp.
+        -- opted to just have them detailed directly in cmp config
         local cmp_kinds = {
             Text = "󰉿",
             Method = "󰆧",
@@ -51,128 +52,127 @@ return{{
 
         -- vscode style pictograms
         -- local cmp_kinds = {
-        --     Text = '  ',
-        --     Method = '  ',
-        --     Function = '  ',
-        --     Constructor = '  ',
-        --     Field = '  ',
-        --     Variable = '  ',
-        --     Class = '  ',
-        --     Interface = '  ',
-        --     Module = '  ',
-        --     Property = '  ',
-        --     Unit = '  ',
-        --     Value = '  ',
-        --     Enum = '  ',
-        --     Keyword = '  ',
-        --     Snippet = '  ',
-        --     Color = '  ',
-        --     File = '  ',
-        --     Reference = '  ',
-        --     Folder = '  ',
-        --     EnumMember = '  ',
-        --     Constant = '  ',
-        --     Struct = '  ',
-        --     Event = '  ',
-        --     Operator = '  ',
-        --     TypeParameter = '  ',
-        -- }
+            --     Text = '  ',
+            --     Method = '  ',
+            --     Function = '  ',
+            --     Constructor = '  ',
+            --     Field = '  ',
+            --     Variable = '  ',
+            --     Class = '  ',
+            --     Interface = '  ',
+            --     Module = '  ',
+            --     Property = '  ',
+            --     Unit = '  ',
+            --     Value = '  ',
+            --     Enum = '  ',
+            --     Keyword = '  ',
+            --     Snippet = '  ',
+            --     Color = '  ',
+            --     File = '  ',
+            --     Reference = '  ',
+            --     Folder = '  ',
+            --     EnumMember = '  ',
+            --     Constant = '  ',
+            --     Struct = '  ',
+            --     Event = '  ',
+            --     Operator = '  ',
+            --     TypeParameter = '  ',
+            -- }
 
-		-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-
-
-		local cmp_mappings = {
+            -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
 
 
-			["<C-f>"] = cmp.mapping(function(fallback)
-				-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable() 
-				-- they way you will only jump inside the snippet region
-				if luasnip.jumpable(1) then
-					luasnip.jump(1)
-				else
-					fallback()
-				end
-			end, { "i", "s" }),
+            local cmp_mappings = {
 
-			["<C-b>"] = cmp.mapping(function(fallback)
-				if luasnip.jumpable(-1) then
-					luasnip.jump(-1)
-				else
-					fallback()
-				end
-			end, { "i", "s" }),
 
-			["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-			["<C-j>"] = cmp.mapping.select_next_item(),
-			-- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-			-- ['<C-f>'] = cmp.mapping.scroll_docs(4),
-			['<C-Space>'] = cmp.mapping.complete(), -- show completion suggestions
-			['<C-e>'] = cmp.mapping.abort(), -- close completion window
-			['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-		}
+                ["<C-f>"] = cmp.mapping(function(fallback)
+                    -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable() 
+                    -- they way you will only jump inside the snippet region
+                    if luasnip.jumpable(1) then
+                        luasnip.jump(1)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
 
-		cmp.setup({
-			enabled = function()
-				return true
-				-- local context = require("cmp.config.context")
-				--
-				-- if vim.api.nvim_get_mode().mode == 'c' then
-				-- 	return true
-				-- else
-				-- 	return not context.in_treesitter_capture("comment")
-				-- 		and not context.in_syntax_group("Comment")
-				-- end
-			end,
-			completion = {
-				completeopt = "menu,menuone,preview,noselect",
-			},
-			snippet = {
-				-- REQUIRED - you must specify a snippet engine
-				expand = function(args)
-					-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-					luasnip.lsp_expand(args.body) -- For `luasnip` users.
-					-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-					-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-				end,
-			},
-			mapping = cmp_mappings,
-			sources = cmp.config.sources({
-				{ name = 'nvim_lsp' },
-				{name = "omni", option = {disable_omnifuncs = {"v:lua.vim.lsp.omnifunc"}}},
-				-- { name = 'vsnip' }, -- For vsnip users.
-				{ name = 'luasnip' }, -- For luasnip users.
-				{ name = 'buffer' }, -- text within current buffer
-				{ name = "async_path" }, -- file system path
-				{ name = "nvim_lua" },
-				-- { name = 'ultisnips' }, -- For ultisnips users.
-				-- { name = 'snippy' }, -- For snippy users.
-			}),
-            formatting = {
-                fields = { "kind", "abbr" },
-                format = function(_, vim_item)
-                    vim_item.kind = cmp_kinds[vim_item.kind] or ""
-                    return vim_item
+                ["<C-b>"] = cmp.mapping(function(fallback)
+                    if luasnip.jumpable(-1) then
+                        luasnip.jump(-1)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
+
+                ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
+                ["<C-j>"] = cmp.mapping.select_next_item(),
+                -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+                -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                ['<C-Space>'] = cmp.mapping.complete(), -- show completion suggestions
+                ['<C-e>'] = cmp.mapping.abort(), -- close completion window
+                ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+            }
+
+            cmp.setup({
+                enabled = function()
+                    return true
+                    -- local context = require("cmp.config.context")
+                    --
+                    -- if vim.api.nvim_get_mode().mode == 'c' then
+                    -- 	return true
+                    -- else
+                    -- 	return not context.in_treesitter_capture("comment")
+                    -- 		and not context.in_syntax_group("Comment")
+                    -- end
                 end,
-            },
-		})
-		-- Set configuration for specific filetype.
-		cmp.setup.filetype('gitcommit', {
-			sources = cmp.config.sources({
-				{ name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-				}, {
-					{ name = 'buffer' },
-			})
-		})
+                completion = {
+                    completeopt = "menu,menuone,preview,noselect",
+                },
+                snippet = {
+                    -- REQUIRED - you must specify a snippet engine
+                    expand = function(args)
+                        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+                        luasnip.lsp_expand(args.body) -- For `luasnip` users.
+                        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+                        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+                    end,
+                },
+                mapping = cmp_mappings,
+                sources = cmp.config.sources({
+                    { name = 'nvim_lsp' },
+                    {name = "omni", option = {disable_omnifuncs = {"v:lua.vim.lsp.omnifunc"}}},
+                    -- { name = 'vsnip' }, -- For vsnip users.
+                    { name = 'luasnip' }, -- For luasnip users.
+                    { name = 'buffer' }, -- text within current buffer
+                    { name = "async_path" }, -- file system path
+                    { name = "nvim_lua" },
+                    -- { name = 'ultisnips' }, -- For ultisnips users.
+                    -- { name = 'snippy' }, -- For snippy users.
+                }),
+                formatting = {
+                    fields = { "kind", "abbr" },
+                    format = function(_, vim_item)
+                        vim_item.kind = cmp_kinds[vim_item.kind] or ""
+                        return vim_item
+                    end,
+                },
+            })
+            -- Set configuration for specific filetype.
+            cmp.setup.filetype('gitcommit', {
+                sources = cmp.config.sources({
+                    { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+                }, {
+                    { name = 'buffer' },
+                })
+            })
 
-		-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-		cmp.setup.cmdline({ '/', '?' }, {
-			mapping = cmp.mapping.preset.cmdline(cmp_mappings),
-			sources = {
-				{ name = 'buffer' }
-			}
-		})
+            -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+            cmp.setup.cmdline({ '/', '?' }, {
+                mapping = cmp.mapping.preset.cmdline(cmp_mappings),
+                sources = {
+                    { name = 'buffer' }
+                }
+            })
 
-		vim.cmd("highlight Pmenu guibg=NONE" ) -- transparent background for autocompletion
-        
-	end
-}}
+            vim.cmd("highlight Pmenu guibg=NONE" ) -- transparent background for autocompletion
+        end
+    }

@@ -1,5 +1,6 @@
 return {
     "https://github.com/windwp/nvim-autopairs.git",
+	pin = true,
     event = "InsertEnter",
     enabled = true,
     config = function ()

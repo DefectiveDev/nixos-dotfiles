@@ -1,5 +1,6 @@
 return {
     "https://github.com/DrKJeff16/project.nvim.git",
+    pin = true,
     specs = { "https://github.com/nvim-telescope/telescope.nvim.git" },
     event = {"BufReadPre", "BufNewFile"},
     keys = {

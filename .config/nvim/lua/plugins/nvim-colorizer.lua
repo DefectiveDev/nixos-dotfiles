@@ -1,7 +1,14 @@
 return {
 	"https://github.com/catgoose/nvim-colorizer.lua.git",
+    pin = true,
 	event = { "BufReadPre", "BufNewFile" },
-	config = function ()
-		require("colorizer").setup(nil, { RGB = false, names = false, RRGGBBAA = true})
-	end
+	opts = {
+	    filetypes = {
+	        -- include everything else
+            "*",
+            -- exclude these filetypes
+            "!TelescopePrompt",
+            "!lazy"
+        }
+	},
 }

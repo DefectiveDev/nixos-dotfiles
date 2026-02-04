@@ -13,6 +13,7 @@ local open_current_directory = function(prompt_bufnr)
 end
 return {
     "https://github.com/nvim-telescope/telescope-file-browser.nvim.git",
+    pin = true,
     keys = {{"<leader>fe", "<cmd>Telescope file_browser<cr>", desc = "[f]ile [e]xplorer (File-Browser-Telescope)"}},
     cmd = "Telescope file_browser",
     dependencies = { "https://github.com/nvim-telescope/telescope.nvim.git" },

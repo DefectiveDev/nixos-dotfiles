@@ -2,6 +2,7 @@
 return {
 	"https://github.com/kevinhwang91/nvim-ufo.git",
 	lazy = false,
+    pin = true,
 	dependencies = { "https://github.com/kevinhwang91/promise-async.git", "https://github.com/nvim-treesitter/nvim-treesitter.git", },
 	keys = { { "zK", function () require("ufo.preview"):peekFoldedLinesUnderCursor() end, desc = "Preview[z] fold under [K]ursor (UFO)", } },
 	cmd = { "UfoEnable", "UfoDisable", "UfoInspect", "UfoAttach", "UfoDetach", "UfoEnableFold", "UfoDisableFold" },

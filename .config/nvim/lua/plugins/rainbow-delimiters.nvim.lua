@@ -1,10 +1,10 @@
 return {
     "https://github.com/HiPhish/rainbow-delimiters.nvim.git",
-    -- tag = "v0.10.0",
+    pin = true,
     dependencies = "https://github.com/nvim-treesitter/nvim-treesitter.git",
-    -- event = "VeryLazy",
     lazy = false,
     main = "rainbow-delimiters.setup",
+    -- BUG: first demlimiter is always white
     opts = {
         strategy = {
             [''] = 'rainbow-delimiters.strategy.global',

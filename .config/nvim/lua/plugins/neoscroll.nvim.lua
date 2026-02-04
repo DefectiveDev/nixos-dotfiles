@@ -1,5 +1,6 @@
 return {
     "https://github.com/karb94/neoscroll.nvim.git",
+	pin = true,
     keys = {
         {"<C-u>",  function() require("neoscroll").ctrl_u({ duration = 150 }) end, mode = { 'n', 'v', 'x'}, desc = "Scroll up half-page (neoscroll)" },
         {"<C-d>",  function() require("neoscroll").ctrl_d({ duration = 150 }) end, mode = { 'n', 'v', 'x'}, desc = "Scroll down half-page (neoscroll)" },

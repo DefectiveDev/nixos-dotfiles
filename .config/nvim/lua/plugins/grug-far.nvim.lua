@@ -1,8 +1,8 @@
 return {
     'https://github.com/MagicDuck/grug-far.nvim.git',
+	pin = true,
     -- Note (lazy loading): grug-far.lua defers all it's requires so it's lazy by default
     -- additional lazy config to defer loading is not really needed...
-    lazy = false,
     opts = {
         headerMaxWidth = 80,
         startInInsertMode = false,

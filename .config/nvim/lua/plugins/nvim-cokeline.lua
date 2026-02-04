@@ -1,5 +1,6 @@
 return  {
     "https://github.com/willothy/nvim-cokeline.git",
+    pin = true,
     dependencies = {
         "https://github.com/nvim-lua/plenary.nvim.git",        -- Required for v0.4.0+
         "https://github.com/nvim-tree/nvim-web-devicons.git", -- If you want devicons

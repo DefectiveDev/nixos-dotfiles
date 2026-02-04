@@ -1,5 +1,6 @@
 return {
     "https://github.com/nvim-telescope/telescope-ui-select.nvim.git",
+    pin = true,
     lazy = true,
     dependencies = { "https://github.com/nvim-telescope/telescope.nvim.git" },
     specs = {

@@ -1,6 +1,7 @@
 -- nvim v0.8.0
 return {
     "https://github.com/kdheepak/lazygit.nvim.git",
+	pin = true,
     lazy = true,
     enabled = false,
     cmd = {

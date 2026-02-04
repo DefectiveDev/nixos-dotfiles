@@ -1,5 +1,6 @@
 return {
     'https://github.com/Wansmer/treesj.git',
+	pin = true,
     keys = { { "<leader>m", function() require("treesj").toggle() end, desc = "Toggle (TSJ) [m]ember block" }, },
     cmd = {"TSJToggle", "TSJSplit", "TSJJoin"},
     dependencies = { 'https://github.com/nvim-treesitter/nvim-treesitter.git' },

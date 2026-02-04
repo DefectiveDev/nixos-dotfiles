@@ -1,6 +1,7 @@
 ---@diagnostic disable: undefined-doc-name, unused-local, undefined-field
 return {
 	"https://github.com/mfussenegger/nvim-dap.git",
+    pin = true,
 	dependencies = {
 		{ "https://github.com/jay-babu/mason-nvim-dap.nvim.git", opts = {
 			automatic_installation = true,
