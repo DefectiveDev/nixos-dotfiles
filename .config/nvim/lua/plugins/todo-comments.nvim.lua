@@ -10,6 +10,14 @@ return {
 	pin = false,
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = { "https://github.com/nvim-lua/plenary.nvim.git" },
+	keys = {
+        { "]t", function() require("todo-comments").jump_next() end, desc = "Next [t]odo (ToDo-Comments)" },
+        { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous [t]odo (ToDo-Comments)" }
+    },
+    specs = {
+        "https://github.com/nvim-telescope/telescope.nvim.git",
+        keys = { "<leader>ft", ":TodoTelescope<cr>", desc = "[f]ind [t]odo (ToDo-Comments + Telescope)", silent = true }
+    },
 	opts = {
 		keywords = {
 			TEST = {
@@ -23,12 +31,4 @@ return {
 		-- 	pattern = [[\b(KEYWORDS)\b]]
 		}
 	},
-	config = function(_, opts)
-		local todo = require("todo-comments")
-		todo.setup(opts)
-		local keymap = vim.keymap
-		keymap.set('n', "]t", function() todo.jump_next() end, {desc = "Next [t]odo (ToDo-Comments)"})
-		keymap.set('n', "[t", function() todo.jump_prev() end, {desc = "Previous [t]odo (ToDo-Comments)"})
-		keymap.set('n', "<leader>ft", ":TodoTelescope<cr>", {desc = "[f]ind [t]odo (ToDo-Comments + Telescope)", silent = true})
-	end
 }
