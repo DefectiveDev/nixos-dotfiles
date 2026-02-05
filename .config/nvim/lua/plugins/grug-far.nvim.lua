@@ -12,7 +12,7 @@ return {
     cmd = { "GrugFar", "GrugFarWithin" },
     keys = {
         {
-            "<leader>sr",
+            "<leader>lsr",
             function()
                 local grug = require("grug-far")
                 local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
