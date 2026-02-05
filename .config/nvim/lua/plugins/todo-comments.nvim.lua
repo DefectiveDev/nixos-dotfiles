@@ -16,7 +16,13 @@ return {
     },
     specs = {
         "https://github.com/nvim-telescope/telescope.nvim.git",
-        keys = { "<leader>ft", ":TodoTelescope<cr>", desc = "[f]ind [t]odo (ToDo-Comments + Telescope)", silent = true }
+        cmd = {"Telescope"},
+        specs = {
+            {
+                "https://github.com/folke/todo-comments.nvim.git",
+                keys = { {"<leader>ft", ":Telescope todo-comments<cr>", desc = "[f]ind [t]odo (ToDo-Comments + Telescope)", silent = true} }
+            }
+        }
     },
 	opts = {
 		keywords = {

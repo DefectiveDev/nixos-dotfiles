@@ -13,7 +13,13 @@ return {
 	},
 	specs = {
         "https://github.com/nvim-telescope/telescope.nvim.git",
-        keys = { { "<leader>fn", ":Telescope noice<cr>", desc = "[f]ind [n]otifications (Noice + Telescope)" } }
+        cmd = {"Telescope"},
+        specs = {
+            {
+                "https://github.com/folke/noice.nvim.git",
+                keys = { { "<leader>fn", ":Telescope noice<cr>", desc = "[f]ind [n]otifications (Noice + Telescope)" } }
+            }
+        }
     },
 	opts = {
 		lsp = {
