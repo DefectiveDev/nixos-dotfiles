@@ -8,8 +8,9 @@ return {
     end,
     specs = {{
         "https://github.com/nvim-treesitter/nvim-treesitter.git",
-        config = function ()
+        opts = function (_, opts)
             require("lazy").load({plugins = {"nvim-treesitter-context"}})
+            return opts
         end
     }}
 }
