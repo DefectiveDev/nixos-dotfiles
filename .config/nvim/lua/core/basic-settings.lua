@@ -2,6 +2,8 @@ local opt = vim.opt
 -- set <Leader> key to space
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
+
+opt.laststatus = 3
 opt.confirm = true
 opt.completeopt = "menu,menuone"
 -- relative line numbers
