@@ -2,6 +2,7 @@ return {
 	"https://github.com/folke/flash.nvim.git",
 	pin = true,
 	keys = {
+	    -- TODO: f and t keymaps need to use a function to maintain their descriptions
 		{'f','f', mode = {"n","o", "x"}, desc = "[f]orward including character (Flash)"},
 		{'F','F', mode = {"n","o", "x"}, desc = "[F]orward including previous character (Flash)"},
 		{'t','t', mode = {"n","o", "x"}, desc = "[t]orward not-including character (Flash)"},
