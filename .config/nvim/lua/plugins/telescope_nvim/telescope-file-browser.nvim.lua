@@ -14,6 +14,7 @@ end
 return {
     "https://github.com/nvim-telescope/telescope-file-browser.nvim.git",
     pin = true,
+    lazy = true,
     keys = {{"<leader>fe", "<cmd>Telescope file_browser<cr>", desc = "[f]ile [e]xplorer (File-Browser-Telescope)"}},
     cmd = "Telescope file_browser",
     dependencies = { "https://github.com/nvim-telescope/telescope.nvim.git" },
@@ -29,11 +30,11 @@ return {
                     mappings = {
                         ["i"] = {
                             ["<C-g>"] = open_current_directory,
-                            ["<C-p>"]= require "telescope._extensions.file_browser.actions".goto_parent_dir
+                            ["<C-p>"] = function(prompt_bufnr) require "telescope._extensions.file_browser.actions".goto_parent_dir(prompt_bufnr, false) end
                         },
                         ["n"] = {
                             ["g"] =  open_current_directory,
-                            ["p"]= require "telescope._extensions.file_browser.actions".goto_parent_dir
+                            ["p"] = function(prompt_bufnr) require "telescope._extensions.file_browser.actions".goto_parent_dir(prompt_bufnr, false) end
                         },
                     }
                 },

@@ -1,11 +1,12 @@
 return {
     "https://github.com/nvim-lualine/lualine.nvim.git",
 	pin = true,
-    dependencies = {
-        "https://github.com/folke/noice.nvim.git",
-        "https://github.com/nvim-tree/nvim-web-devicons.git",
-        "https://github.com/NotAShelf/direnv.nvim.git",
-    },
+	event = "VeryLazy",
+    dependencies = { "https://github.com/nvim-tree/nvim-web-devicons.git" },
+    init = function ()
+        vim.g.lualine_laststatus = vim.o.laststatus
+        vim.o.statusline = " "
+    end,
     opts = {
         options = {
             theme = "dracula",
@@ -123,6 +124,9 @@ return {
             end,
         })
 
+        vim.o.laststatus = vim.g.lualine_laststatus
+
         lualine.setup(filename_opts)
+
     end
 }

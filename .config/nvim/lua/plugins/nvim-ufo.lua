@@ -1,7 +1,8 @@
 -- for automatic folding using treesitter (other options like lsp config if nesscary)
 return {
 	"https://github.com/kevinhwang91/nvim-ufo.git",
-	lazy = false,
+	-- lazy = false,
+	event = { "BufReadPre", "BufNewFile" },
     pin = true,
 	dependencies = { "https://github.com/kevinhwang91/promise-async.git", "https://github.com/nvim-treesitter/nvim-treesitter.git", },
 	keys = { { "zK", function () require("ufo.preview"):peekFoldedLinesUnderCursor() end, desc = "Preview[z] fold under [K]ursor (UFO)", } },

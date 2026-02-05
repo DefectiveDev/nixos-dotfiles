@@ -2,6 +2,8 @@ return {
     "https://github.com/goolord/alpha-nvim.git",
     pin = true,
     dependencies = { "https://github.com/nvim-tree/nvim-web-devicons.git" },
+    event = "VimEnter",
+    init = false,
     opts = function ()
         local dashboard = require('alpha.themes.dashboard')
 

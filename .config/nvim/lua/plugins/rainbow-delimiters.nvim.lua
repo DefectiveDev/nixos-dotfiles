@@ -2,7 +2,7 @@ return {
     "https://github.com/HiPhish/rainbow-delimiters.nvim.git",
     pin = true,
     dependencies = "https://github.com/nvim-treesitter/nvim-treesitter.git",
-    lazy = false,
+    lazy = true,
     main = "rainbow-delimiters.setup",
     -- BUG: first demlimiter is always white
     opts = {
@@ -27,5 +27,11 @@ return {
             'RainbowDelimiterCyan',
         },
         -- blacklist = {'c', 'cpp'},
-    }
+    },
+    specs = {{
+        "https://github.com/nvim-treesitter/nvim-treesitter.git",
+        config = function ()
+            require("lazy").load({plugins = {"rainbow-delimiters.nvim"}})
+        end
+    }}
 }

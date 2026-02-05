@@ -1,10 +1,11 @@
 return  {
     "https://github.com/willothy/nvim-cokeline.git",
     pin = true,
+    event = "VeryLazy",
     dependencies = {
         "https://github.com/nvim-lua/plenary.nvim.git",        -- Required for v0.4.0+
         "https://github.com/nvim-tree/nvim-web-devicons.git", -- If you want devicons
-        "https://github.com/stevearc/resession.nvim.git"       -- Optional, for persistent history
+        -- "https://github.com/stevearc/resession.nvim.git"       -- Optional, for persistent history
     },
     opts = {
 

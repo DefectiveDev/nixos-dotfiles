@@ -8,7 +8,7 @@ return {
         opts = {
             extensions = {
                 ["ui-select"] = {
-                    require("telescope.themes").get_dropdown(),
+                    function () require("telescope.themes").get_dropdown() end,
                 },
             }
         }

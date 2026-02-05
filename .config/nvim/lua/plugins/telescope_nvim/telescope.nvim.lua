@@ -2,6 +2,7 @@ return {
     "https://github.com/nvim-telescope/telescope.nvim.git",
     tag = "v0.2.1",
     pin = true,
+    lazy = true,
     dependencies = {
         "https://github.com/nvim-lua/plenary.nvim.git",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make"},
@@ -11,7 +12,7 @@ return {
     keys = {
         {"<leader>ff", function() require("telescope.builtin").find_files() end, desc = "[f]ind [f]iles in cwd (Telescope)"},
         {"<leader>fs", function() require("telescope.builtin").live_grep() end,  desc = "[f]ind [s]tring in cwd (Telescope)"},
-        {"<leader>fb", function() require("telescope.builtin").buffers() end,  desc = "[f]ind [b]uffer (Telescope)"},
+        {"<leader>fb", function() require("telescope.builtin").buffers({sort_mru=true, sort_lastused=true, ignore_current_buffer=true}) end,  desc = "[f]ind [b]uffer (Telescope)"},
         {"<leader>fh", function() require("telescope.builtin").builtin() end,  desc = "[f]ind telescope [h]elper builtin pickers (Telescope)"},
         {"<leader>fc", function() require("telescope.builtin").grep_string() end,  mode= "x",desc = "[f]ind string under [c]ursor in cwd (Telescope)"},
     },
@@ -35,9 +36,11 @@ return {
             path_display = { "truncat "},
             mappings = {
                 i = {
-                    ["<C-k>"] = require("telescope.actions").move_selection_previous, -- move to prev result
-                    ["<C-j>"] = require("telescope.actions").move_selection_next, -- move to next result
-                    ["<C-q>"] = require("telescope.actions").smart_send_to_qflist + require("telescope.actions").open_qflist,
+                    ["<C-k>"] = function(prompt_buffnr) require("telescope.actions").move_selection_previous(prompt_buffnr) end, -- move to prev result
+                    ["<C-j>"] = function(prompt_buffnr) require("telescope.actions").move_selection_next(prompt_buffnr) end, -- move to next result
+                    -- NOTE: find a way to put this into an anonymous function before using it
+                    --
+                    -- ["<C-q>"] = function(prompt_buffnr) require("telescope.actions").smart_send_to_qflist(prompt_buffnr) + require("telescope.actions").open_qflist(prompt_buffnr) end,
                 },
             },
         },

@@ -1,8 +1,12 @@
 return {
     "https://github.com/prochri/telescope-all-recent.nvim.git",
     pin = true,
-    dependencies = { "https://github.com/nvim-telescope/telescope.nvim.git", "https://github.com/kkharji/sqlite.lua.git" },
-    opts = function ()
+    lazy = true,
+    dependencies = {
+        "https://github.com/nvim-telescope/telescope.nvim.git",
+        "https://github.com/kkharji/sqlite.lua.git",
+    },
+    opts = function()
         vim.api.nvim_set_var("sqlite_clib_path", os.getenv("SQLITE_PATH"))
         return {
             database = {
@@ -42,5 +46,21 @@ return {
                 }
             }
         }
-    end
+    end,
+    specs = {
+        {
+            "https://github.com/nvim-telescope/telescope.nvim.git",
+            opts = function (_, opts)
+                require("lazy").load({ plugins = { "telescope-all-recent.nvim" } })
+                return opts
+            end,
+        },
+        {
+            "https://github.com/nvim-telescope/telescope-file-browser.nvim.git",
+            opts = function (_, opts)
+                require("lazy").load({ plugins = { "telescope-all-recent.nvim" } })
+                return opts
+            end,
+        },
+    }
 }
