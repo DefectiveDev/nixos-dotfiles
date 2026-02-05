@@ -5,11 +5,6 @@ return {
 	dependencies = {
 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 		"https://github.com/MunifTanjim/nui.nvim.git",
-		-- OPTIONAL:
-		--   `nvim-notify` is only needed, if you want to use the notification view.
-		--   If not available, we use `mini` as the fallback
-		-- { "rcarriga/nvim-notify", opts = {background_colour = "#22212C"}}
-        { "https://github.com/folke/snacks.nvim.git", opts = { notifier = { enabled = true } } }
 	},
 	specs = {
         "https://github.com/nvim-telescope/telescope.nvim.git",
