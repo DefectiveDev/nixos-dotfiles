@@ -4,14 +4,34 @@ return {
     lazy = true,
     dependencies = { "https://github.com/nvim-telescope/telescope.nvim.git" },
     specs = {
-        "https://github.com/nvim-telescope/telescope.nvim.git",
-        opts = {
-            extensions = {
-                ["ui-select"] = {
-                    function () require("telescope.themes").get_dropdown() end,
-                },
+        {
+            "https://github.com/nvim-telescope/telescope.nvim.git",
+            opts = {
+                extensions = {
+                    ["ui-select"] = {
+                        border = true,
+                        borderchars = {
+                            preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+                            prompt = { "─", "│", " ", "│", "╭", "╮", "│", "│" },
+                            results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" }
+                        },
+                        layout_config = {
+                            preview_cutoff = 1,
+                            width = function (_, max_columns, _)
+                                return math.min(max_columns, 80)
+                            end,
+                            height = function (_, _, max_lines)
+                                return math.min(max_lines, 15)
+                            end,
+                        },
+                        layout_strategy = "center",
+                        results_title = false,
+                        sorting_strategy = "ascending",
+                        theme = "dropdown"
+                    },
+                }
             }
-        }
+        },
     },
     init = function ()
         vim.ui.select = function(...)
