@@ -1,10 +1,10 @@
 return {
-	"https://github.com/catgoose/nvim-colorizer.lua.git",
+    "https://github.com/catgoose/nvim-colorizer.lua.git",
     pin = true,
-	event = { "BufReadPre", "BufNewFile" },
-	opts = {
-	    filetypes = {
-	        -- include everything else
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+        filetypes = {
+            -- include everything else
             "*",
             noice = {
                 rgb_fn = true,
@@ -26,5 +26,8 @@ return {
             "!TelescopePrompt",
             "!lazy"
         },
-	},
+        user_default_options = {
+            names = false,
+        },
+    },
 }
