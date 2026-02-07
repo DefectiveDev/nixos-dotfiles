@@ -1,7 +1,7 @@
 return {
     "https://github.com/nvim-lualine/lualine.nvim.git",
-	pin = true,
-	event = "VeryLazy",
+    pin = true,
+    event = "VeryLazy",
     dependencies = { "https://github.com/nvim-tree/nvim-web-devicons.git" },
     init = function ()
         vim.g.lualine_laststatus = vim.o.laststatus
@@ -33,17 +33,27 @@ return {
         sections = {
             lualine_x = {
                 {
-                    "grapple",
+                    function()
+                        return require("grapple").statusline()
+                    end,
                     cond = function()
-                        return package.loaded["grapple"] and require("grapple").exists()
+                        local grapple_active = package.loaded["grapple"] ~= nil
+                        if grapple_active then
+                             return require("grapple").tags()[1] ~= nil
+                        end
+                        return grapple_active
                     end
                 },
                 {
                     function ()
-                        return require('direnv').statusline()
+                        return require("direnv").statusline()
                     end,
                     cond = function()
-                        return not (package.loaded["grapple"] and require("grapple").exists())
+                        local grapple_active = (package.loaded["direnv"] ~= nil and package.loaded["grapple"] ~= nil)
+                        if grapple_active then
+                            return require("grapple").tags()[1] == nil
+                        end
+                        return (package.loaded["direnv"] ~= nil)
                     end
                 },
                 {
@@ -55,10 +65,14 @@ return {
             lualine_y = {
                 {
                     function ()
-                        return require('direnv').statusline()
+                        return require("direnv").statusline()
                     end,
                     cond = function()
-                        return package.loaded["grapple"] and require("grapple").exists()
+                        local both_active = (package.loaded["direnv"] ~= nil and package.loaded["grapple"] ~= nil)
+                        if both_active then
+                            return require("grapple").tags()[1] ~= nil
+                        end
+                        return both_active
                     end
                 },
                 { "filetype" },
