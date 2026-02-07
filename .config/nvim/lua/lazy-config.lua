@@ -18,17 +18,17 @@ require("lazy").setup({
         {import = "plugins.lsp"},
         {import = "plugins.lsp.lua"}
     },
-    -- ui = {
-    --     backdrop = 100
-    -- },
-    -- install = {
-    --     colorscheme = { "dracula" },
-    -- },
-    -- checker = {
-    --     enabled = true,
-    --     notify = false,
-    -- },
-    -- change_detection = {
-    --     notify = false,
-    -- },
+    ui = {
+        backdrop = 100
+    },
+    install = {
+        colorscheme = { "dracula" },
+    },
+    checker = {
+        enabled = true,
+        notify = false,
+    },
+    change_detection = {
+        notify = false,
+    },
 })
