@@ -2,16 +2,18 @@ local keymap = vim.keymap
 keymap.set({"n", "x", "o"}, "s", "<Nop>", {nowait = true})
 keymap.set({"n", "x", "o"}, "S", "<Nop>", {nowait = true})
 
-keymap.set({"n", "x", "o"}, "<leader>`", "~")
+-- % is uncomfortable using leader e may be easier
+keymap.set({"n", "x", "o"}, "<leader>e", "%", {desc = "[e]quivalent match (nvim)"})
+
+-- shift + ` is uncomfortable using leader ` may be easier
+keymap.set({"n", "x", "o"}, "<leader>`", "~", {desc = "Toggle case"})
 
 keymap.set( "n", "<leader>o", ':<C-u>call append(line("."),   repeat([""], v:count1))<CR>',  {silent = true, desc = "[o]ppend line above (nvim)"})
 keymap.set( "n", "<leader>O", ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>',  {silent = true, desc = "[O]ppend line below (nvim)"})
 
-keymap.set('c', '<C-H>', '<left>')
-keymap.set('c', '<C-L>', '<right>')
-
-keymap.set('i', "<C-L>", "<right>")
-keymap.set('i', "<C-H>", "<left>")
+-- use arrow keys more conviently
+keymap.set({'i', 'c'}, "<C-L>", "<right>")
+keymap.set({'i', 'c'}, "<C-H>", "<left>")
 keymap.set('i', "<C-J>", "<down>")
 keymap.set('i', "<C-K>", "<up>")
 
@@ -19,6 +21,7 @@ keymap.set('n', "<localleader>ff", "gg=G''", {desc="[f]ormat [f]ile (nvim)", sil
 
 keymap.set('n', "J", "mzJ`z", {desc = "[J]oin next line (nvim)", silent = true})
 
+-- For matches center the window on the cursor
 keymap.set('n', 'n', "nzzzv", {silent = true})
 keymap.set('n', 'N', "Nzzzv", {silent = true})
 
@@ -63,7 +66,9 @@ keymap.set('c', "<C-j>", "<C-n>")
 keymap.set('n', '0', ":silent! call search('^.')<CR>^", {silent = true})
 
 keymap.set('n', '<leader>lz', function ()
+---@diagnostic disable-next-line: undefined-field
     vim.opt.lazyredraw = not vim.opt.lazyredraw:get()
+---@diagnostic disable-next-line: undefined-field
     print(string.format("Lazy redraw is: %s", vim.opt.lazyredraw:get()))
 end, {desc= "Toggle [l]a[z]y redraw. (nvim)"})
 
