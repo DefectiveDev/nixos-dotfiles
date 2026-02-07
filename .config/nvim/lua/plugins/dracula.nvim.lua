@@ -33,7 +33,7 @@ return{
         -- show the '~' characters after the end of buffers
         show_end_of_buffer = false, -- default false
         -- use transparent background
-        -- transparent_bg = true, -- default false
+        transparent_bg = true, -- default false
         -- set custom lualine background color
         -- lualine_bg_color = "#44475a", -- default nil
         -- set italic comment
@@ -42,7 +42,9 @@ return{
         overrides = function (colors)
             return {
                 MoreMsg = { fg = colors.bright_green, ctermfg = 121 },
-                NonText = { fg = colors.white }
+                NonText = { fg = colors.white },
+                Comment = { fg = colors.comment, bold =true},
+                MatchParen = { reverse=true }
             }
         end
         -- You can use overrides as table like this
