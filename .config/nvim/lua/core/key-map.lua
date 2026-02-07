@@ -33,14 +33,18 @@ keymap.set('x', '<C-j>', ":m '>+1<CR>gv=gv",{ desc= "Move line down (nvim)", sil
 
 keymap.set({'v','n'}, "<leader>r", "r",{ desc = "Regular [r]eplace (nvim)"})
 keymap.set({'v','n'}, "<leader>x", "x",{ desc = "Regular char delete (nvim)"})
+
+-- These keymaps do not add to current paste information.
 keymap.set({'v','n'}, "r", "\"_r",{ desc = "Void [r]eplace (nvim)"})
 keymap.set({'v','n'}, "x", "\"_x",{ desc = "Void char delete (nvim)"})
 keymap.set({'v','n'}, "<leader>d", "\"_d",{ desc = "Void [d]elete (nvim)", noremap = true})
 keymap.set({'v','n'}, '<leader>c', "\"_c", {desc = "Void [c]hange (nvim)", noremap = false})
 keymap.set({'v','n'}, '<leader>C', "\"_C", {desc = "Void [C]hange (nvim)", noremap = false})
 
+-- Copies into system clipboard
 keymap.set({'v','n'}, "<leader>y", "\"+y",{ desc = "[y]ank to clipboard (nvim)" })
 
+-- This will paste for system clipboard
 keymap.set({'v','n'}, "<leader>p", "\"+p", {desc = "[p]aste from clipboard after cursor (nvim)"})
 keymap.set({'v','n'}, "<leader>P", "\"+P", {desc = "[P]aste from clipboard before cursor (nvim)"})
 keymap.set('x', "<leader>p", "\"_dh\"+p", {desc = "[p]aste from clipboard void selection (nvim)"})
@@ -53,9 +57,11 @@ keymap.set('n', "<leader>j", ":cnext<CR>zz", {desc = "Quick fix select next (nvi
 
 keymap.set('n', "<leader>q", ":cclose<CR>", {desc = "[q]uick close quick fix (nvim)"})
 
+-- swapped  keys for easy command line access
 keymap.set('', ';', ':')
 keymap.set('', ':', ';')
 
+-- tab and shift tab can traverse the current open buffers
 keymap.set('n', "<leader><TAB>", ":bn<CR>", {silent = true})
 keymap.set('n', "<leader><S-TAB>", ":bp<CR>", { silent = true })
 
@@ -63,31 +69,18 @@ keymap.set('c', "<C-k>", "<C-p>")
 
 keymap.set('c', "<C-j>", "<C-n>")
 
+-- 0 will skip over empty lines then to the first chracter
 keymap.set('n', '0', ":silent! call search('^.')<CR>^", {silent = true})
 
 keymap.set('n', '<leader>lz', function ()
+    -- this works and helps with performance when messing with macros.
 ---@diagnostic disable-next-line: undefined-field
     vim.opt.lazyredraw = not vim.opt.lazyredraw:get()
 ---@diagnostic disable-next-line: undefined-field
     print(string.format("Lazy redraw is: %s", vim.opt.lazyredraw:get()))
 end, {desc= "Toggle [l]a[z]y redraw. (nvim)"})
 
--- Allow me to tab over specified chars.
--- keymap.set('i', "<TAB>",function ()
---     local chars_tab_over = {'"', "'", '{', '}', '(', ')', '[', ']' }
---
---     local cur_cursor_pos = vim.fn.col(".")
---     local current_char = vim.fn.getline("."):sub(cur_cursor_pos, cur_cursor_pos)
---
---     for _, char in pairs(chars_tab_over) do
---         if current_char == char then
---             return "<right>"
---         end
---     end
---
---     return "<TAB>"
--- end, {expr = true, silent = true})
-
+-- Enter in command line if completition exist will make it complete in command line
 keymap.set('c', "<CR>", function ()
     if vim.fn.pumvisible() == 1 then
         return "<C-y>"
