@@ -3,6 +3,11 @@ return {
     pin = true,
     dependencies = { "https://github.com/nvim-tree/nvim-web-devicons.git" },
     event = "VimEnter",
+    cond = function ()
+        if vim.fn.argc(-1) == 0 then
+            return true
+        end
+    end,
     init = false,
     opts = function ()
         local dashboard = require('alpha.themes.dashboard')
