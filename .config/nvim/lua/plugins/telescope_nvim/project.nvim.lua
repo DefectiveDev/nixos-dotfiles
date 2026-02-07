@@ -1,6 +1,8 @@
 return {
     "https://github.com/DrKJeff16/project.nvim.git",
-    pin = true,
+    version = "v0.7.0-1",
+    -- enabled = false,
+    lazy =false,
     specs = {
         "https://github.com/nvim-telescope/telescope.nvim.git",
         config = function ()
@@ -15,18 +17,19 @@ return {
                 vim.g.projects_loaded = true
             end
             vim.cmd("Telescope projects")
-        end, desc = "[f]ind [p]rojects (Projects-Telescope)"},
-        {"<leader>fap", "<cmd>ProjectAddManually<cr>", desc = "[f]inder [a]dd current directory to [p]rojects (Projects-Telescope)"}
+        end, desc = "[f]ind [p]rojects (Project + Telescope)"},
+        {"<leader>fap", "<cmd>ProjectAddCurDir<cr>", desc = "[f]inder [a]dd current directory to [p]rojects (Project)"}
     },
-    cmd = { "ProjectAddManually", "Telescope projects" },
+    cmd = { "ProjectAddCurDir", "Telescope projects" },
     opts = { patterns = { ".envrc", ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" } },
     config = function(_, opts)
         require("project").setup(opts)
         function _ADD_CURR_DIR_TO_PROJECTS()
-            local historyfile = require("project_nvim.utils.path").historyfile
             local curr_directory = vim.fn.expand( "%:p:h" )
-            vim.cmd("!echo " .. curr_directory .. " >> " .. historyfile)
+            local command = "ProjectAdd " .. curr_directory
+            vim.cmd(command)
+            vim.notify("Added project path to file: " .. curr_directory)
         end
-        vim.cmd("command! ProjectAddManually lua _ADD_CURR_DIR_TO_PROJECTS()")
+        vim.cmd("command! ProjectAddCurDir lua _ADD_CURR_DIR_TO_PROJECTS()")
     end
 }
