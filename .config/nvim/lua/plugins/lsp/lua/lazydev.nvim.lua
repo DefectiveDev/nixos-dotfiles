@@ -1,7 +1,7 @@
 return {
     "https://github.com/folke/lazydev.nvim.git",
     pin = false,
-    ft = "lua", -- only load on lua files
+    event = "LspAttach *.lua", -- only load on lua files
     specs = {
         'https://github.com/saghen/blink.cmp.git',
         opts = {
