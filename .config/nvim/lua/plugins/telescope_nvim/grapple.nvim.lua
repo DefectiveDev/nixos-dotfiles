@@ -5,11 +5,20 @@ return {
     keys = { { "<leader>gt", ":Grapple toggle<cr>", desc = "[g]rapple [t]oggle add/remove a file (Grapple)", silent = true } },
     opts = { scope = "git", icons = true },
     specs = {
-        "https://github.com/nvim-telescope/telescope.nvim.git",
-        cmd = {"Telescope"},
-        specs = {{
-            "https://github.com/DefectiveDev/grapple.nvim.git",
-            keys = { { "<leader>gg", ":Telescope grapple tags<cr>", desc = "[g]et [g]rapple tags (Grapple + Telescope)", silent = true } }
-        }}
+        {
+            "https://github.com/nvim-telescope/telescope.nvim.git",
+            cmd = {"Telescope"},
+            specs = {{
+                "https://github.com/DefectiveDev/grapple.nvim.git",
+                keys = { { "<leader>gg", ":Telescope grapple tags<cr>", desc = "[g]et [g]rapple tags (Grapple + Telescope)", silent = true } }
+            }}
+        },
+        {
+            "https://github.com/DrKJeff16/project.nvim.git",
+            opts = function (_, opts)
+                require("lazy").load({ plugins = { "grapple.nvim" } })
+                return opts
+            end
+        }
     }
 }
