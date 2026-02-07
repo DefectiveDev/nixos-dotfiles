@@ -12,20 +12,23 @@ end
 -- TODO: auto load lsp subdirectory for lsp specific plugins
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
-    {import = "plugins"},
-    {import = "plugins.telescope_nvim"},
-    {import = "plugins.lsp"},
-    {import = "plugins.lsp.lua"}
-},
-{
-    install = {
-        colorscheme = { "dracula" },
+    spec = {
+        {import = "plugins"},
+        {import = "plugins.telescope_nvim"},
+        {import = "plugins.lsp"},
+        {import = "plugins.lsp.lua"}
     },
-    checker = {
-        enabled = true,
-        notify = false,
-    },
-    change_detection = {
-        notify = false,
-    },
+    -- ui = {
+    --     backdrop = 100
+    -- },
+    -- install = {
+    --     colorscheme = { "dracula" },
+    -- },
+    -- checker = {
+    --     enabled = true,
+    --     notify = false,
+    -- },
+    -- change_detection = {
+    --     notify = false,
+    -- },
 })

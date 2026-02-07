@@ -1,8 +1,7 @@
 if vim.g.vscode then
-	require("vscode")
-	return;
+    require("vscode")
+    return;
 end
 
 require("core")
-require("start-lazy")
-
+require("lazy-config")
