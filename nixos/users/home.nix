@@ -84,7 +84,10 @@
         # };
     };
 
-    home.file."Documents".source = config.lib.file.mkOutOfStoreSymLink ../../Documents;
+    # TODO: find a way to remove the absolute path of this.
+    # https://github.com/nix-community/home-manager/issues/676#issuecomment-1595795685
+    home.file."Documents".source = config.lib.file.mkOutOfStoreSymlink /home/framework/.nixos-dotfiles/Documents;
+
 
     # disabled to avoid hyprland config warning on build
     # wayland.windowManager.hyprland.enable = true;

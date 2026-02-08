@@ -46,6 +46,7 @@ in
 # fzf # set up in home.nix
     ];
 
+    # TODO: use config.lib.file.mkOutOfStoreSymlink instead. Once able to workaround absolute path.
     home.activation.nvim = lib.mkAfter ''
         rm -rf $HOME/.config/nvim
 
