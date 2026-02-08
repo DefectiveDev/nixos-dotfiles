@@ -1,7 +1,7 @@
 local opt = vim.opt
 -- set <Leader> key to space
 vim.g.mapleader = " "
-vim.g.maplocalleader = ","
+vim.g.maplocalleader = "\\"
 
 --use same bar for all buffers
 opt.laststatus = 3
