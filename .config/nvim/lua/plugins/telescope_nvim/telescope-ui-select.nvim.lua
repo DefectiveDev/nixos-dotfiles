@@ -1,8 +1,8 @@
 return {
     "https://github.com/nvim-telescope/telescope-ui-select.nvim.git",
     pin = true,
-    lazy = true,
-    dependencies = { "https://github.com/nvim-telescope/telescope.nvim.git" },
+    lazy = false,
+    -- dependencies = { "https://github.com/nvim-telescope/telescope.nvim.git" },
     specs = {
         {
             "https://github.com/nvim-telescope/telescope.nvim.git",
@@ -35,6 +35,7 @@ return {
     },
     init = function ()
         vim.ui.select = function(...)
+            require("lazy").load({plugins = {"telescope.nvim"}})
             require("lazy").load({plugins = {"telescope-ui-select.nvim"}})
             return vim.ui.select(...)
         end
