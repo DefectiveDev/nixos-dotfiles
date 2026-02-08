@@ -2,6 +2,7 @@ return {
     "https://github.com/stevearc/aerial.nvim.git",
     pin = true,
     -- BUG: Aerial does not load lsp backend first attempt. Other solutions will break due to a lack of a backend.
+    -- TODO: Find a way to detect lsp finished loading instead of attached.
     -- HACK: Use telescope builtin as a back up if lsp is not attached.
     keys = {{
         "<leader>gs",
