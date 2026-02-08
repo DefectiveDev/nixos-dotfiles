@@ -24,7 +24,7 @@ return{
         },
     },
     config = function(_, opts)
-        -- BUG: lazy load this plugin like telescope file browser. This will prevent unnecessary startup time
+        -- TODO: lazy load this plugin like telescope file browser. This will prevent unnecessary startup time
 
         -- disable netrw at the very start of your init.lua
         vim.g.loaded_netrw = 1
