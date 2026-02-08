@@ -3,7 +3,6 @@ return {
     pin = false,
     event = {"BufReadPre", "BufNewFile"},
     config = function()
-
         -- Under language features you can find the providers! https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#languageFeatures-side
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -126,4 +125,3 @@ return {
 
     end,
 }
-
