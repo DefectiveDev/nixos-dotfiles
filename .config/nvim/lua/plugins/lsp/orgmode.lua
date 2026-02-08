@@ -11,6 +11,7 @@ return {
                 org_capture = "<localleader>oc"
             }
         },
+        -- Forces use of ui select
         ui = {
             menu = {
                 handler = function(data)
