@@ -57,6 +57,7 @@ return {
         },
         {
             "Kaiser-Yang/blink-cmp-git",
+            pin = true,
             -- normally blink cmp will force this to load without the event activation
             event = { "InsertEnter octo" }
         }
