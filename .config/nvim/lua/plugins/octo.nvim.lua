@@ -3,9 +3,7 @@ return {
     pin = true,
     cmd = "Octo",
     opts = {
-        -- or "fzf-lua" or "snacks" or "default"
         picker = "telescope",
-        -- bare Octo command opens picker of commands
         enable_builtin = true,
     },
     keys = {
@@ -36,6 +34,32 @@ return {
             end,
             desc = "[g]itHub [s]earch (Octo)",
         },
+    },
+    specs = {
+        {
+            "https://github.com/saghen/blink.cmp.git",
+            opts = {
+                sources = {
+                    per_filetype = {
+                        octo = { inherit_defaults = true, "git" }
+                    },
+                    providers = {
+                        git = {
+                            module = "blink-cmp-git",
+                            name = "Git",
+                            opts = {
+                                -- options for the blink-cmp-git
+                            },
+                        },
+                    }
+                }
+            }
+        },
+        {
+            "Kaiser-Yang/blink-cmp-git",
+            -- normally blink cmp will force this to load without the event activation
+            event = { "InsertEnter octo" }
+        }
     },
     dependencies = {
         "nvim-lua/plenary.nvim",
