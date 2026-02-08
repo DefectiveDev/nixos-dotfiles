@@ -16,7 +16,7 @@ return {
             dashboard.button( "e", "  New file" , ":Oil<CR>"),
             dashboard.button( "f", "󰈞  Find file", ":Telescope find_files<CR>"),
             dashboard.button( "r", "  Recent"   , ":Telescope oldfiles<CR>"),
-            dashboard.button( "g", "󰈬  Find Word"   , ":Telescope live_grep<CR>"),
+            dashboard.button( "s", "󰈬  Find string"   , ":Telescope live_grep<CR>"),
             dashboard.button( "p", "  Jump to project"   , ":Telescope projects<CR>"),
             dashboard.button( "q", "  Quit NVIM", ":qa<CR>"),
         }
