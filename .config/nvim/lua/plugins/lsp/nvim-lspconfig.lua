@@ -13,15 +13,6 @@ return {
 
                 opts.buffer = bufnr
 
-                vim.api.nvim_create_autocmd({'CursorHold', 'CursorHoldI'},{
-                    buffer = bufnr,
-                    callback = vim.lsp.buf.document_highlight,
-                })
-
-                vim.api.nvim_create_autocmd({'CursorMoved', 'CursorMovedI'},{
-                    buffer = bufnr,
-                    callback = vim.lsp.buf.clear_references,
-                })
 
                 local client = vim.lsp.get_client_by_id(env.data.client_id)
 
@@ -42,6 +33,19 @@ return {
                 if not server_capabilities then
                     return
                 end
+
+                if server_capabilities.documentHighlightProvider then
+                    vim.api.nvim_create_autocmd({'CursorHold', 'CursorHoldI'},{
+                        buffer = bufnr,
+                        callback = vim.lsp.buf.document_highlight,
+                    })
+
+                    vim.api.nvim_create_autocmd({'CursorMoved', 'CursorMovedI'},{
+                        buffer = bufnr,
+                        callback = vim.lsp.buf.clear_references,
+                    })
+                end
+
 
                 if server_capabilities.declarationProvider then
                     opts.desc = "[g]o to [d]eclaration (nvim)"
