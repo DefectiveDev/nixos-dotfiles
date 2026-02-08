@@ -3,8 +3,10 @@ local opt = vim.opt
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
+--use same bar for all buffers
 opt.laststatus = 3
 opt.confirm = true
+-- completion menu
 opt.completeopt = "menu,menuone"
 -- relative line numbers
 opt.relativenumber = true
