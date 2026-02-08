@@ -30,6 +30,7 @@
         nwg-look
         obs-cli
         socat #for socket connections used in hyprland
+        github-cli
 
         #fonts
         nerd-fonts.iosevka-term-slab
