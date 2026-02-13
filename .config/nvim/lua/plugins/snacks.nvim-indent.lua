@@ -11,6 +11,11 @@ return {
             enabled =true,
             animate = { enabled = false },
             scope = { only_current = true },
+            filter =  function (buf, win)
+                local filter = vim.g.snacks_indent ~= false and vim.b[buf].snacks_indent ~= false and vim.bo[buf].buftype == ""
+                filter = vim.bo[buf].filetype ~= "org" and filter
+                return filter
+            end
         }
     }
 }
