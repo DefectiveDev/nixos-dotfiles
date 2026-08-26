@@ -118,6 +118,12 @@
     services.gvfs.enable = true; 
     services.udisks2.enable = true;
 
+    services.avahi = {
+        enable = true;
+        openFirewall = true;
+    };
+
+
     services.flatpak.enable = true;
 
     xdg = {
@@ -131,10 +137,15 @@
             wlr.enable = true;
             extraPortals = [
                 pkgs.xdg-desktop-portal-wlr
+                pkgs.xdg-desktop-portal-gnome
                 pkgs.xdg-desktop-portal-gtk
                 pkgs.xdg-desktop-portal-hyprland
             ];
         };
+    };
+
+    programs.niri = {
+        enable = true;
     };
 
     programs.hyprland = {
@@ -203,8 +214,8 @@
 # services.openssh.enable = true;
 
 # Open ports in the firewall.
-# networking.firewall.allowedTCPPorts = [ ... ];
-# networking.firewall.allowedUDPPorts = [ ... ];
+networking.firewall.allowedTCPPorts = [7236 7250];
+networking.firewall.allowedUDPPorts = [7236 5353];
 # Or disable the firewall altogether.
 # networking.firewall.enable = false;
 

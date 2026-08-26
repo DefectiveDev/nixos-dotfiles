@@ -28,11 +28,11 @@ return {
             desc = "List [g]itHub [n]otifications (Octo)",
         },
         {
-            "<leader>gs",
+            "<leader>gS",
             function()
                 require("octo.utils").create_base_search_command { include_current_repo = true }
             end,
-            desc = "[g]itHub [s]earch (Octo)",
+            desc = "[g]itHub [S]earch (Octo)",
         },
     },
     specs = {

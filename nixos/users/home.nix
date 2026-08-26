@@ -18,7 +18,6 @@
         blender
         godot-mono
         slurp#capture wayland region
-        xdg-desktop-portal-hyprland#capture wayland windows
         wl-clipboard
         wl-clip-persist #when application closes this will keep the items saved
         grim #screenshots
@@ -31,6 +30,8 @@
         obs-cli
         socat #for socket connections used in hyprland
         github-cli
+        # gnome-network-displays
+        wdisplays
 
         #fonts
         nerd-fonts.iosevka-term-slab
@@ -42,6 +43,8 @@
         noto-fonts-color-emoji
     ] ++ (with unstable-pkgs; [
         fastfetch
+        # webcord-vencord #as it stands currently webcord can not screen share.
+        vencord
         inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
     ]) ++ [
     ];
