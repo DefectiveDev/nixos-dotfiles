@@ -7,16 +7,6 @@
 
         nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-        zen-browser = {
-            url = "github:0xc000022070/zen-browser-flake";
-            inputs = {
-# IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
-# to have it up-to-date or simply don't specify the nixpkgs input
-                nixpkgs.follows = "unstable-nixpkgs";
-                home-manager.follows = "home-manager";
-            };
-        };
-
         nur = {
             url = "github:nix-community/NUR";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -26,43 +16,48 @@
             url = "github:nix-community/home-manager/release-25.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+#Dendritic pattern needed files
+        flake-parts.url = "github:hercules-ci/flake-parts";
+        import-tree.url = "github:vic/import-tree";
     };
 
-    # TODO: Turn into flake parts.
+# TODO: Turn into flake parts.
 
-    outputs = {self, nixpkgs, home-manager, nixos-hardware, ...}@inputs: 
-        let 
-        system = "x86_64-linux";
-    unstable-pkgs = import inputs.unstable-nixpkgs {
-        inherit system;
-        config = {allowUnfree=true;};
-    };
-    pkgs = import nixpkgs {
-        inherit system;
-        config = {allowUnfree=true;};
-# overlays = [ inputs.nur.overlay ];
-    };
-    in
-    {
-        nixosConfigurations.framework-nixos = nixpkgs.lib.nixosSystem {
-            inherit system;
-            specialArgs = {inherit inputs; inherit unstable-pkgs;};
-            modules = [
-                ./system/configuration.nix
-                    inputs.nur.modules.nixos.default
-                    nixos-hardware.nixosModules.framework-16-7040-amd
-                    home-manager.nixosModules.home-manager
-                    {
-                        home-manager = {
-                            extraSpecialArgs = {inherit inputs; inherit unstable-pkgs;};
-                            useGlobalPkgs = true;
-                            useUserPackages = true;
-                            users.framework = import ./users/home.nix;
-                            backupFileExtension = "backup";
-                        };
-                    }
-            ];
-        };
+    outputs = {self, nixpkgs, home-manager, nixos-hardware, flake-parts, import-tree, ...}@inputs: 
+    # let
+    #     system = "x86_64-linux";
+    #     unstable-pkgs = import inputs.unstable-nixpkgs {
+    #         inherit system;
+    #         config = {allowUnfree=true;};
+    #     };
+    #     pkgs = import nixpkgs {
+    #         inherit system;
+    #         config = {allowUnfree=true;};
+    #         # overlays = [ inputs.nur.overlay ];
+    #     };
+    # in
+    # {
+        inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
+        # nixosConfigurations.framework-nixos = nixpkgs.lib.nixosSystem {
+        #     inherit system;
+        #     specialArgs = {inherit inputs; inherit unstable-pkgs;};
+        #     modules = [
+        #         ./system/configuration.nix
+        #         inputs.nur.modules.nixos.default
+        #         nixos-hardware.nixosModules.framework-16-7040-amd
+        #         home-manager.nixosModules.home-manager
+        #         {
+        #             home-manager = {
+        #                 extraSpecialArgs = {inherit inputs; inherit unstable-pkgs;};
+        #                 useGlobalPkgs = true;
+        #                 useUserPackages = true;
+        #                 users.framework = import ./users/home.nix;
+        #                 backupFileExtension = "backup";
+        #             };
+        #         }
+        #     ];
+        # };
 #    homeConfigurations."framework@Framework-NixOS" = inputs.home-manager.lib.homeManagerConfiguration {
 #     inherit pkgs;
 #    extraSpecialArgs = { inherit inputs; inherit unstable-pkgs; };
@@ -72,9 +67,9 @@
 # ];
 # };
 
-        devShell.${system} = pkgs.mkShell {
-            name = "nix-dev";
-            packages = with pkgs; [nil];
-        };
-    };
+        # devShell.${system} = pkgs.mkShell {
+        #     name = "nix-dev";
+        #     packages = with pkgs; [nil];
+        # };
+    # };
 }
