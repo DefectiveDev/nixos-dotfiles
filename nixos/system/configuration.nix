@@ -163,10 +163,11 @@
         ];
     };
 
-
     services.udev.packages = with pkgs; [
         qmk-udev-rules
     ];
+
+    services.dnsmasq.enable = true;
 # List packages installed in system profile.
 # You can use https://search.nixos.org/ to find more packages (and options).
     environment.systemPackages = with pkgs; [
@@ -177,6 +178,9 @@
         git
         comma
         pulsemixer
+        gnome-network-displays
+        pulseaudio
+        dnsmasq
         (pkgs.writeShellApplication {
             name = "ns";
             runtimeInputs = with pkgs; [
@@ -214,8 +218,8 @@
 # services.openssh.enable = true;
 
 # Open ports in the firewall.
-networking.firewall.allowedTCPPorts = [7236 7250];
-networking.firewall.allowedUDPPorts = [7236 5353];
+    networking.firewall.allowedTCPPorts = [7236 7250];
+    networking.firewall.allowedUDPPorts = [7236 5353];
 # Or disable the firewall altogether.
 # networking.firewall.enable = false;
 
