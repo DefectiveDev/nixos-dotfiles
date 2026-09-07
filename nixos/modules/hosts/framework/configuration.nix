@@ -7,6 +7,7 @@
             self.nixosModules.homeManager
             self.nixosModules.librewolf
             self.nixosModules.brave
+            self.nixosModules.qmk
         ];
 
         programs.nix-ld.enable = true;
@@ -36,7 +37,6 @@
             enable32Bit = true;
         };
 
-        hardware.keyboard.qmk.enable = true;
 
         hardware.bluetooth = {
             enable = true;
@@ -135,31 +135,25 @@
             ];
         };
 
-        services.udev.packages = with pkgs; [
-            qmk-udev-rules
-        ];
-
-        services.dnsmasq.enable = true;
 
         # List packages installed in system profile.
         # You can use https://search.nixos.org/ to find more packages (and options).
         environment.systemPackages = with pkgs; [
             vulkan-loader
-                neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-                qmk
-                wget
-                git
-                comma
-                pulsemixer
-                pulseaudio
-                (pkgs.writeShellApplication {
-                 name = "ns";
-                 runtimeInputs = with pkgs; [
-                 fzf
-                 nix-search-tv
-                 ];
-                 text = ''exec "${pkgs.nix-search-tv.src}/nixpkgs.sh" "$@"'';
-                 })
+            neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+            wget
+            git
+            comma
+            pulsemixer
+            pulseaudio
+            (pkgs.writeShellApplication {
+                name = "ns";
+                runtimeInputs = with pkgs; [
+                    fzf
+                    nix-search-tv
+                ];
+                text = ''exec "${pkgs.nix-search-tv.src}/nixpkgs.sh" "$@"'';
+            })
         ];
 
 
@@ -167,7 +161,7 @@
         users.users.framework = {
             isNormalUser = true;
             extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-                shell = pkgs.zsh;
+            shell = pkgs.zsh;
             packages = with pkgs; [
                 tree
             ];
