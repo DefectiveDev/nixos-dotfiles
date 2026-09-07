@@ -5,6 +5,8 @@
         imports = [ # Include the results of the hardware scan.
             self.nixosModules.frameworkHardware
             self.nixosModules.homeManager
+            self.nixosModules.librewolf
+            self.nixosModules.brave
         ];
 
         programs.nix-ld.enable = true;
@@ -124,7 +126,6 @@
             xwayland.enable = true;
         };
 
-        programs.firefox.enable = true;
         programs.nix-index.enable = true;
         programs.zsh.enable = true;
 

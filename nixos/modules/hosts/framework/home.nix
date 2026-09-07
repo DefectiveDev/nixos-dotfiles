@@ -8,6 +8,8 @@
             self.homeModules.kitty
             self.homeModules.zsh
             self.homeModules.lsd
+            self.homeModules.librewolf
+            self.homeModules.brave
         ];
 
 
@@ -192,16 +194,6 @@
                     "--cmd cd"
                 ];
             };
-
-            # btop = {
-            #     enable = true;
-            #     settings = {
-            #         color_theme = "dracula";
-            #         theme_background = false;
-            #         vim_keys = true;
-            #         show_battery = false;
-            #     };
-            # };
         };
 
         #do not change used to determine what old packages were based on. Look up how before doing so
