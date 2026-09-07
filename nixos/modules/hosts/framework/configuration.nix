@@ -151,9 +151,7 @@
                 git
                 comma
                 pulsemixer
-                gnome-network-displays
                 pulseaudio
-                dnsmasq
                 (pkgs.writeShellApplication {
                  name = "ns";
                  runtimeInputs = with pkgs; [
@@ -181,8 +179,8 @@
 
 
         # Open ports in the firewall.
-        networking.firewall.allowedTCPPorts = [7236 7250];
-        networking.firewall.allowedUDPPorts = [7236 5353];
+        networking.firewall.allowedTCPPorts = [];
+        networking.firewall.allowedUDPPorts = [];
         # Or disable the firewall altogether.
         # networking.firewall.enable = false;
 
