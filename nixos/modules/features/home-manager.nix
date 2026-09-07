@@ -12,5 +12,4 @@
             backupFileExtension = "backup";
         };
     };
-
 }
