@@ -17,7 +17,9 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-#Dendritic pattern needed files
+        # ez-configs.url = "github:ehllie/ez-configs";
+
+        #Dendritic pattern needed files
         flake-parts.url = "github:hercules-ci/flake-parts";
         import-tree.url = "github:vic/import-tree";
     };

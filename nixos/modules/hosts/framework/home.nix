@@ -1,6 +1,6 @@
 { self, ... }: {
     # This is your home.nix, your module where you configure home-manager
-    # It's imported in your nixos configuration above, and also used in a standalone configuration below
+    # It's imported in your nixos configuration
     flake.homeModules.frameworkModule = { config, pkgs, lib, ...}:
     {
         imports = [
@@ -10,6 +10,7 @@
             self.homeModules.lsd
             self.homeModules.librewolf
             self.homeModules.brave
+            self.homeModules.wofi
         ];
 
 
@@ -21,20 +22,12 @@
             aseprite
             blender
             godot-mono
-            slurp#capture wayland region
-            wl-clipboard
-            wl-clip-persist #when application closes this will keep the items saved
-            grim #screenshots
-            hyprpaper
             waybar
-            wofi
             htop-vim
             libnotify
             nwg-look
             obs-cli
-            socat #for socket connections used in hyprland
             github-cli
-            # gnome-network-displays
             wdisplays
 
             #fonts
@@ -92,20 +85,12 @@
         # https://github.com/nix-community/home-manager/issues/676#issuecomment-1595795685
         home.file."Documents".source = config.lib.file.mkOutOfStoreSymlink /home/framework/.nixos-dotfiles/Documents;
 
-
-        # disabled to avoid hyprland config warning on build
-        # wayland.windowManager.hyprland.enable = true;
-        home.file.".config/hypr".source = ../../../../.config/hypr;
-        home.sessionVariables.NIXOS_OZONE_WL = "1"; #tell electron apps to use wayland
-
         home.file.".config/waybar".source = ../../../../.config/waybar;
 
         services.swaync.enable = true;
         home.file.".config/swaync".source = ../../../../.config/swaync;
 
         home.file.".config/dunst".source = ../../../../.config/dunst;
-
-        home.file.".config/wofi".source = ../../../../.config/wofi;
 
         programs.starship.enable = true;
         home.file.".config/starship.toml".source = ../../../../.config/starship.toml;

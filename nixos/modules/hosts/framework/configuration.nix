@@ -8,6 +8,8 @@
             self.nixosModules.librewolf
             self.nixosModules.brave
             self.nixosModules.qmk
+            self.nixosModules.hyprland
+            self.nixosModules.gaming
         ];
 
         programs.nix-ld.enable = true;
@@ -54,14 +56,14 @@
         nixpkgs.config.allowUnfree = true;
         nixpkgs.config.allowUnfreePredicate = (_: true);
 
-        networking.hostName = "Framework-Nixos"; # Define your hostname.
+        networking.hostName = "Framework"; # Define your hostname.
         # networking options.
         networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
         # Set your time zone.
         time.timeZone = "America/New_York";
 
-        services.displayManager.ly.enable = true;  
+        services.displayManager.ly.enable = true;
 
         # Enable sound.
         security.rtkit.enable = true;
@@ -99,23 +101,6 @@
 
         services.flatpak.enable = true;
 
-        xdg = {
-            autostart.enable = true;
-            mime.enable = true;
-            menus.enable = true;
-            icons.enable = true;
-            sounds.enable = true;
-            portal = {
-                enable = true;
-                wlr.enable = true;
-                extraPortals = [
-                    pkgs.xdg-desktop-portal-wlr
-                    pkgs.xdg-desktop-portal-gnome
-                    pkgs.xdg-desktop-portal-gtk
-                    pkgs.xdg-desktop-portal-hyprland
-                ];
-            };
-        };
 
         programs.niri = {
             enable = true;
@@ -144,6 +129,7 @@
             wget
             git
             comma
+            xwayland-satellite
             pulsemixer
             pulseaudio
             (pkgs.writeShellApplication {
