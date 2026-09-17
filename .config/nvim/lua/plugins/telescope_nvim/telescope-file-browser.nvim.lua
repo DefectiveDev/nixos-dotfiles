@@ -18,6 +18,7 @@ return {
     keys = {{"<leader>fe", "<cmd>Telescope file_browser<cr>", desc = "[f]ile [e]xplorer (File-Browser-Telescope)"}},
     cmd = "Telescope file_browser",
     dependencies = { "https://github.com/nvim-telescope/telescope.nvim.git" },
+    enabled = false,
     specs = {
         "https://github.com/nvim-telescope/telescope.nvim.git",
         opts = {
@@ -42,13 +43,13 @@ return {
         }
     },
     init = function()
-        if vim.fn.argc() == 1 then
-            ---@diagnostic disable-next-line: param-type-mismatch
-            local stat = vim.loop.fs_stat(vim.fn.argv(0))
-            if stat and stat.type == "directory" then
-                require("lazy").load({plugins = {"telescope-file-browser.nvim"}})
-            end
-        end
+        -- if vim.fn.argc() == 1 then
+        --     ---@diagnostic disable-next-line: param-type-mismatch
+        --     local stat = vim.loop.fs_stat(vim.fn.argv(0))
+        --     if stat and stat.type == "directory" then
+        --         require("lazy").load({plugins = {"telescope-file-browser.nvim"}})
+        --     end
+        -- end
     end,
     config = function()
         vim.g.loaded_netrw = 1
