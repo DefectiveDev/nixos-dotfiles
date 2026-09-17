@@ -1,6 +1,7 @@
 return {
     "https://github.com/nvim-orgmode/orgmode",
     event = "VeryLazy",
+    enabled = false,
     keys = {
         -- continue list when pressing shift + enter
         {"<S-CR>", function() require("orgmode").action("org_mappings.meta_return") end, mode = "i", ft = "org"},

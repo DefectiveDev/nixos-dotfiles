@@ -44,24 +44,50 @@ return{
                 MoreMsg = { fg = colors.bright_green, ctermfg = 121 },
                 NonText = { fg = colors.white },
                 Comment = { fg = colors.comment, bold =true},
-                MatchParen = { reverse=true }
+                MatchParen = { reverse=true },
+
+                rainbowcol1 = { fg = colors.purple },
+                rainbowcol2 = { fg = colors.red },
+                rainbowcol3 = { fg = colors.orange },
+                rainbowcol4 = { fg = colors.yellow },
+                rainbowcol5 = { fg = colors.cyan },
+                rainbowcol6 = { fg = colors.green },
+                rainbowcol7 = { fg = colors.fg },
+
+                [ "@markup.underline" ] = { fg = colors.cyan, underline = true },
+                [ "@markup.heading.1" ] = { fg = colors.purple, bold = true },
+                [ "@markup.heading.2" ] = { fg = colors.red, bold = true },
+                [ "@markup.heading.3" ] = { fg = colors.orange, bold = true },
+                [ "@markup.heading.4" ] = { fg = colors.yellow, bold = true },
+                [ "@markup.heading.5" ] = { fg = colors.cyan, bold = true },
+                [ "@markup.heading.6" ] = { fg = colors.green, bold = true },
+
+                DiffText = { fg = colors.purple },
+
+                RenderMarkdownH1Bg = { fg = colors.purple },
+                RenderMarkdownH2Bg = { fg = colors.red },
+                RenderMarkdownH3Bg = { fg = colors.orange },
+                RenderMarkdownH4Bg = { fg = colors.yellow },
+                RenderMarkdownH5Bg = { fg = colors.cyan },
+                RenderMarkdownH6Bg = { fg = colors.green },
+
             }
         end
         -- You can use overrides as table like this
         -- overrides = {
-        --   NonText = { fg = "white" }, -- set NonText fg to white
-        --   NvimTreeIndentMarker = { link = "NonText" }, -- link to NonText highlight
-        --   Nothing = {} -- clear highlight of Nothing
-        -- },
-        -- Or you can also use it like a function to get color from theme
-        -- overrides = function (colors)
-        --   return {
-        --     NonText = { fg = colors.white }, -- set NonText fg to white of theme
-        --   }
-        -- end,
-    },
-    config = function(_, opts)
-        require("dracula").setup(opts)
-        vim.cmd[[colorscheme dracula]]
-    end
-}
+            --   NonText = { fg = "white" }, -- set NonText fg to white
+            --   NvimTreeIndentMarker = { link = "NonText" }, -- link to NonText highlight
+            --   Nothing = {} -- clear highlight of Nothing
+            -- },
+            -- Or you can also use it like a function to get color from theme
+            -- overrides = function (colors)
+                --   return {
+                    --     NonText = { fg = colors.white }, -- set NonText fg to white of theme
+                    --   }
+                    -- end,
+                },
+                config = function(_, opts)
+                    require("dracula").setup(opts)
+                    vim.cmd[[colorscheme dracula]]
+                end
+            }

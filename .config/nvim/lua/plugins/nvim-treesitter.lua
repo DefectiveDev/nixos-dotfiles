@@ -4,7 +4,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     build = ":TSUpdate",
     opts = {
-        --enable syntax highlighting
+        ensure_installed = {"markdown", "markdown_inline"},
         indent = {
             enable = true,
             -- disable = {"c_sharp"},

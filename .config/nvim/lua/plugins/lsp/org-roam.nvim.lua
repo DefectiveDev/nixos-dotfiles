@@ -1,6 +1,7 @@
 return {
     "https://github.com/chipsenkbeil/org-roam.nvim.git",
     tag = "0.2.0",
+    enabled = false,
     dependencies = { { "nvim-orgmode/orgmode" } },
     -- TODO: check with conflicting keymaps with orgmode file.
     opts = {
