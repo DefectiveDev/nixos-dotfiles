@@ -25,7 +25,6 @@ in
                     "aefkmifgmaafnojlojpnekbpbmjiiogg" # Popup Blocker (strict)
                     "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock for YouTube
                     "gebbhagfogifgggkldgodflihgfeippi" # Return YouTube Dislike
-                    "enamippconapkdmgfgjchkhakpfinmaj" # DeArrow
                 ];
                 commandLineArgs = [
                     "--disable-features=AutofillSavePaymentMethods"

@@ -5,10 +5,11 @@
         imports = [ # Include the results of the hardware scan.
             self.nixosModules.frameworkHardware
             self.nixosModules.homeManager
-            self.nixosModules.librewolf
+            # self.nixosModules.librewolf
             self.nixosModules.brave
             self.nixosModules.qmk
             self.nixosModules.hyprland
+            self.nixosModules.mango
             self.nixosModules.gaming
         ];
 

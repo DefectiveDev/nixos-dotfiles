@@ -7,9 +7,14 @@
 
         nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+        mangowm = {
+            url = "github:mangowm/mango";
+            inputs.nixpkgs.follows = "unstable-nixpkgs";
+        };
+
         nur = {
             url = "github:nix-community/NUR";
-            inputs.nixpkgs.follows = "nixpkgs";
+            inputs.nixpkgs.follows = "unstable-nixpkgs";
         };
 
         home-manager = {

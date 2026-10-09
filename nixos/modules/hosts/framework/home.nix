@@ -8,8 +8,7 @@
             self.homeModules.kitty
             self.homeModules.zsh
             self.homeModules.lsd
-            self.homeModules.librewolf
-            self.homeModules.brave
+            # self.homeModules.librewolf
             self.homeModules.wofi
         ];
 
@@ -19,9 +18,7 @@
 
         home.packages = with pkgs; [
             yq # used for yml files and added for TMUX plugin
-            aseprite
             blender
-            godot-mono
             waybar
             htop-vim
             libnotify
@@ -39,9 +36,11 @@
             noto-fonts-cjk-serif
             noto-fonts-color-emoji
             ] ++ (with pkgs.unstable; [
-                    fastfetch
-                    # webcord-vencord #as it stands currently webcord can not screen share.
-                    vencord
+                aseprite
+                godot
+                fastfetch
+                # webcord-vencord #as it stands currently webcord can not screen share.
+                vencord
             ]) ++ [
         ];
 
