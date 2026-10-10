@@ -34,11 +34,11 @@ return {
         },
     },
     init = function ()
-        vim.ui.select = function(...)
-            require("lazy").load({plugins = {"telescope.nvim"}})
-            require("lazy").load({plugins = {"telescope-ui-select.nvim"}})
-            return vim.ui.select(...)
-        end
+        -- vim.ui.select = function(...)
+        --     require("lazy").load({plugins = {"telescope.nvim"}})
+        --     require("lazy").load({plugins = {"telescope-ui-select.nvim"}})
+        --     return vim.ui.select(...)
+        -- end
     end,
     config = function()
         require("telescope").load_extension("ui-select")

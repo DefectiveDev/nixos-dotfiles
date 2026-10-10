@@ -1,16 +1,22 @@
 return {
     "https://github.com/pwntester/octo.nvim.git",
     pin = true,
+    enabled = false,
     cmd = "Octo",
     opts = {
-        picker = "telescope",
+        picker = "fzf-lua",
         enable_builtin = true,
     },
     keys = {
         {
-            "<leader>gi",
+            "<leader>gil",
             "<CMD>Octo issue list<CR>",
-            desc = "List [g]itHub [i]ssues (Octo)",
+            desc = "[g]itHub [i]ssues [l]ist (Octo)",
+        },
+        {
+            "<leader>gia",
+            "<CMD>Octo issue create<CR>",
+            desc = "[g]itHub [i]ssues [c]reate (Octo)",
         },
         {
             "<leader>gp",
@@ -63,8 +69,9 @@ return {
         }
     },
     dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope.nvim",
+        -- "nvim-lua/plenary.nvim",
+        -- "nvim-telescope/telescope.nvim",
+        "ibhagwan/fzf-lua",
         "nvim-tree/nvim-web-devicons",
     },
 }

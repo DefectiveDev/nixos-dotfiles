@@ -105,6 +105,7 @@
             };
             shellAliases = {
                 cat = "bat";
+                vi = "nvim";
                 #tp = "trash put";
             };
         };

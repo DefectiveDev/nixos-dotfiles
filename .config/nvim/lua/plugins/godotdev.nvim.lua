@@ -1,7 +1,6 @@
-
 return {
     "https://github.com/Mathijs-Bakker/godotdev.nvim.git",
-    dependencies = { 'nvim-dap', 'nvim-dap-ui', 'nvim-treesitter' },
+    dependencies = { 'https://github.com/mfussenegger/nvim-dap.git', 'https://github.com/rcarriga/nvim-dap-ui.git', 'https://github.com/nvim-treesitter/nvim-treesitter.git' },
     opts = {
         editor_host = "127.0.0.1", -- Godot editor host
         editor_port = 6005,        -- Godot LSP port
@@ -9,7 +8,7 @@ return {
         godot_path = "godot",      -- executable used by :GodotRun* and health checks
         csharp = true,             -- Enable C# Installation Support
         autostart_editor_server = false, -- opt-in: start a Neovim server automatically on setup
-        formatter = "gdscript-formatter",    -- "gdscript-formatter" | "gdformat" | false
+        formatter = false,    -- "gdscript-formatter" | "gdformat" | false
         formatter_cmd = nil,       -- string or argv list; default gdscript-formatter adds "--reorder-code"
         inline_hints = {
             enabled = false,         -- enable Neovim inlay hints when the attached server supports them
@@ -70,14 +69,26 @@ return {
                 max_entries = 64,
             },
             float = {
-                width = 0.8,
-                height = 0.8,
-                border = "rounded",
+                position = "center",
+                width = 1,
+                height = 1,
+                border = nil
             },
             buffer = {
-                position = "right",    -- "right" | "bottom" | "current"
-                size = 0.4,
+                position = "bottom",    -- "right" | "bottom" | "current"
+                size = 1,
             },
         },
-    }
+    },
+    config = function (_, opts)
+        require("godotdev").setup(opts)
+        vim.api.nvim_create_autocmd("FileType", {
+            group = vim.api.nvim_create_augroup("GodotDocs", {}),
+            desc = "Godot Docs Keybind",
+            pattern = "gdscript",
+            callback = function()
+        vim.keymap.set("n", "<localleader>gd", "<cmd>GodotDocs<cr>", { desc = "Godot docs" })
+            end,
+        })
+    end
 }

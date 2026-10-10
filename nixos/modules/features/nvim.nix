@@ -27,6 +27,10 @@
         p.typescript
         p.vue
         p.yaml
+        p.markdown
+        p.gdscript
+        p.godot_resource
+        p.gdshader
     ]));
     in
     {
@@ -43,6 +47,7 @@
             tree-sitter
             ast-grep
             sqlite
+            neovim
             # lua-language-server
             # fzf # set up in home.nix
         ];
@@ -55,18 +60,18 @@
             '';
     
         # home.file.".config/nvim" = { source = ../../../.config/nvim; recursive = true; };
-        programs.neovim = {
-            enable = true;
-            defaultEditor = true;
-            viAlias = true;
-            vimAlias = true;
-            withNodeJs = true;
-            withPython3 = true;
-    
-            plugins = [
-                treesitterWithGrammars
-            ];
-        };
+    #     programs.neovim = {
+    #         enable = true;
+    #         defaultEditor = true;
+    #         viAlias = true;
+    #         vimAlias = true;
+    #         withNodeJs = true;
+    #         withPython3 = true;
+    # 
+    #         plugins = [
+    #             treesitterWithGrammars
+    #         ];
+    #     };
     
         home.file."./.local/share/nvim/nix/nvim-treesitter/" = {
             recursive = true;

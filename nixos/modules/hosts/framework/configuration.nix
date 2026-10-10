@@ -112,7 +112,7 @@
             xwayland.enable = true;
         };
 
-        programs.nix-index.enable = true;
+        programs.command-not-found.enable=true;
         programs.zsh.enable = true;
 
         fonts = {
