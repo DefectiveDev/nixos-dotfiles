@@ -1,7 +1,6 @@
 return {
     "https://github.com/pwntester/octo.nvim.git",
     pin = true,
-    enabled = false,
     cmd = "Octo",
     opts = {
         picker = "fzf-lua",
@@ -14,7 +13,7 @@ return {
             desc = "[g]itHub [i]ssues [l]ist (Octo)",
         },
         {
-            "<leader>gia",
+            "<leader>gic",
             "<CMD>Octo issue create<CR>",
             desc = "[g]itHub [i]ssues [c]reate (Octo)",
         },

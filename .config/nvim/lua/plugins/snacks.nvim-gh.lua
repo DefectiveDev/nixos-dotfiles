@@ -2,6 +2,7 @@ return {
     "https://github.com/folke/snacks.nvim.git",
     opts = {
         gh = {
+            enabled = false
             -- your gh configuration comes here
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
