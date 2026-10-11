@@ -61,32 +61,33 @@ vim.api.nvim_create_user_command("CDC", "cd %:p:h", {})
 opt.spelllang = "en_us"
 opt.spell = true
 
+-- Causes issue with markdown menus from other plugins
 
-vim.api.nvim_create_autocmd("FileType", {
-    group = vim.api.nvim_create_augroup("MarkdownSoftWrapText", {}),
-    desc = "In a markdown file wrap text so it will match other text editors",
-    pattern = "markdown",
-    callback = function()
-        vim.bo.textwidth = 0
-        vim.bo.wrapmargin = 0
-        vim.b.prevwrap = vim.wo.wrap
-        vim.wo.wrap = true
-        vim.b.prevlinebreak = vim.wo.linebreak
-        vim.wo.linebreak = true
-        vim.b.prevcolumns = vim.go.columns
-        vim.go.columns = 80
-    end,
-})
-
-vim.api.nvim_create_autocmd("BufLeave", {
-    group = vim.api.nvim_create_augroup("ExitMarkdownSoftWrapText", {}),
-    desc = "In a markdown file wrap text so it will match other text editors, on exit undo settings",
-    pattern = "*",
-    callback = function ()
-        if vim.bo.filetype == "markdown" then
-            vim.wo.wrap=vim.b.prevwrap
-            vim.wo.linebreak=vim.b.prevlinebreak
-            vim.go.columns=vim.b.prevcolumns
-        end
-    end
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--     group = vim.api.nvim_create_augroup("MarkdownSoftWrapText", {}),
+--     desc = "In a markdown file wrap text so it will match other text editors",
+--     pattern = "markdown",
+--     callback = function()
+--         vim.bo.textwidth = 0
+--         vim.bo.wrapmargin = 0
+--         vim.b.prevwrap = vim.wo.wrap
+--         vim.wo.wrap = true
+--         vim.b.prevlinebreak = vim.wo.linebreak
+--         vim.wo.linebreak = true
+--         vim.b.prevcolumns = vim.go.columns
+--         vim.go.columns = 80
+--     end,
+-- })
+--
+-- vim.api.nvim_create_autocmd("BufLeave", {
+--     group = vim.api.nvim_create_augroup("ExitMarkdownSoftWrapText", {}),
+--     desc = "In a markdown file wrap text so it will match other text editors, on exit undo settings",
+--     pattern = "*",
+--     callback = function ()
+--         if vim.bo.filetype == "markdown" then
+--             vim.wo.wrap=vim.b.prevwrap
+--             vim.wo.linebreak=vim.b.prevlinebreak
+--             vim.go.columns=vim.b.prevcolumns
+--         end
+--     end
+-- })
