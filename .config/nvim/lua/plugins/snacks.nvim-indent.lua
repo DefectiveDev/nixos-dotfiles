@@ -8,7 +8,7 @@ return {
     ---@type snacks.Config
     opts = {
         indent = {
-            enabled =true,
+            enabled = true,
             animate = { enabled = false },
             scope = { only_current = true },
             filter =  function (buf, win)
