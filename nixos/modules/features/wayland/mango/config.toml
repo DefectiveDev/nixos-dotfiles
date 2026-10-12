@@ -16,7 +16,7 @@ exec = [
 
 # More option see https://github.com/DreamMaoMao/mango/wiki/
 # Window effect
-blur = 1
+blur = 0
 blur_layer = 0
 blur_optimized = 1
 blur_params_num_passes = 2
@@ -171,7 +171,7 @@ overlay_color = 0x14a57cff
 "SUPER+r" = "reload_config"
 
 # menu and terminal
-"SUPER+d" = "spawn_shell,pgrep wofi >/dev/null 2>&1 && pkill wofi || wofi --show drun"
+"SUPER+d" = "spawn_shell,pgrep wofi >/dev/null 2>&1 && pkill wofi || wofi --show drun -I -i"
 "SUPER+e" = "toggle_named_scratchpad,none,kitty-scratch,kitty -T kitty-scratch"
 
 # exit
