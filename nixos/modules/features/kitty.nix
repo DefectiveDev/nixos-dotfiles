@@ -31,7 +31,8 @@
                 color7 #ABB2BF
                 color15 #ffffff
                 selection_foreground #1e1f28
-                background_opacity 0.5
+                background_opacity 0.75
+                background_blur 1
                 confirm_os_window_close 0
                 map shift+enter send_text application \x1b[13;2u
                 # Nerd Fonts v3.4.0
