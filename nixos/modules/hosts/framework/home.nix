@@ -56,7 +56,7 @@
 
         gtk = {
             enable = true;
-            theme = {
+            gtk4.theme = {
                 name = "Dracula";
                 package = pkgs.dracula-theme;
             };
@@ -118,6 +118,7 @@
                         separator_close = "";
                     };
                 };
+                shellWrapperName = "y";
             };
 
             direnv = {
