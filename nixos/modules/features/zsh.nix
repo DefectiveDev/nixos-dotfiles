@@ -26,6 +26,7 @@
                 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
                 # used for Neovim telescope-all-recents
                 export SQLITE_PATH='${pkgs.sqlite.out}/lib/libsqlite3${pkgs.stdenv.hostPlatform.extensions.sharedLibrary}'
+                # source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
             '';
             syntaxHighlighting = {
                 enable = true;
