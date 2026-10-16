@@ -75,7 +75,7 @@ scroller_prefer_center = 0
 edge_scroller_pointer_focus = 0
 edge_scroller_focus_allow_speed = 0.0
 scroller_default_proportion_single = 1.0
-scroller_proportion_preset = [0.5, 0.8, 1.0]
+scroller_proportion_preset = [0.5, 0.8]
 scroller_prefer_overspread = 1
 scroller_ignore_proportion_single = 0
 scroller_default_proportion_single = 1
@@ -174,42 +174,48 @@ overlay_color = 0x14a57cff
 "SUPER+d" = "spawn_shell,pgrep wofi >/dev/null 2>&1 && pkill wofi || wofi --show drun -I -i"
 "SUPER+e" = "toggle_named_scratchpad,none,kitty-scratch,kitty -T kitty-scratch"
 
+# recording and screen shotting
+"SUPER+ALT+o" = "spawn_shell,obs-cli recording toggle"
+"Print" = "spawn,msnap gui"
+"SHIFT+Print" = "spawn_shell,msnap shot --region"
+"ALT+Print" = "spawn_shell,msnap cast --toggle --region"
+
 # exit
 "SUPER+m" = "quit"
 "SUPER+q" = "killclient,"
 
 # switch window focus
 "SUPER+Tab" = "focusstack,next"
-"ALT+Left" = "focusdir,left"
-"ALT+Right" = "focusdir,right"
-"ALT+Up" = "focusdir,up"
-"ALT+Down" = "focusdir,down"
+"ALT+h" = "focusdir,left"
+"ALT+l" = "focusdir,right"
+"ALT+k" = "focusdir,up"
+"ALT+j" = "focusdir,down"
 
 # swap window
-"SUPER+SHIFT+Up" = "exchange_client,up"
-"SUPER+SHIFT+Down" = "exchange_client,down"
-"SUPER+SHIFT+Left" = "exchange_client,left"
-"SUPER+SHIFT+Right" = "exchange_client,right"
+"SUPER+SHIFT+k" = "exchange_client,up"
+"SUPER+SHIFT+j" = "exchange_client,down"
+"SUPER+SHIFT+h" = "exchange_client,left"
+"SUPER+SHIFT+l" = "exchange_client,right"
 
 # switch window status
 "SUPER+g" = "toggleglobal,"
 "ALT+Tab" = "togglejump,"
 "ALT+backslash" = "togglefloating,"
-"ALT+a" = "togglemaximizescreen,"
+"ALT+e" = "togglemaximizescreen,"
 "ALT+f" = "togglefullscreen,"
 "ALT+SHIFT+f" = "togglefakefullscreen,"
 "SUPER+i" = "minimized,"
-"SUPER+o" = "toggleoverlay,"
+# "SUPER+o" = "toggleoverlay,"
 "SUPER+SHIFT+I" = "restore_minimized"
-"ALT+z" = "toggle_scratchpad"
+# "ALT+z" = "toggle_scratchpad"
 
 # scroller layout
-"ALT+e" = "set_proportion,1.0"
+# "ALT+e" = "set_proportion,1.0"
 "ALT+x" = "switch_proportion_preset,"
-"alt+super+ctrl+Left" = "scroller_stack,left"
-"alt+super+ctrl+Right" = "scroller_stack,right"
-"alt+super+ctrl+Up" = "scroller_stack,up"
-"alt+super+ctrl+Down" = "scroller_stack,down"
+"alt+super+ctrl+h" = "scroller_stack,left"
+"alt+super+ctrl+l" = "scroller_stack,right"
+"alt+super+ctrl+k" = "scroller_stack,up"
+"alt+super+ctrl+j" = "scroller_stack,down"
 
 #dwindle layout(manual split mode)
 "alt+shift+Return" = "dwindle_toggle_split_direction"
@@ -219,9 +225,9 @@ overlay_color = 0x14a57cff
 
 # tag switch
 "SUPER+Left" = "viewtoleft,0"
-"CTRL+Left" = "viewtoleft_have_client,0"
+# "CTRL+Left" = "viewtoleft_have_client,0"
 "SUPER+Right" = "viewtoright,0"
-"CTRL+Right" = "viewtoright_have_client,0"
+# "CTRL+Right" = "viewtoright_have_client,0"
 "CTRL+SUPER+Left" = "tagtoleft,0"
 "CTRL+SUPER+Right" = "tagtoright,0"
 "Ctrl+1" = "view,1,0"
@@ -345,6 +351,11 @@ layer_name = "wofi"
 [[rule.layer_rule]]
 animation_type_close = "zoom"
 layer_name = "wofi"
+
+[[rule.layer_rule]]
+layer_name = "msnap"
+no_animation = 1
+no_blur = 1
 
 # window rule
 
