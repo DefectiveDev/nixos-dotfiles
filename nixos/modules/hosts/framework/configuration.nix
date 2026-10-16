@@ -112,7 +112,7 @@
             xwayland.enable = true;
         };
 
-        programs.command-not-found.enable=true;
+        programs.command-not-found.enable = true;
         programs.zsh.enable = true;
 
         fonts = {
@@ -129,7 +129,6 @@
             neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
             wget
             git
-            comma
             xwayland-satellite
             pulsemixer
             pulseaudio

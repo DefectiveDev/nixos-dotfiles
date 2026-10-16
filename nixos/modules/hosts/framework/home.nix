@@ -1,9 +1,11 @@
-{ self, ... }: {
+{ self, inputs, ... }: {
     # This is your home.nix, your module where you configure home-manager
     # It's imported in your nixos configuration
     flake.homeModules.frameworkModule = { config, pkgs, lib, ...}:
     {
         imports = [
+            inputs.nix-index-database.homeModules.default
+            { programs.nix-index-database.comma.enable=true;}
             self.homeModules.nvim
             self.homeModules.kitty
             self.homeModules.zsh
@@ -108,6 +110,11 @@
             bash.enable = true;
             fd.enable = true;
             ripgrep.enable = true;
+
+            nix-index = {
+                enable = true;
+                enableZshIntegration = true;
+            };
 
             yazi = {
                 enable = true;
