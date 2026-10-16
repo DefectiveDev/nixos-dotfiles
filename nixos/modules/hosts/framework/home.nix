@@ -106,7 +106,14 @@
         home.file.".config/fd".source = ../../../../.config/fd;
 
         programs = {
-            lazygit.enable = true;
+            lazygit= {
+                enable = true;
+                settings = {
+                    gui = {
+                        nerdFontsVersion = "3";
+                    };
+                };
+            };
             bash.enable = true;
             fd.enable = true;
             ripgrep.enable = true;
