@@ -7,10 +7,10 @@
             inputs.nixos-hardware.nixosModules.framework-16-7040-amd
             ({ ... }: {
                 nixpkgs.overlays = [
+                    inputs.msnap.overlays.default
                     (final: prev: {
                         unstable = import inputs.unstable-nixpkgs {
                             system = final.stdenv.hostPlatform.system;
-                            # system = "x86_64-linux";
                             config.allowUnfree = true;
                         };
                     })

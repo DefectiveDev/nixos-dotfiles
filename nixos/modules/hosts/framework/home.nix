@@ -51,6 +51,7 @@
             plugins = with pkgs.obs-studio-plugins; [
                 obs-vaapi # AMD hardware encoding
                 obs-websocket
+                wlrobs
             ];
         };
 
