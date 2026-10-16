@@ -12,6 +12,11 @@
             inputs.nixpkgs.follows = "unstable-nixpkgs";
         };
 
+        msnap = {
+            url = "github:xtheeq/msnap";
+            inputs.nixpkgs.follows = "unstable-nixpkgs";
+        };
+
         nur = {
             url = "github:nix-community/NUR";
             inputs.nixpkgs.follows = "unstable-nixpkgs";
@@ -22,7 +27,10 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        # ez-configs.url = "github:ehllie/ez-configs";
+        nix-index-database = {
+            url = "github:nix-community/nix-index-database";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
 
         #Dendritic pattern needed files
         flake-parts.url = "github:hercules-ci/flake-parts";
@@ -31,52 +39,5 @@
 
 # TODO: Turn into flake parts.
 
-    outputs = {self, nixpkgs, home-manager, nixos-hardware, flake-parts, import-tree, ...}@inputs: 
-    # let
-    #     system = "x86_64-linux";
-    #     unstable-pkgs = import inputs.unstable-nixpkgs {
-    #         inherit system;
-    #         config = {allowUnfree=true;};
-    #     };
-    #     pkgs = import nixpkgs {
-    #         inherit system;
-    #         config = {allowUnfree=true;};
-    #         # overlays = [ inputs.nur.overlay ];
-    #     };
-    # in
-    # {
-        inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
-        # nixosConfigurations.framework-nixos = nixpkgs.lib.nixosSystem {
-        #     inherit system;
-        #     specialArgs = {inherit inputs; inherit unstable-pkgs;};
-        #     modules = [
-        #         ./system/configuration.nix
-        #         inputs.nur.modules.nixos.default
-        #         nixos-hardware.nixosModules.framework-16-7040-amd
-        #         home-manager.nixosModules.home-manager
-        #         {
-        #             home-manager = {
-        #                 extraSpecialArgs = {inherit inputs; inherit unstable-pkgs;};
-        #                 useGlobalPkgs = true;
-        #                 useUserPackages = true;
-        #                 users.framework = import ./users/home.nix;
-        #                 backupFileExtension = "backup";
-        #             };
-        #         }
-        #     ];
-        # };
-#    homeConfigurations."framework@Framework-NixOS" = inputs.home-manager.lib.homeManagerConfiguration {
-#     inherit pkgs;
-#    extraSpecialArgs = { inherit inputs; inherit unstable-pkgs; };
-#   modules = [
-#    ./users/home.nix
-#   inputs.nur.hmModules.nur
-# ];
-# };
-
-        # devShell.${system} = pkgs.mkShell {
-        #     name = "nix-dev";
-        #     packages = with pkgs; [nil];
-        # };
-    # };
+    outputs = {...}@inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
 }
